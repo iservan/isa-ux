@@ -1,0 +1,61 @@
+/* ////////////////////////////////////////
+
+Your custom css here
+
+/////////////////////////////////////////*/
+
+.logo:hover .navbar-brand {
+  color: var(--primary-color);
+}
+.logo .lead {
+  margin-top: -8px;
+}
+.lead {
+  font-weight: 400;
+}
+.nav-item {
+  margin: 0 .5rem;
+}
+.height-cut {
+  height: 1050px;
+  overflow: hidden;
+}
+
+/* Gradient effect */
+.c-timeline {
+  border-color: #eee;
+}
+.c-timeline__point {
+  height: 3px;
+  width: 12px;
+  position: absolute;
+  left: -31px;
+  top: 10px;
+  border-radius: 0;
+}
+.t-primary-bg,
+.t-primary-color-line {
+  background: var(--primary-color) url("../images/header/giphy-blue.gif") no-repeat center;
+  box-shadow: 0 0 0 8px #fff;
+}
+
+.t-image-overlay__deco-line {
+  background: #b672ff url("../images/header/giphy4.gif");
+}
+
+.c-avatar img {
+  border-radius: 50%;
+  max-width: 140px;
+}
+
+/* Mobile Fix */
+@media (max-width: 599px) {
+  .space-md {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
+  .height-cut {
+    height: 450px;
+  }
+}
