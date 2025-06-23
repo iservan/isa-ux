@@ -1,7 +1,5 @@
 /* ////////////////////////////////////////
-
-Your custom css here
-
+custom css are here
 /////////////////////////////////////////*/
 
 .logo:hover .navbar-brand {
@@ -58,4 +56,166 @@ Your custom css here
   .height-cut {
     height: 450px;
   }
+}
+
+/* Nivo slider custom styles
+========================================================================== */
+.nivo-lightbox-theme-default .nivo-lightbox-image img {
+  background: transparent;
+  box-shadow: none;
+}
+
+.nivo-lightbox-theme-default.nivo-lightbox-overlay {
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.nivo-lightbox-wrap {
+  position: absolute;
+  top: 5%;
+  bottom: 5%;
+  left: 5%;
+  right: 5%;
+}
+
+.nivo-lightbox-theme-default .nivo-lightbox-title-wrap {
+  top: -4%;
+}
+
+.contract-info a {
+  font-size: 16px;
+}
+
+/* Case study styles
+========================================================================== */
+.case-section__content {
+  width: 100%;
+  padding-bottom: 2rem;
+}
+
+.t-section__content {
+  width: 100%;
+}
+
+.case-heading {
+  font-weight: 300;
+  text-transform: none;
+}
+
+h2.case-heading {
+  font-size: 1.75rem;
+}
+
+.big {
+  font-size: 2.5rem;
+}
+
+h1.case-heading {
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.case-link h3 {
+  text-align: center;
+}
+
+.max-height {
+  max-height: 450px;
+  overflow: hidden;
+}
+
+.anchor-link {
+  padding: 2rem 0;
+  display: block;
+}
+
+/* Hero
+========================================================================== */
+.hero {
+  background: #e0ecff;
+  color: inherit;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #b8d3ff;
+}
+
+.hero.issue {
+  background: #fff8e0;
+  border: 1px solid #ffeaa7;
+  box-shadow: none;
+}
+
+.hero p {
+  line-height: 1.6rem;
+}
+
+.hero a {
+  margin-top: 1.5rem;
+}
+
+.hero i {
+  color: #444;
+}
+
+.prop-details {
+  max-height: 632px;
+  overflow: hidden;
+}
+/* Metrics section
+========================================================================== */
+.case-study-hero {
+  background: linear-gradient(135deg, #fafafa 0%, #e0e0e0 100%);
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.metric-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.metric-card.insight {
+  padding: 1rem;
+  text-align: left;
+  background: #f5f5f5;
+}
+
+.metric-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  display: block;
+  font-family: "Outfit", sans-serif;
+}
+
+.metric-label {
+  color: #6c757d;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+/* Insight box
+========================================================================== */
+.insight-box {
+  background: #f5f5f5;
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 7px solid var(--primary-color);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.4;
+  margin-bottom: 2rem;
+  font-family: "Outfit", sans-serif;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.17);
+}
+
+.insight-title {
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
 }
