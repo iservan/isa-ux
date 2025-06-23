@@ -131,15 +131,15 @@
         <div id="portfolio-filters">
           <ul id="filters" class="p-0">
             <li><a class="link" href="*" class="active">All</a></li>
-            <li><a class="link" href=".b2c">B2C Products</a></li>
-            <li><a class="link" href=".sass">Saas solutions - B2B</a></li>
-            <li><a class="link" href=".mobile">Mobile</a></li>
+            <li><a class="link" href="#sass">Saas Products - B2B</a></li>
+            <li><a class="link" href=".b2c">B2C</a></li>
+            <li><a class="link" href="#mobile">Mobile</a></li>
           </ul>
         </div>
         <div class="grid" data-cols="3" data-margin="30" data-height="1"
           data-masonry='{ "columnWidth": 200, "itemSelector": ".entry" }'>
           <!-- entry -->
-          <div class="entry work-entry sass mobile">
+          <div class="entry work-entry" id="sass">
             <a href="project-realyse.html">
               <div class="entry-image imageBG" data-img="assets/images/portfolio/REalyse-small-ok.jpg">
               </div>
@@ -160,7 +160,7 @@
             </a>
           </div>
           <!-- Red hat -->
-          <div class="entry work-entry b2c mobile sass w2">
+          <div class="entry work-entry sass b2c w2" id="sass">
             <a href="project-red-hat.html">
               <div class="entry-image imageBG" data-img="assets/images/portfolio/sa-laptop-clear.jpg">
               </div>
@@ -183,7 +183,7 @@
             </a>
           </div>
           <!-- end:entry -->
-          <div class="entry work-entry sass b2c mobile">
+          <div class="entry work-entry sass" id="mobile">
             <a class="c-image-overlay t-image-overlay js-lightbox" href="assets/images/portfolio/cmrad.png"
               title="Collective Minds Radiology" data-lightbox-gallery="portfolio">
               <div class="entry-image imageBG" data-img="assets/images/portfolio/cmrad-laptop-blue.jpg">
@@ -210,7 +210,7 @@
               title="Personas and user journey" data-lightbox-gallery="portfolio"></a> -->
           </div>
           <!-- end:entry -->
-          <div class="entry work-entry b2c sass mobile h2">
+          <div class="entry work-entry sass h2" id="sass">
             <a class="c-image-overlay t-image-overlay js-lightbox" href="assets/images/portfolio/traffic-report.jpg"
               title="AI data app" data-lightbox-gallery="portfolio">
               <div class="entry-image imageBG" data-img="assets/images/portfolio/dynamic-tall.jpg"></div>
@@ -239,7 +239,7 @@
               title="Data visualization apps - knowledge base" data-lightbox-gallery="portfolio"></a>
           </div>
           <!-- entry -->
-          <div class="entry work-entry sass mobile">
+          <div class="entry work-entry sass" id="sass">
             <a href="project-chat.html">
               <div class="entry-image imageBG" data-img="assets/images/portfolio/chat/chat-mockup.png">
               </div>
@@ -257,28 +257,27 @@
             </a>
           </div>
           <!-- end:entry -->
-                    <!-- end:entry -->
-                    <div class="entry work-entry c2b mobile">
-                      <a class="c-image-overlay t-image-overlay js-lightbox" href="assets/images/portfolio/ovejas-web.jpg"
-                        title="Ovejas Negras Tapas - Wordpress" data-lightbox-gallery="portfolio">
-                        <div class="entry-image imageBG" data-img="assets/images/portfolio/0n-01.jpg"></div>
-                        <div class="work-entry-hover">
-                          <div class="work-entry-content">
-                            <div class="work-entry-title">
-                              <h3>Ovejas Negras Tapas</h3>
-                            </div>
-                            <div class="work-entry-cat">
-                              <p> + Wordpress cutom site development</br> + UI/UX design</br> + Photo
-                                shooting</br> + WordPress theme dev from scratch</br></p>
-                            </div>
-                            <span class="work-entry-chip bg-white text-primary px-2 py-1 rounded mt-5">Hospitality</span>
-                          </div>
-                        </div>
-                      </a>
-                      <a class="c-image-overlay t-image-overlay js-lightbox" href="assets/images/portfolio/ove_negras.gif"
-                        title="Ovejas Negras Tapas - Wordpress" data-lightbox-gallery="portfolio"></a>
-                    </div>
-          <div class="entry work-entry mobile">
+          <div class="entry work-entry b2c">
+            <a class="c-image-overlay t-image-overlay js-lightbox" href="assets/images/portfolio/ovejas-web.jpg"
+              title="Ovejas Negras Tapas - Wordpress" data-lightbox-gallery="portfolio">
+              <div class="entry-image imageBG" data-img="assets/images/portfolio/0n-01.jpg"></div>
+              <div class="work-entry-hover">
+                <div class="work-entry-content">
+                  <div class="work-entry-title">
+                    <h3>Ovejas Negras Tapas</h3>
+                  </div>
+                  <div class="work-entry-cat">
+                    <p> + Wordpress cutom site development</br> + UI/UX design</br> + Photo
+                      shooting</br> + WordPress theme dev from scratch</br></p>
+                  </div>
+                  <span class="work-entry-chip bg-white text-primary px-2 py-1 rounded mt-5">Hospitality</span>
+                </div>
+              </div>
+            </a>
+            <a class="c-image-overlay t-image-overlay js-lightbox" href="assets/images/portfolio/ove_negras.gif"
+              title="Ovejas Negras Tapas - Wordpress" data-lightbox-gallery="portfolio"></a>
+          </div>
+          <div class="entry work-entry" id="mobile">
             <a class="c-image-overlay t-image-overlay js-lightbox" href="assets/images/portfolio/mobile-apps.gif"
               title="AI data app" data-lightbox-gallery="portfolio">
               <div class="entry-image imageBG" data-img="assets/images/portfolio/mobile-mockup-bg.jpg">
@@ -314,8 +313,7 @@
               data-lightbox-gallery="portfolio"></a>
           </div>
           <!-- end:entry -->
-          <!-- end:entry -->
-          <div class="entry work-entry sass">
+          <div class="entry work-entry sass b2c">
             <a class="c-image-overlay t-image-overlay js-lightbox" href="assets/images/portfolio/cp-vendo-revamp.png"
               data-lightbox-hidpi="" title="Vendo customer portal" data-lightbox-gallery="portfolio">
               <div class="entry-image imageBG" data-img="assets/images/portfolio/cp-mockup.png"></div>
@@ -336,7 +334,7 @@
               title="Vendo customer portal" data-lightbox-gallery="portfolio"></a>
           </div>
           <!-- end:entry -->
-          <div class="entry work-entry sass">
+          <div class="entry work-entry" id="sass">
             <div class="entry-image imageBG" data-img="img/photo-1436262513933-a0b06755c784.jpg"></div>
             <div class="work-entry-hover">
               <div class="work-entry-content">
@@ -346,7 +344,7 @@
             </div>
           </div>
           <!-- end:entry -->
-          <div class="entry work-entry mobile b2c h2">
+          <div class="entry work-entry b2c h2">
             <div class="entry-image imageBG" data-img="assets/images/portfolio/vendo-partner.jpg"></div>
             <div class="work-entry-hover">
               <div class="work-entry-content">
@@ -356,7 +354,7 @@
             </div>
           </div>
           <!-- end:entry -->
-          <div class="entry work-entry mobile sass w2">
+          <div class="entry work-entry w2" id="sass">
             <a class="c-image-overlay big-image t-image-overlay  js-lightbox"
               href="assets/images/portfolio/data-parq.jpg" data-lightbox-hidpi="" title="Data ParQ - Data visualisation"
               data-lightbox-gallery="portfolio">
@@ -394,7 +392,7 @@
                 href="assets/images/portfolio/castilla-leon-ytourism-2.jpg" title="Castilla Leon Turismo - Django CMS"
                 data-lightbox-gallery="portfolio"></a>
           </div>
-          <div class="entry work-entry sass h2">
+          <div class="entry work-entry h2">
 
             <div class="entry-image imageBG" data-img="assets/images/portfolio/museo-prado.jpg"></div>
             <div class="work-entry-hover">

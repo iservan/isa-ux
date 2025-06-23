@@ -1,9 +1,5 @@
 /*////////////////////////////////////////////////////////////////////////////////////////////////////
-
-ShareBootstrap - Minimal portfolio Template v1.0.0 (https://sharebootstrap.com)
-Copyright 2019 Sharebootstrap.com
-Licensed under  CC BY 3.0 
-
+Google Font inmport
 ////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 @import url('https://fonts.googleapis.com/css?family=Muli:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&display=swap');
@@ -57,7 +53,6 @@ h4,
 h5,
 h6 {
     margin-bottom: .5rem;
-    font-weight: 600;
     line-height: 1.64;
 }
 
@@ -73,6 +68,7 @@ a:hover {
 }
 
 a.link {
+    font-family: "Outfit", sans-serif;
     color: var(--primary-color);
     position: relative;
     -webkit-transition: all .2s ease-in-out;
@@ -200,8 +196,8 @@ Navigation
 
 .navbar-light .navbar-nav .nav-link {
     color: rgb(0, 0, 0);
-    font-weight: 700;
-    letter-spacing: .04rem;
+    font-weight: 600;
+    font-family: "Outfit", sans-serif;
 }
 
 .navbar-brand {
