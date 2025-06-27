@@ -132,3 +132,48 @@ function setup_nivo_lightbox()
 
     }
 }
+
+/** RESEARCH BLOCK */
+/** ===================== */
+        // Animate bars on page load (only for Result tab)
+        function animateBars() {
+            $('.chart-bar').each(function(index) {
+                const $bar = $(this);
+                const finalWidth = $bar.data('width') || $bar.css('width');
+                $bar.data('width', finalWidth);
+                $bar.css('width', '0%');
+                
+                setTimeout(function() {
+                    $bar.css('width', finalWidth);
+                }, index * 200);
+            });
+        }
+        
+        $(document).ready(function() {
+            // Animate bars on initial load (Result tab is active by default)
+            animateBars();
+        });
+        
+        // Tab switching functionality
+        $('.tab-item').on('click', function(e) {
+            e.preventDefault();
+            
+            // Remove active class from all tabs
+            $('.tab-item').removeClass('active');
+            $(this).addClass('active');
+            
+            // Hide all tab content
+            $('.tab-content').hide();
+            
+            // Show the selected tab content
+            const tabText = $(this).text().toLowerCase();
+            if (tabText === 'discovery') {
+                $('#discovery-content').show();
+            } else if (tabText === 'result') {
+                $('#result-content').show();
+                // Re-animate bars when switching to Result tab
+                setTimeout(function() {
+                    animateBars();
+                }, 100);
+            }
+        });
