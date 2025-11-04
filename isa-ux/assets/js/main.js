@@ -16,8 +16,8 @@ $(document).ready(function() {
 
 
 
-function setup_progress_bar_animation()
-{
+function setup_progress_bar_animation() {
+    
     var $animation_elements = $("[class*='a-']");
     var $window = $(window);
 
