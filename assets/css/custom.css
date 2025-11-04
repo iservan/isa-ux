@@ -31,7 +31,7 @@ custom css are here
   top: 10px;
   border-radius: 0;
 }
-.t-primary-bg,
+/* .t-primary-bg,
 .t-primary-color-line {
   background: var(--primary-color) url("../images/header/giphy-blue.gif") no-repeat center;
   box-shadow: 0 0 0 8px #fff;
@@ -39,7 +39,7 @@ custom css are here
 
 .t-image-overlay__deco-line {
   background: #b672ff url("../images/header/giphy4.gif");
-}
+} */
 
 .c-avatar img {
   border-radius: 50%;
