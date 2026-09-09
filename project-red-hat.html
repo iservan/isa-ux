@@ -2,6 +2,15 @@
 <html lang="en">
 
 <head>
+    <script>
+        (function () {
+            try {
+                if (localStorage.getItem('theme') === 'dark') {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                }
+            } catch (e) {}
+        })();
+    </script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-V95WD8DEG6"></script>
     <script>
@@ -72,8 +81,12 @@
                     <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="project-ailstacks.html">Allstacks
                             Case</a>
                     </li>
-                    </li>
+                    
                 </ul>
+                <button type="button" class="theme-toggle" id="themeToggle" aria-pressed="false" aria-label="Switch to dark mode">
+                    <i class="fa fa-sun-o" aria-hidden="true"></i>
+                    <i class="fa fa-moon-o" aria-hidden="true"></i>
+                </button>
             </div>
         </div>
     </nav>

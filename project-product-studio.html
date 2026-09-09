@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        (function () {
+            try {
+                if (localStorage.getItem('theme') === 'dark') {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                }
+            } catch (e) {}
+        })();
+    </script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="@isaiso" />
+    <meta name="description" content="Senior product designer">
+    <title>Product Studio :: Portfolio</title>
+    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome-font-awesome.min.css">
+    <link rel="stylesheet" href="assets/plugins/nivo-lightbox/nivo-lightbox.css" />
+    <link rel="stylesheet" href="assets/plugins/nivo-lightbox/themes/default/default.css" />
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link href="assets/css/custom.css" rel="stylesheet">
+    <style>
+        .screen-mock {
+            border: 1px solid #e2e2e2;
+            border-radius: 12px;
+            padding: 24px;
+            background: #fafafa;
+            margin-top: 16px;
+        }
+        .screen-mock h5 {
+            margin-bottom: 10px;
+        }
+        .screen-mock ul {
+            padding-left: 18px;
+        }
+        .note-box {
+            font-size: 0.9rem;
+            color: #777;
+            border-left: 3px solid #ccc;
+            padding-left: 12px;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+
+<body class="js-main-container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top py-3" id="mainNav">
+        <div class="container">
+            <a href="index.html" class="logo d-flex">
+                <div class="c-avatar mr-3">
+                    <img id="avatar" class="c-avatar__img" src="assets/images/header/avatar-300.png" alt="">
+                </div>
+                <div class="pt-2">
+                    <span class="navbar-brand js-scroll-trigger" href="#">Isabel Servan</span>
+                    <p class="lead">Senior Product Designer</p>
+                </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="experience.html">Resume</a></li>
+                    <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="project-red-hat.html">Red Hat Case</a></li>
+                    <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="project-chat.html">Chatbot Case</a></li>
+                    <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="pulse_case.html">REalyse Case</a></li>
+                    <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="project-product-studio.html">Allstacks Case</a></li>
+                </ul>
+            </div>
+            <button type="button" class="theme-toggle" id="themeToggle" aria-pressed="false" aria-label="Switch to dark mode">
+                <i class="fa fa-sun-o" aria-hidden="true"></i>
+                <i class="fa fa-moon-o" aria-hidden="true"></i>
+            </button>
+        </div>
+    </nav>
+
+    <header class="mt-5 space-md">
+        <div class="container">
+            <div class="row d-flex align-content-center">
+                <div class="col-md-4">
+                    <div class="headline">
+                        <div class="headline-content">
+                            <h1 class="headline-title display-3">Product Studio</h1>
+                            <p class="headline-subtitle">AI Product Management Tool</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="top" class="row d-flex justify-content-start mt-5">
+                <div class="col-md-4">
+                    <ul class="list-unstyled project-intro ml-0">
+                        <li class="title w-100">The Problem</li>
+                    </ul>
+                    <p>Project managers waste a lot of time writing specs by hand and guessing what to build next. The specs lack real context from the codebase, stakeholders and customer calls. Engineers get confused, and costly rework shows up too late.</p>
+                </div>
+                <div class="col-md-8">
+                    <ul class="list-unstyled project-intro ml-0">
+                        <li class="title w-100">The Solution</li>
+                    </ul>
+                    <p>We built and launched <a class="link click" href="https://www.allstacks.com/product/product-studio" target="_blank">Product Studio</a>, an intelligence layer that helps teams predict what to build next. It is an AI conversational workflow that turns a rough idea into a build-ready spec, grounded in the actual codebase, customer feedback, and delivery metrics. Teams plan <strong>4x faster</strong> and spend <strong>75% less</strong> on AI tokens.</p>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section>
+        <div class="container">
+            <div class="row mb-5">
+                <!-- <div class="col-md-4">
+                    <img src="assets/images/portfolio/allstacks/ai-logo.svg" alt="">
+                </div> -->
+                
+                    <img class="mt-5" src="assets/images/portfolio/allstacks/PS-showcase.svg" alt="">
+                
+            </div>
+        </div>
+    </section>
+
+    <section class="case-study-hero">
+        <div class="container py-5">
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <span class="metric-number">4x</span>
+                    <div class="metric-label">Faster planning</div>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-number">75%</span>
+                    <div class="metric-label">Cheaper on tokens</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="row d-flex justify-content-start space-md">
+                <div class="col-md-4">
+                    <ul class="list-unstyled project-intro">
+                        <li class="title">Role, Timeline & Team</li>
+                        <li>6 months 0→1 launch</li>
+                        <li>Product + Engineers + Marketing (15 people)</li>
+                    </ul>
+                </div>
+                <div class="col-md-7">
+                    <p class="insight-box"><strong>MY ROLE</strong> <br><br> I led the UX research, conceptualization UX/UI design of Product Studio, collaborating with product, enegenieer and marketing stakeholders. My main focus was figuring out how to create conversational experiences that feel trustworthy and simple to use.</p>
+                </div>
+            </div>
+
+            <div class="row d-flex justify-content-start space-md">
+                <div class="col-md-4">
+                    <ul class="list-unstyled project-intro">
+                        <li class="title">The process</li>
+                        <li><a class="link" href="#idea">Ideation <i class="fa fa-arrow-down" aria-hidden="true"></i></a></li>
+                        <li><a class="link" href="#prototype">Prototyping <i class="fa fa-arrow-down" aria-hidden="true"></i></a></li>
+                        <li><a class="link" href="#ux">UX & UI design <i class="fa fa-arrow-down" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+                <div class="col-md-7 mt-5">
+                    <p>I worked closely with project managers through user interviews to understand their needs and turn ideas into practical product flows. I built and maintained a unified Design System in Figma and Vue 3, connecting design tokens, reusable components, and production implementation.</p>
+                    <p>We looked at how product managers write specs today. Then we designed an AI flow that feels fast, clear, and trustworthy. Every screen had to answer one question: can I trust this enough to act on it?</p>
+                </div>
+            </div>
+
+            <div id="idea" class="row d-flex justify-content-start space-md">
+                <div class="col-md-4">
+                    <ul class="list-unstyled project-intro">
+                        <li class="title">Ideation</li>
+                    </ul>
+                </div>
+                <div class="col-md-7 mb-5">
+                    <h3>User personas</h3>
+                    <p>We mapped three user personas, each interacting with the tool in a different way. While they all used the same AI workflow, each had different needs. We then compared these assumptions with actual usage data from our analytics tools to see if the behavior matched what we had learned through research.</p>
+                </div>
+                <div class="container-fluid">
+                    <div class="row mx-3">
+                        <div class="col-md-4 card metric-card insight mr-4">
+                            <ul class="card-body list-unstyled ml-0">
+                                <li><strong class="text-uppercase">Enterprise Product & Project Roles</strong></li>
+                                <li><em> Project managers, product owners, program managers, innovation managers...</em></li>
+                                <li class="ml-3"><strong>Goal</strong> Maximize revenue and efficiency while continuing to improve a mature, stable product</li>
+                                <li class="ml-3"><strong>Needs</strong> Strict compliance checklists, and deep analytics to back up every decision before presenting to executives</li>
+                                <li class="ml-3"><strong>Value</strong> Cnetralized hub for internal politics, compliance, and reporting</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 card metric-card insight mr-4">
+                            <ul class="card-body list-unstyled ml-0">
+                                <li><strong class="text-uppercase"></strong></li>
+                                <li><strong class="text-uppercase">Mid-size startup & Product leaders</strong></li>
+                                <li class="ml-3"><strong>Goal</strong> Ship the right things, efficiently and create business value by quickly pivot the business strategy based on rapid market feedback</li>
+                                <li class="ml-3"><strong>Needs</strong> Understan techincal constrains, gather customers and skateholders feedback to produce effective specs.</li>
+                                <li class="ml-3"><strong>Value</strong> Fewer surprises, less rework, Confidence in what the team is building next</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3 card metric-card insight">
+                            <ul class="card-body list-unstyled ml-0">
+                                <li><strong class="text-uppercase">Stakeholders</strong></li>
+                                <li><em>Executive, Engineering, Designers...</em></li>
+                                <li class="ml-4"><strong>Goal</strong> Bring contrains to make sure the new features are based on real scenarios.</li>
+                                <li class="ml-4"><strong>Needs</strong> Trust the plan before it goes to build.</li>
+                                <li class="ml-4"><strong>Value</strong> Confidence in what the team is building is the right thing.</li>
+                            </ul>
+                        </div>
+                    </div>
+                <img class="mt-5" src="assets/images/portfolio/allstacks/ai-competiros-benchmarking.png" alt="">
+                <!-- <img class="mt-5" src="assets/images/portfolio/allstacks/ai-low-frames.svg" alt="user journey 1"> -->
+
+                </div>
+            </div>
+
+            <a href="#top" class="anchor-link ml-3">Scroll up ↑</a>
+
+            <div id="prototype" class="row d-flex justify-content-start space-md">
+                <div class="col-md-4">
+                    <ul class="list-unstyled project-intro">
+                        <li class="title">Prototyping</li>
+                    </ul>
+                </div>
+                <div class="col-md-7 mb-5">
+                    <p>I also used agentic AI to help bring designs to life faster. That let me create interactive experiences while keeping design and engineering closely aligned.</p>
+                    <p>These interactive desktop prototypes use real components from our design system to validate design ideas in the browser, helping the team better understand the interaction and experience. It has made it easier to evolve our design system by testing existing components and identifying where they may need to be adapted or extended, while making engineering handoffs much more precise.</p>
+                    <p>Here are two examples:</p>
+                    <ul>
+                        <li><a class="link click" href="https://allstacks-prototypes.surge.sh/evaluate-readiness" target="_blank" rel="noopener noreferrer">Evaluate Readiness</a> (click “Running” to see the final state)</li>
+                        <li><a class="link click" href="https://allstacks-prototypes.surge.sh/option-boxes" target="_blank" rel="noopener noreferrer">Onboarding improvements</a> (click on the middle box → input sent) to see the interaction</li>
+                    </ul>
+                </div>
+                <a href="#top" class="anchor-link ml-3">Scroll up ↑</a>
+            </div>
+        </div>
+<!---
+        <div id="ux">
+            <div class="container">
+                <div class="row d-flex justify-content-start space-md">
+                    <div class="col-md-4">
+                        <ul class="list-unstyled project-intro">
+                            <li class="title">UX/UI design</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-7 mb-5">
+                        <h3>High fidelity screens</h3>
+                        <h4>Welcome screen — tools connected</h4>
+                        <p>After sign-up, users connect their tools. This screen greets them once tools are live, so they know the AI has real context to work with.</p>
+                        <div class="hero">
+                            <h4 class="mr-2 text-uppercase"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> Finding 2 in Action</h4>
+                            <div class="d-block">
+                                <p>Showing connected tools upfront builds trust. Users see the AI isn't guessing, it has their real data.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9 mx-auto">
+                        <div class="screen-mock">
+                            <h5>Descriptive list — Welcome screen (tools connected)</h5>
+                            <ul>
+                                <li>Header: "Welcome back" greeting with the user's name</li>
+                                <li>Connected tools panel: Jira, GitHub, Slack, Confluence, each marked "Connected" with a green check</li>
+                                <li>Main prompt box: "What do you want to build?" text field to start a new draft</li>
+                                <li>Below the prompt: a short list of recent drafts or suggested starting points</li>
+                                <li>Left sidebar: navigation to Drafts, Reviews, and Reports</li>
+                            </ul>
+                            <div class="note-box">Based on the Product Studio site content. The live prototype at allstacks-prototypes.surge.sh/draft-tools-connected blocks automated access (robots.txt), so this is a description, not a screenshot.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="row d-flex justify-content-start space-md">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-7 my-5">
+                        <h4>Readiness report</h4>
+                        <p>Once a spec is drafted, AI reviewers score it. Each score points to the exact ticket, commit, or call behind it. This is how the tool earns trust.</p>
+                        <div class="hero">
+                            <h4 class="mr-2 text-uppercase"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> Finding 3 in Action</h4>
+                            <div class="d-block">
+                                <p>A score alone isn't enough. Showing the proof behind it is what lets teams act on it with confidence.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9 mx-auto mb-5">
+                        <div class="screen-mock">
+                            <h5>Descriptive list — Readiness report screen</h5>
+                            <ul>
+                                <li>Top: a readiness score, shown as a number out of 10 (e.g. 5.2)</li>
+                                <li>Below: a breakdown by category — Security, Architecture, QA, Feasibility, Go-to-market</li>
+                                <li>Each category shows its own mini score and a short takeaway</li>
+                                <li>Findings list: each finding links to the ticket, commit, or call it came from</li>
+                                <li>Bottom: 2–3 action items to raise the score</li>
+                                <li>A "Sync to Jira" button to push the finished spec to the team's tool</li>
+                            </ul>
+                            <div class="note-box">Based on the Product Studio site content. The live prototype at allstacks-prototypes.surge.sh/readiness-report also blocks automated access, so this is a description, not a screenshot.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+-->
+    </section>
+
+    <script src="assets/js/theme.js"></script>
+</body>
+</html>
