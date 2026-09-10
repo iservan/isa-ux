@@ -352,7 +352,7 @@ h1.case-heading {
     justify-content: center;
     gap: 8px;
     margin-left: auto;
-    padding: 6px 10px;
+    padding: 8px 12px;
     border: 1px solid rgba(0, 0, 0, 0.15);
     border-radius: 999px;
     background: #f4f4f4;
@@ -363,13 +363,15 @@ h1.case-heading {
 }
 
 .theme-toggle .fa {
-    font-size: 16px;
+    font-size: 18px;
     opacity: 0.4;
+    font-weight: 600;
 }
 
 html:not([data-theme="dark"]) .theme-toggle .fa-sun-o,
 html[data-theme="dark"] .theme-toggle .fa-moon-o {
     opacity: 1;
+    color: var(--secondary-color);
 }
 
 #mainNav .navbar-toggler {
@@ -500,7 +502,7 @@ html[data-theme="dark"] .hero i {
 }
 
 html[data-theme="dark"] .case-study-hero {
-    background: linear-gradient(135deg, #0c0a1c 0%, #16132b 100%);
+    background: none;
 }
 
 html[data-theme="dark"] .metric-card,
