@@ -360,16 +360,21 @@ h1.case-heading {
     line-height: 1;
     cursor: pointer;
     order: 1;
+    outline: none !important;
 }
 
-.theme-toggle .fa {
-    font-size: 18px;
+.theme-toggle .icon-sun,
+.theme-toggle .icon-moon {
+    width: 18px;
+    height: 18px;
     opacity: 0.4;
-    font-weight: 600;
+    display: block;
+    fill: currentColor;
+    stroke: none;
 }
 
-html:not([data-theme="dark"]) .theme-toggle .fa-sun-o,
-html[data-theme="dark"] .theme-toggle .fa-moon-o {
+html:not([data-theme="dark"]) .theme-toggle .icon-sun,
+html[data-theme="dark"] .theme-toggle .icon-moon {
     opacity: 1;
     color: var(--secondary-color);
 }
