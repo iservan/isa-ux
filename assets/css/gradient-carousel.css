@@ -1,0 +1,136 @@
+/* Adapted from https://github.com/clementgrellier/gradientslider (MIT)
+   Scoped for portfolio section — does not reset site-wide base styles. */
+
+.portfolio-carousel {
+  /* Shown only until the canvas paints, or if JS fails.
+     The moving coral/photo wash is drawn in JS, not this variable. */
+  --carousel-bg: #f0f0f0;
+  --carousel-fg: #0b0b0b;
+  --perspective: 1800px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  position: relative;
+  width: 100%;
+  min-height: 70vh;
+  height: 70vh;
+  margin: 0 0 2rem;
+  background: var(--carousel-bg);
+  color: var(--carousel-fg);
+  overflow: hidden;
+  border-radius: 12px;
+  perspective: var(--perspective);
+  overscroll-behavior: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.portfolio-carousel .loader {
+  position: absolute;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  background: #ffffff;
+  transition: opacity 0.2s var(--ease), visibility 0.2s linear;
+}
+
+.portfolio-carousel .loader--hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.portfolio-carousel .loader__content {
+  display: grid;
+  gap: 12px;
+  justify-items: center;
+  min-width: 220px;
+}
+
+.portfolio-carousel .loader__ring {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 3px solid #ddd;
+  border-top-color: #333;
+  animation: portfolio-carousel-spin 1s linear infinite;
+}
+
+@keyframes portfolio-carousel-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.portfolio-carousel #bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  /* Soften the canvas gradient: raise blur, lower saturate for calmer shades */
+  filter: blur(24px) saturate(1.05);
+  pointer-events: none;
+}
+
+.portfolio-carousel.carousel-mode {
+  touch-action: none;
+  cursor: grab;
+}
+
+.portfolio-carousel.carousel-mode.dragging {
+  cursor: grabbing;
+}
+
+.portfolio-carousel .cards {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  transform-style: preserve-3d;
+}
+
+.portfolio-carousel .card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(26vw, 380px);
+  aspect-ratio: 4 / 5;
+  isolation: isolate;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  will-change: transform, filter;
+  transform-origin: 90% center;
+  contain: layout paint;
+  border-radius: 15px;
+}
+
+.portfolio-carousel .card__img {
+  border-radius: 15px;
+  opacity: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: translateZ(0);
+  pointer-events: none;
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+@media (max-width: 700px) {
+  .portfolio-carousel {
+    min-height: 55vh;
+    height: 55vh;
+  }
+
+  .portfolio-carousel .card {
+    width: min(58vw, 280px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-carousel .card {
+    transition: none !important;
+    animation: none !important;
+  }
+}

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem('theme') === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-V95WD8DEG6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag () { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-5C60B5T94B');
+  </script>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="author" content="@isaiso" />
+  <meta name="description" content="Senior product designer">
+  <title>Isabel Servan :: Portfolio (Carousel)</title>
+  <!-- <link rel="shortcut icon" type="image/gif" href="assets/images/favicon.ico"/> -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22>
+        <text y=%22.9em%22 font-size=%2290%22>
+          👩🏻‍💻
+        </text>
+      </svg>" />
+  <!-- Bootstrap core CSS -->
+  <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Fontaweome icons replacment -->
+  <link rel="stylesheet" href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome-font-awesome.min.css">
+  <!-- Nivo Lightbox-->
+  <link rel="stylesheet" href="assets/plugins/nivo-lightbox/nivo-lightbox.css" />
+  <link rel="stylesheet" href="assets/plugins/nivo-lightbox/themes/default/default.css" />
+  <!-- Theme styles for this template -->
+  <link href="assets/css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link href="assets/css/custom.css" rel="stylesheet">
+  <!-- 3D carousel — adapted from https://github.com/clementgrellier/gradientslider (MIT) -->
+  <link href="assets/css/gradient-carousel.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="js-main-container">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top py-3" id="mainNav">
+      <div class="container">
+        <a href="index.html" class="logo d-flex">
+          <div class="c-avatar mr-3">
+            <img id="avatar" class="c-avatar__img" src="assets/images/header/avatar-300.png" alt=""
+              attr="data-no-retina">
+          </div>
+          <div class="pt-2">
+            <span class="navbar-brand js-scroll-trigger" href="#">Isabel Servan</span>
+            <p class="lead">Senior Product Designer</p>
+          </div>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+          aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"> <span
+            class="navbar-toggler-icon"></span> </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <!-- <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="index.html">Home</a> </li> -->
+            <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="experience.html">Resume</a>
+            </li>
+              <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="project-red-hat.html">Red
+                Hat
+                Case</a>
+            </li>
+            <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="project-chat.html">Chatbot
+                Case</a>
+            </li>
+            <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="pulse_case.html">REalyse
+                Case</a>
+                <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="project-product-studio.html">Allstacks
+                Case</a>
+            </li>
+            </li>
+          </ul>
+        </div>
+        <button type="button" class="theme-toggle" id="themeToggle" aria-pressed="false" aria-label="Switch to dark mode">
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="4.25"/><path d="M12 1.25a1 1 0 0 1 1 1v2.25a1 1 0 1 1-2 0V2.25a1 1 0 0 1 1-1Zm0 17.25a1 1 0 0 1 1 1v2.25a1 1 0 1 1-2 0V19.5a1 1 0 0 1 1-1ZM22.75 12a1 1 0 0 1-1 1H19.5a1 1 0 1 1 0-2h2.25a1 1 0 0 1 1 1ZM5.5 12a1 1 0 0 1-1 1H2.25a1 1 0 1 1 0-2H4.5a1 1 0 0 1 1 1Zm14.07 7.07a1 1 0 0 1-1.41 0l-1.6-1.6a1 1 0 0 1 1.42-1.41l1.59 1.59a1 1 0 0 1 0 1.42ZM8.54 8.54a1 1 0 0 1-1.41 0L5.54 6.95A1 1 0 0 1 6.95 5.54l1.59 1.59a1 1 0 0 1 0 1.41Zm11.13-1.59a1 1 0 0 1 0 1.41l-1.59 1.6a1 1 0 1 1-1.42-1.42l1.6-1.59a1 1 0 0 1 1.41 0ZM8.54 15.46a1 1 0 0 1 0 1.41l-1.59 1.6a1 1 0 0 1-1.41-1.42l1.59-1.59a1 1 0 0 1 1.41 0Z"/></svg>
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.1 14.35A9 9 0 1 1 9.65 2.9a7.25 7.25 0 1 0 11.45 11.45Z"/></svg>
+        </button>
+      </div>
+    </nav>
+    <header class="space-md mt-5">
+      <div class="a-header container">
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-8">
+            <div class="headline mt-0 mb-0">
+              <div class="headline-content">
+                <h1 class="headline-title display-3">Hello there! 👋 <br> I'm Isa,</h1>
+                <p class="headline-subtitle">A <strong>Senior Product Designer</strong> with
+                  coding skills, research expertise & passion for AI.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-8">
+            <p class="">I help startups and enterprises make sense of complex, sometimes messy problems by understanding the people and systems involved and turning them into usable products. Give me a chaotic dataset or a clunky workflow, and I'll turn it into something people actually enjoy using.
+            </p>
+            <p>I'm Currently working remotely for <a class="link" target="_blank"
+                href="https://www.allstacks.com/">Allstacks</a> Based in 📍
+              Raleigh,NC</p>
+            <div class="d-flex justify-content-between align-items-center border-top pt-3">
+              <a class="link" href="mailto:iservan@gmail.com"><i class="fa fa-md fa-envelope"></i> iservan@gmail.com</a>
+              <ul class="c-header__social-buttons c-social-buttons">
+                <li class="a-header">
+                  <a href="https://www.linkedin.com/in/iservan/" target="_blank"
+                    class="c-social-button  t-social-button" title="linkedin">
+                    <i class="fa fa-lg fa-linkedin"></i>
+                  </a>
+                </li>
+                <!-- <li class="a-header">
+                  <a href="https://dribbble.com/isaiso" target="_blank" class="c-social-button  t-social-button"
+                    title="Dribbble">
+                    <i class="fa  fa-lg  fa-dribbble"></i>
+                  </a>
+                </li> -->
+                <li class="a-header">
+                  <a href="https://github.com/iservan" target="_blank" class="c-social-button  t-social-button"
+                    title="Github">
+                    <i class="fa fa-lg fa-github-alt"></i>
+                  </a>
+                </li>
+                <li class="a-header">
+                  <a href="https://iservan.github.io/isa-ux/Isabel-Servan-New-Resume.pdf" target="_blank" class="c-social-button  t-social-button"
+                    title="PDF Resume">
+                    <i class="fa fa-lg fa-file-text"></i>
+                  </a>
+                </li>
+
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- end: Header -->
+    <section class="">
+      <!-- portfolio -->
+      <div id="portfolio">
+        <div class="container">
+          <div id="portfolio-filters">
+            <ul id="filters" class="p-0">
+              <li><a class="link" href="*" class="active">All</a></li>
+              <li><a class="link" href="#sass">Saas Products - B2B</a></li>
+              <li><a class="link" href=".b2c">B2C</a></li>
+              <li><a class="link" href="#mobile">Mobile</a></li>
+              <li><a class="link" href="#ai">AI</a></li>
+            </ul>
+          </div>
+        </div>
+        <!-- 3D infinite carousel — full-bleed; images from currently visible index.html entries only -->
+        <div class="portfolio-carousel stage" id="portfolio-carousel">
+          <canvas id="bg" aria-hidden="true"></canvas>
+          <div class="loader" id="loader">
+            <div class="loader__content">
+              <div class="loader__ring" aria-hidden="true"></div>
+              <span>Loading work</span>
+            </div>
+          </div>
+          <div class="cards" id="cards">
+            <article class="card">
+              <img class="card__img" src="assets/images/portfolio/allstacks/PS-showcase.svg" alt="Allstacks Product Studio" decoding="async" draggable="false">
+            </article>
+            <article class="card">
+              <img class="card__img" src="assets/images/portfolio/sa-laptop-clear.jpg" alt="SaaS product" decoding="async" draggable="false">
+            </article>
+            <article class="card">
+              <img class="card__img" src="assets/images/portfolio/cmrad-laptop-blue.jpg" alt="Collective Minds Radiology" decoding="async" draggable="false">
+            </article>
+            <article class="card">
+              <img class="card__img" src="assets/images/portfolio/REalyse-small-ok.jpg" alt="REalyse" decoding="async" draggable="false">
+            </article>
+            <article class="card">
+              <img class="card__img" src="assets/images/portfolio/dynamic-tall.jpg" alt="AI data app" decoding="async" draggable="false">
+            </article>
+            <article class="card">
+              <img class="card__img" src="assets/images/portfolio/0n-01.jpg" alt="Ovejas Negras" decoding="async" draggable="false">
+            </article>
+            <article class="card">
+              <img class="card__img" src="assets/images/portfolio/mobile-mockup-bg.jpg" alt="Mobile work" decoding="async" draggable="false">
+            </article>
+            <article class="card">
+              <img class="card__img" src="assets/images/portfolio/chat/chat-mockup.png" alt="Chatbot" decoding="async" draggable="false">
+            </article>
+            <article class="card">
+              <img class="card__img" src="assets/images/portfolio/museo-prado.jpg" alt="Museo del Prado" decoding="async" draggable="false">
+            </article>
+            <article class="card">
+              <img class="card__img" src="assets/images/portfolio/ovejas-web.jpg" alt="Ovejas Negras website" decoding="async" draggable="false">
+            </article>
+            <article class="card">
+              <img class="card__img" src="assets/images/portfolio/other-projects-compress.gif" alt="Other projects" decoding="async" draggable="false">
+            </article>
+          </div>
+        </div>
+      </div>
+      <!-- /end:portfolio -->
+    </section>
+    <!-- footer -->
+    <footer class="footer pb-5">
+    </footer>
+  </div>
+  <!-- /main content -->
+  <!-- Js Libraries -->
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-2.2.0.min.js"
+    integrity="sha256-ihAoc6M/JPfrIiIeayPE9xjin4UWjsx2mjW/rtmxLM4=" crossorigin="anonymous"></script>
+  <!-- Boostrap -->
+  <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Plugin JavaScript -->
+  <script src="assets/plugins/jquery.easing.min.js"></script>
+  <script src="assets/plugins/nivo-lightbox/nivo-lightbox.js"></script>
+  <script src="assets/js/scrollreveal.min.js"></script>
+  <!-- GSAP for carousel entry + gradient transitions (vendored for GitHub Pages) -->
+  <script src="assets/js/gsap.min.js"></script>
+  <!-- Custom JavaScript for this site -->
+  <script src="assets/js/custom.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/gradient-carousel.js"></script>
+
+</body>
+
+</html>
