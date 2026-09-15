@@ -392,7 +392,7 @@ html[data-theme="dark"] .theme-toggle .fa-moon-o {
     }
 
     .theme-toggle {
-        order: 2;
+        order: 3;
         margin-left: 12px;
     }
 }
