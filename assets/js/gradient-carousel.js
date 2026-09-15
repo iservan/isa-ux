@@ -10,19 +10,21 @@
 // CONFIGURATION
 // ============================================================================
 
-const IMAGES = [
-  'assets/images/portfolio/allstacks/PS-showcase.svg',
-  'assets/images/portfolio/sa-laptop-clear.jpg',
-  'assets/images/portfolio/cmrad-laptop-blue.jpg',
-  'assets/images/portfolio/REalyse-small-ok.jpg',
-  'assets/images/portfolio/dynamic-tall.jpg',
-  'assets/images/portfolio/0n-01.jpg',
-  'assets/images/portfolio/mobile-mockup-bg.jpg',
-  'assets/images/portfolio/chat/chat-mockup.png',
-  'assets/images/portfolio/museo-prado.jpg',
-  'assets/images/portfolio/ovejas-web.jpg',
-  'assets/images/portfolio/other-projects-compress.gif',
+// Edit c1 / c2 hex per slide to match the image. c1 = main wash, c2 = lighter blob.
+const SLIDES = [
+  { src: 'assets/images/portfolio/allstacks/PS-showcase.svg', c1: '#A17FD9', c2: '#B8B9E1' },
+  { src: 'assets/images/portfolio/sa-laptop-clear.jpg', c1: '#EE0000', c2: '#F0D0D0' },
+  { src: 'assets/images/portfolio/cmrad-laptop-blue.jpg', c1: '#5A7388', c2: '#E24B4B' },
+  { src: 'assets/images/portfolio/REalyse-small-ok.jpg', c1: '#8AA8C8', c2: '#C5D6EA' },
+  { src: 'assets/images/portfolio/dynamic-tall.jpg', c1: '#00AEEF', c2: '#7DD8F7' },
+  { src: 'assets/images/portfolio/0n-01.jpg', c1: '#C9A227', c2: '#E8B86D' },
+  { src: 'assets/images/portfolio/mobile-mockup-bg.jpg', c1: '#7ECFB8', c2: '#2BBBAD' },
+  { src: 'assets/images/portfolio/chat/chat-mockup.png', c1: '#C4B5E8', c2: '#DDD4F5' },
+  { src: 'assets/images/portfolio/museo-prado.jpg', c1: '#C4A882', c2: '#E8DCC8' },
+  { src: 'assets/images/portfolio/ovejas-web.jpg', c1: '#C45C38', c2: '#3A3A3A' },
+  { src: 'assets/images/portfolio/other-projects-compress.gif', c1: '#6B7C93', c2: '#C5CBD4' },
 ];
+const IMAGES = SLIDES.map((slide) => slide.src);
 
 // Physics constants
 const FRICTION = 0.9; // Velocity decay (0-1, lower = more friction)
@@ -35,29 +37,6 @@ const MAX_DEPTH = 140; // Maximum Z-axis depth in pixels
 const MIN_SCALE = 0.92; // Minimum card scale
 const SCALE_RANGE = 0.1; // Scale variation range
 const GAP = 28; // Gap between cards in pixels
-
-// ============================================================================
-// BACKGROUND SHADES — customize here
-// The coral/red wash is not a CSS hex. It is painted on <canvas id="bg">.
-// When an image loads, colors are sampled from the photo. When sampling fails
-// (typical on file://), fallbackFromIndex() is used instead.
-// CSS behind the canvas: assets/css/gradient-carousel.css → --carousel-bg
-// ============================================================================
-const BG_FALLBACK = {
-  saturation: 0.45, // 0 = gray, 1 = neon. Index 0 hue is 0° (red/coral).
-  light1: 0.52, // darker blob
-  light2: 0.72, // lighter blob
-};
-const BG_FROM_IMAGE = {
-  satBoost: 1.08, // multiply sampled saturation (c1)
-  satBoost2: 1.05, // multiply sampled saturation (c2)
-  minSat: 0.28, // floor for c1 saturation
-  minSat2: 0.22, // floor for c2 saturation
-  light1Min: 0.22,
-  light1Max: 0.7,
-  light2Min: 0.28,
-  light2Max: 0.82,
-};
 
 // ============================================================================
 // DOM REFERENCES
@@ -218,6 +197,10 @@ function createCards() {
     img.draggable = false;
     img.alt = '';
     img.src = src;
+    if (SLIDES[i]) {
+      card.dataset.c1 = SLIDES[i].c1;
+      card.dataset.c2 = SLIDES[i].c2;
+    }
 
     card.appendChild(img);
     fragment.appendChild(card);
@@ -366,235 +349,24 @@ function cancelCarousel() {
 }
 
 // ============================================================================
-// COLOR EXTRACTION & UTILITIES
+// BACKGROUND COLORS (hex)
 // ============================================================================
 
-/**
- * Convert RGB to HSL color space
- * @param {number} r - Red (0-255)
- * @param {number} g - Green (0-255)
- * @param {number} b - Blue (0-255)
- * @returns {[number, number, number]} [hue (0-360), saturation (0-1), lightness (0-1)]
- */
-function rgbToHsl(r, g, b) {
- r /= 255;
- g /= 255;
- b /= 255;
- 
- const max = Math.max(r, g, b);
- const min = Math.min(r, g, b);
- let h, s;
- const l = (max + min) / 2;
-
- if (max === min) {
- h = 0;
- s = 0; // Achromatic
- } else {
- const d = max - min;
- s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
- 
- switch (max) {
- case r:
- h = (g - b) / d + (g < b ? 6 : 0);
- break;
- case g:
- h = (b - r) / d + 2;
- break;
- default:
- h = (r - g) / d + 4;
- break;
- }
- h /= 6;
- }
-
- return [h * 360, s, l];
+function hexToRgb(hex) {
+  const h = String(hex || '').replace('#', '').trim();
+  const full = h.length === 3 ? h.split('').map((c) => c + c).join('') : h;
+  const n = parseInt(full, 16);
+  if (Number.isNaN(n)) return [240, 240, 240];
+  return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
 }
 
-/**
- * Convert HSL to RGB color space
- * @param {number} h - Hue (0-360)
- * @param {number} s - Saturation (0-1)
- * @param {number} l - Lightness (0-1)
- * @returns {[number, number, number]} [red (0-255), green (0-255), blue (0-255)]
- */
-function hslToRgb(h, s, l) {
- h = ((h % 360) + 360) % 360;
- h /= 360;
- let r, g, b;
-
- if (s === 0) {
- r = g = b = l; // Achromatic
- } else {
- const hue2rgb = (p, q, t) => {
- if (t < 0) t += 1;
- if (t > 1) t -= 1;
- if (t < 1 / 6) return p + (q - p) * 6 * t;
- if (t < 1 / 2) return q;
- if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
- return p;
- };
- 
- const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
- const p = 2 * l - q;
- r = hue2rgb(p, q, h + 1 / 3);
- g = hue2rgb(p, q, h);
- b = hue2rgb(p, q, h - 1 / 3);
- }
-
- return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
-}
-
-/**
- * Generate fallback colors when extraction fails
- * @param {number} idx - Card index
- * @returns {{c1: number[], c2: number[]}} Two RGB colors
- */
-function fallbackFromIndex(idx) {
-  const h = (idx * 37) % 360; // Spread hues across spectrum (0, 37, 74, …)
-  const s = BG_FALLBACK.saturation;
-  const c1 = hslToRgb(h, s, BG_FALLBACK.light1);
-  const c2 = hslToRgb(h, s, BG_FALLBACK.light2);
-  return { c1, c2 };
-}
-
-/**
- * Extract dominant colors from an image using histogram analysis
- * @param {HTMLImageElement} img - Image element to analyze
- * @param {number} idx - Card index (for fallback)
- * @returns {{c1: number[], c2: number[]}} Two dominant RGB colors
- */
-function extractColors(img, idx) {
- try {
- // Downscale image for faster processing
- const MAX = 48;
- const ratio = img.naturalWidth && img.naturalHeight ? img.naturalWidth / img.naturalHeight : 1;
- const tw = ratio >= 1 ? MAX : Math.max(16, Math.round(MAX * ratio));
- const th = ratio >= 1 ? Math.max(16, Math.round(MAX / ratio)) : MAX;
-
- // Draw image to temporary canvas
- const canvas = document.createElement('canvas');
- canvas.width = tw;
- canvas.height = th;
- const ctx = canvas.getContext('2d');
- ctx.drawImage(img, 0, 0, tw, th);
- const data = ctx.getImageData(0, 0, tw, th).data;
-
- // Create 2D histogram bins (hue × saturation)
- const H_BINS = 36; // 10° hue increments
- const S_BINS = 5; // 20% saturation increments
- const SIZE = H_BINS * S_BINS;
- const wSum = new Float32Array(SIZE); // Weighted pixel count
- const rSum = new Float32Array(SIZE); // Weighted red sum
- const gSum = new Float32Array(SIZE); // Weighted green sum
- const bSum = new Float32Array(SIZE); // Weighted blue sum
-
- // Analyze each pixel
- for (let i = 0; i < data.length; i += 4) {
- const a = data[i + 3] / 255;
- if (a < 0.05) continue; // Skip transparent pixels
-
- const r = data[i];
- const g = data[i + 1];
- const b = data[i + 2];
- const [h, s, l] = rgbToHsl(r, g, b);
-
- // Skip near-white / near-black; allow muted tones so dominant hues still win
- if (l < 0.08 || l > 0.94 || s < 0.04) continue;
-
- // Prefer saturated mid-tones, but keep enough weight for large flat color areas
- const w = a * (0.35 + s * s) * (1 - Math.abs(l - 0.5) * 0.35);
- 
- // Calculate bin indices
- const hi = Math.max(0, Math.min(H_BINS - 1, Math.floor((h / 360) * H_BINS)));
- const si = Math.max(0, Math.min(S_BINS - 1, Math.floor(s * S_BINS)));
- const bidx = hi * S_BINS + si;
-
- // Accumulate weighted values
- wSum[bidx] += w;
- rSum[bidx] += r * w;
- gSum[bidx] += g * w;
- bSum[bidx] += b * w;
- }
-
- // Find primary color (bin with highest weight)
- let pIdx = -1;
- let pW = 0;
- for (let i = 0; i < SIZE; i++) {
- if (wSum[i] > pW) {
- pW = wSum[i];
- pIdx = i;
- }
- }
-
- if (pIdx < 0 || pW <= 0) return fallbackFromIndex(idx);
-
- const pHue = Math.floor(pIdx / S_BINS) * (360 / H_BINS);
-
- // Find secondary color (sufficiently different hue)
- let sIdx = -1;
- let sW = 0;
- for (let i = 0; i < SIZE; i++) {
- const w = wSum[i];
- if (w <= 0) continue;
- 
- const h = Math.floor(i / S_BINS) * (360 / H_BINS);
- let dh = Math.abs(h - pHue);
- dh = Math.min(dh, 360 - dh); // Shortest distance on color wheel
- 
- if (dh >= 25 && w > sW) { // At least 25° different
- sW = w;
- sIdx = i;
- }
- }
-
- // Calculate weighted average RGB for a bin
- const avgRGB = (idx) => {
- const w = wSum[idx] || 1e-6;
- return [
- Math.round(rSum[idx] / w),
- Math.round(gSum[idx] / w),
- Math.round(bSum[idx] / w)
- ];
- };
-
- // Keep extracted colors close to the image (preserve lightness from the photo)
- const [pr, pg, pb] = avgRGB(pIdx);
- let [h1, s1, l1] = rgbToHsl(pr, pg, pb);
-    s1 = Math.min(1, Math.max(s1 * BG_FROM_IMAGE.satBoost, BG_FROM_IMAGE.minSat));
-    const c1 = hslToRgb(
-      h1,
-      s1,
-      Math.max(BG_FROM_IMAGE.light1Min, Math.min(BG_FROM_IMAGE.light1Max, l1))
-    );
-
-    let c2;
-    if (sIdx >= 0 && sW >= pW * 0.35) {
-      const [sr, sg, sb] = avgRGB(sIdx);
-      let [h2, s2, l2] = rgbToHsl(sr, sg, sb);
-      s2 = Math.min(1, Math.max(s2 * BG_FROM_IMAGE.satBoost2, BG_FROM_IMAGE.minSat2));
-      c2 = hslToRgb(
-        h2,
-        s2,
-        Math.max(BG_FROM_IMAGE.light2Min, Math.min(BG_FROM_IMAGE.light2Max, l2))
-      );
-    } else {
-      c2 = hslToRgb(h1, s1, Math.min(BG_FROM_IMAGE.light2Max, Math.max(0.45, l1 + 0.18)));
-    }
-
- return { c1, c2 };
- } catch {
- return fallbackFromIndex(idx);
- }
-}
-
-/**
- * Extract colors from all card images
- */
 function buildPalette() {
- gradPalette = items.map((it, i) => {
- const img = it.el.querySelector('img');
- return extractColors(img, i);
- });
+  gradPalette = items.map((it, i) => {
+    const slide = SLIDES[i] || {};
+    const c1 = it.el.dataset.c1 || slide.c1 || '#d0d4dc';
+    const c2 = it.el.dataset.c2 || slide.c2 || '#e8eaef';
+    return { c1: hexToRgb(c1), c2: hexToRgb(c2) };
+  });
 }
 
 /**
@@ -602,26 +374,26 @@ function buildPalette() {
  * @param {number} idx - Card index
  */
 function setActiveGradient(idx) {
- if (!bgCtx || idx < 0 || idx >= items.length || idx === activeIndex) return;
+  if (!bgCtx || idx < 0 || idx >= items.length || idx === activeIndex) return;
 
- activeIndex = idx;
- const pal = gradPalette[idx] || { c1: [240, 240, 240], c2: [235, 235, 235] };
- const to = {
- r1: pal.c1[0],
- g1: pal.c1[1],
- b1: pal.c1[2],
- r2: pal.c2[0],
- g2: pal.c2[1],
- b2: pal.c2[2],
- };
+  activeIndex = idx;
+  const pal = gradPalette[idx] || { c1: [240, 240, 240], c2: [235, 235, 235] };
+  const to = {
+    r1: pal.c1[0],
+    g1: pal.c1[1],
+    b1: pal.c1[2],
+    r2: pal.c2[0],
+    g2: pal.c2[1],
+    b2: pal.c2[2],
+  };
 
- // Animate transition with GSAP if available
- if (window.gsap) {
- bgFastUntil = performance.now() + 800; // High FPS for smooth transition
- window.gsap.to(gradCurrent, { ...to, duration: 0.45, ease: 'power2.out' });
- } else {
- Object.assign(gradCurrent, to);
- }
+  // Animate transition with GSAP if available
+  if (window.gsap) {
+    bgFastUntil = performance.now() + 800; // High FPS for smooth transition
+    window.gsap.to(gradCurrent, { ...to, duration: 0.45, ease: 'power2.out' });
+  } else {
+    Object.assign(gradCurrent, to);
+  }
 }
 
 // ============================================================================
@@ -632,91 +404,91 @@ function setActiveGradient(idx) {
  * Resize background canvas to match viewport
  */
 function resizeBG() {
- if (!bgCanvas || !bgCtx) return;
+  if (!bgCanvas || !bgCtx) return;
 
- const dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
- const w = bgCanvas.clientWidth || stage.clientWidth;
- const h = bgCanvas.clientHeight || stage.clientHeight;
- const tw = Math.floor(w * dpr);
- const th = Math.floor(h * dpr);
+  const dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+  const w = bgCanvas.clientWidth || stage.clientWidth;
+  const h = bgCanvas.clientHeight || stage.clientHeight;
+  const tw = Math.floor(w * dpr);
+  const th = Math.floor(h * dpr);
 
- if (bgCanvas.width !== tw || bgCanvas.height !== th) {
- bgCanvas.width = tw;
- bgCanvas.height = th;
- bgCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
- }
+  if (bgCanvas.width !== tw || bgCanvas.height !== th) {
+    bgCanvas.width = tw;
+    bgCanvas.height = th;
+    bgCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
 }
 
 /**
  * Render animated gradient background
  */
 function drawBackground() {
- if (!bgCanvas || !bgCtx) return;
+  if (!bgCanvas || !bgCtx) return;
 
- const now = performance.now();
- const minInterval = now < bgFastUntil ? 16 : 33; // 60fps or 30fps
+  const now = performance.now();
+  const minInterval = now < bgFastUntil ? 16 : 33; // 60fps or 30fps
 
- // Throttle rendering based on transition state
- if (now - lastBgDraw < minInterval) {
- bgRAF = requestAnimationFrame(drawBackground);
- return;
- }
+  // Throttle rendering based on transition state
+  if (now - lastBgDraw < minInterval) {
+    bgRAF = requestAnimationFrame(drawBackground);
+    return;
+  }
 
- lastBgDraw = now;
- resizeBG();
+  lastBgDraw = now;
+  resizeBG();
 
- const w = bgCanvas.clientWidth || stage.clientWidth;
- const h = bgCanvas.clientHeight || stage.clientHeight;
+  const w = bgCanvas.clientWidth || stage.clientWidth;
+  const h = bgCanvas.clientHeight || stage.clientHeight;
 
- // Base fill from the active card's dominant color (not a neutral wash)
- bgCtx.fillStyle = `rgb(${gradCurrent.r1 | 0},${gradCurrent.g1 | 0},${gradCurrent.b1 | 0})`;
- bgCtx.fillRect(0, 0, w, h);
+  bgCtx.fillStyle = '#ffffff';
+  bgCtx.fillRect(0, 0, w, h);
 
- // Animate gradient centers
- const time = now * 0.0002;
- const cx = w * 0.5;
- const cy = h * 0.5;
- const a1 = Math.min(w, h) * 0.35;
- const a2 = Math.min(w, h) * 0.28;
+  const time = now * 0.0002;
+  const cx = w * 0.5;
+  const cy = h * 0.5;
+  const a1 = w * 0.16;
+  const a2 = w * 0.1;
 
- const x1 = cx + Math.cos(time) * a1;
- const y1 = cy + Math.sin(time * 0.8) * a1 * 0.4;
- const x2 = cx + Math.cos(-time * 0.9 + 1.2) * a2;
- const y2 = cy + Math.sin(-time * 0.7 + 0.7) * a2 * 0.5;
+  const x1 = cx + Math.cos(time) * a1;
+  const y1 = cy + Math.sin(time * 0.8) * (h * 0.05);
+  const x2 = cx + Math.cos(-time * 0.9 + 1.2) * a2;
+  const y2 = cy + Math.sin(-time * 0.7 + 0.7) * (h * 0.04);
 
- const r1 = Math.max(w, h) * 0.85;
- const r2 = Math.max(w, h) * 0.7;
+  const r1 = Math.min(w * 0.93, h * 0.72);
+  const r2 = Math.min(w * 0.75, h * 0.6);
 
- const g1 = bgCtx.createRadialGradient(x1, y1, 0, x1, y1, r1);
- g1.addColorStop(0, `rgba(${gradCurrent.r1 | 0},${gradCurrent.g1 | 0},${gradCurrent.b1 | 0},1)`);
- g1.addColorStop(1, `rgba(${gradCurrent.r1 | 0},${gradCurrent.g1 | 0},${gradCurrent.b1 | 0},0)`);
- bgCtx.fillStyle = g1;
- bgCtx.fillRect(0, 0, w, h);
+  const g1 = bgCtx.createRadialGradient(x1, y1, 0, x1, y1, r1);
+  g1.addColorStop(0, `rgba(${gradCurrent.r1},${gradCurrent.g1},${gradCurrent.b1},0.5)`);
+  g1.addColorStop(0.55, `rgba(${gradCurrent.r1},${gradCurrent.g1},${gradCurrent.b1},0.22)`);
+  g1.addColorStop(1, 'rgba(255,255,255,0)');
+  bgCtx.fillStyle = g1;
+  bgCtx.fillRect(0, 0, w, h);
 
- const g2 = bgCtx.createRadialGradient(x2, y2, 0, x2, y2, r2);
- g2.addColorStop(0, `rgba(${gradCurrent.r2 | 0},${gradCurrent.g2 | 0},${gradCurrent.b2 | 0},0.95)`);
- g2.addColorStop(1, `rgba(${gradCurrent.r2 | 0},${gradCurrent.g2 | 0},${gradCurrent.b2 | 0},0)`);
- bgCtx.fillStyle = g2;
- bgCtx.fillRect(0, 0, w, h);
+  const g2 = bgCtx.createRadialGradient(x2, y2, 0, x2, y2, r2);
+  g2.addColorStop(0, `rgba(${gradCurrent.r2},${gradCurrent.g2},${gradCurrent.b2},0.36)`);
+  g2.addColorStop(0.6, `rgba(${gradCurrent.r2},${gradCurrent.g2},${gradCurrent.b2},0.14)`);
+  g2.addColorStop(1, 'rgba(255,255,255,0)');
+  bgCtx.fillStyle = g2;
+  bgCtx.fillRect(0, 0, w, h);
 
- bgRAF = requestAnimationFrame(drawBackground);
+  bgRAF = requestAnimationFrame(drawBackground);
 }
 
 /**
  * Start background animation loop
  */
 function startBG() {
- if (!bgCanvas || !bgCtx) return;
- cancelBG();
- bgRAF = requestAnimationFrame(drawBackground);
+  if (!bgCanvas || !bgCtx) return;
+  cancelBG();
+  bgRAF = requestAnimationFrame(drawBackground);
 }
 
 /**
  * Stop background animation loop
  */
 function cancelBG() {
- if (bgRAF) cancelAnimationFrame(bgRAF);
- bgRAF = null;
+  if (bgRAF) cancelAnimationFrame(bgRAF);
+  bgRAF = null;
 }
 
 // ============================================================================
@@ -965,8 +737,7 @@ async function init() {
   if (bgCtx) {
     const w = bgCanvas.clientWidth || stage.clientWidth;
     const h = bgCanvas.clientHeight || stage.clientHeight;
-    const pal = gradPalette[closestIdx] || { c1: [240, 240, 240] };
-    bgCtx.fillStyle = `rgb(${pal.c1[0]},${pal.c1[1]},${pal.c1[2]})`;
+    bgCtx.fillStyle = '#ffffff';
     bgCtx.fillRect(0, 0, w, h);
   }
 
