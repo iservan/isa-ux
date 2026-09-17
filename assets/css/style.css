@@ -15,7 +15,7 @@ Change your color here
 ////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 :root {
-    --primary-color: #326ddd;
+    --primary-color: #2d62c6;
     --secondary-color: #FFCB23;
 }
 
@@ -291,7 +291,7 @@ Header intro
     bottom: 0;
     left: 0;
     z-index: 1;
-    background: rgba(50, 109, 221, 0.9);
+    background: rgba(45, 98, 198, 0.9);
     opacity: 0;
     visibility: hidden;
     -webkit-transition: all .2s ease-in-out;

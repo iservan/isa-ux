@@ -146,12 +146,12 @@ function grid() {
             }
         });
 
-        $('.link').on('click', function(e) {
+        $('#filters .link').on('click', function(e) {
             e.preventDefault();
 
             var filter = $(this).attr('href');
 
-            $('.link').removeClass('active');
+        $('#filters .link').removeClass('active');
             $(this).addClass('active');
 
             active_container.isotope({
