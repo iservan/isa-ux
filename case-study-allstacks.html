@@ -87,8 +87,8 @@
         <main>
             <header id="hook">
                 <p class="cs-kicker">Product Studio · AI product management</p>
-                <h1 class="cs-hook">Teams plan <em>4x faster</em> and spend <em>32% less</em> on AI tokens after Product Studio turned a rough idea into a build-ready spec.</h1>
-                <p class="cs-lede">Allstacks is a Series A startup building AI workflow tools for product and engineering. Product Studio is the 0-to-1 conversational layer that grounds those specs in the actual codebase, customer feedback, and delivery metrics, not a blank prompt.</p>
+                <h1 class="cs-hook">Teams plan <em>3x faster</em> and build <em>the right thing</em>.</h1>
+                <p class="cs-lede">Allstacks is a Series A startup building AI workflow tools for product and engineering. Product Studio is the 0-to-1 conversational layer that grounds those specs in the actual codebase, customer feedback, and delivery metrics, to help teams identiufy what to build next..</p>
                 <figure class="cs-hero-single">
                     <a class="js-lightbox" href="assets/images/portfolio/allstacks/PS-showcase.svg" data-lightbox-gallery="ps">
                         <img src="assets/images/portfolio/allstacks/PS-showcase.svg" alt="Product Studio product showcase">
@@ -123,7 +123,8 @@
 
             <section class="cs-section" id="problem">
                 <p class="cs-section-label">03 · The problem</p>
-                <h2>Specs written by hand had no codebase, no customer voice, and no delivery history. Rework showed up after engineering had already started.</h2>
+                <h2>Specs written by hand don't have the codebase, the customer's voice, or the delivery history behind them.</h2>
+                <h4>Rework showed up after engineering had already started building.</h4>
                 <div class="cs-prose">
                     <p>Project managers were burning time, and tokens, on vague requirements. The artifact looked like a spec. It did not contain the context engineers actually need: what the code already does, what customers asked for, what delivery history would block the plan.</p>
                 </div>
@@ -138,7 +139,7 @@
                     </div>
                 </div>
                 <div class="cs-prose">
-                    <p>The failure was specific. A prompt-only AI tool still starts from a blank window. Feed it enough raw context and precision drops. Product Studio had to be the opposite: small, cited, and grounded in the Allstacks Context Graph, or it would be another expensive guess.</p>
+                    <p>AI tools start from a blank window. Product Studio had to work differently, small, cited, and grounded in each client Context Graph. Otherwise, it's just another expensive guess.</p>
                     <ul class="cs-facts">
                         <li>Hand-written specs lacked real context from the codebase, stakeholders, and customer calls.</li>
                         <li>Engineers inherited confusion. Costly rework showed up too late.</li>
@@ -149,7 +150,7 @@
 
             <section class="cs-section" id="research">
                 <p class="cs-section-label">04 · Research &amp; discovery</p>
-                <h2>I sat with project managers, then treated the three personas as hypotheses against usage data.</h2>
+                <h2>I interviewed project managers, and validated if the three user personas actually matched how people used the product.</h2>
                 <div class="cs-who">
                     <div><strong>PMs</strong> user interviews on how specs get written today</div>
                     <div><strong>3</strong> persona hypotheses, checked against analytics</div>
@@ -203,35 +204,40 @@
             <section class="cs-insight" id="insight">
                 <div class="cs-insight-inner">
                     <p class="cs-section-label">05 · The key insight</p>
-                    <h2>Every screen had to answer one question: can I trust this enough to act on it?</h2>
-                    <p>A conversational UI that writes faster is still a liability if the output cannot be traced. The product decision was to make evidence the spine: connected tools on the welcome screen, cited findings on the readiness report, sync to Jira only after the plan could survive a review. Speed and cheaper tokens follow from that, they are not the design.</p>
+                    <h2>Every screen had to answer one question: can I trust this enough to act on my behalf?</h2>
+                    <p>A chatbot that writes fast isn't actually useful if you can't tell where its answers came from. So we made evidence the backbone of the whole product: tools connected right from the welcome screen, findings that cite their sources on the readiness report, and syncing to Jira only once a plan could actually survive a real review.</p>
                 </div>
             </section>
 
             <section class="cs-section" id="process" style="border-top:0;padding-top:4rem;">
-                <p class="cs-section-label">06 · Process, shown not told</p>
-                <h2>The conversation is the product. I designed it as a research loop, then tested it on the real design system.</h2>
+                <p class="cs-section-label">06 · Process</p>
+                <h2>When chat isn't enough: introducing hybrid UI.</h2>
                 <div class="cs-prose">
-                    <p>I built and maintained a unified design system in Figma and Vue 3, tokens, components, production. Interactive prototypes used those same components so engineering saw the interaction, not a picture of it. That also showed where the system had to stretch.</p>
+                    <p>Due to the complexity of the product, we introduced a hybrid UI that combines chat and traditional UI elements to make certain tasks faster and easier, while helping to build trust in the agent.</p>
                 </div>
+                <p class="cs-caption-bar" style="margin-top:2.5rem;"><span>Live agent trace: The steps, not just the answer</span></p>
+                    <div class="cs-prose" style="margin:0;">
+                        <p>Trust failed when the chat went quiet. A spinner said “thinking.” It did not say whether the agent had opened Jira, GitHub, or a customer call.</p>
+                        <p>While the agent works, the chat shows the actual steps: Reviewed request, then each search it ran, then which pages it is reading. Users see if it is looking in the right places before they see an answer.</p>
+                        <p>The research chip UI element has different states to follow the agent's progress and help build trust in the output:</p>
+                        <ul class="cs-facts">
+                            <li><strong>In progress -</strong> Users can see the live steps as they run: the prompt getting analyzed, each query being run, and the sources being read.</li>
+                            <li><strong>Completed -</strong> When the analysis is complete and the Agent has an answer, the UI chip shows a summary of the findings and process, with a detailed full report available just one click away. This report is collapsed by default to keep the chat clean and focused.</li>
+                            <li><strong>Analysis Context -</strong> This tab keeps all research notes geenrated on the answers, building better context for the agentand helping improve future answers.</li>
+                        </ul>
+                    </div>
 
-                <p class="cs-caption-bar"><span>Conversation · research</span><span>How a prompt becomes evidence, then a plan</span></p>
-                <figure class="cs-figure">
-                    <a class="js-lightbox" href="assets/images/portfolio/allstacks/conversational_research_element.svg" data-lightbox-gallery="ps-process">
-                        <img src="assets/images/portfolio/allstacks/conversational_research_element.svg" alt="Conversational research element for Product Studio">
-                    </a>
-                    <figcaption>The conversational research element: ask, cite, score, then act.</figcaption>
-                </figure>
-
-                <p class="cs-caption-bar" style="margin-top:2.5rem;"><span>Mid-fi · flow</span><span>How a rough idea becomes a scored spec</span></p>
+                <p class="cs-caption-bar" style="margin-top:2.5rem;"><span>High-fi · conversation states</span><span>Ask, cite, score, then act</span></p>
                 <figure class="cs-figure">
                     <a class="js-lightbox" href="assets/images/portfolio/allstacks/conversational_component-statuses.svg" data-lightbox-gallery="ps-process">
-                        <img src="assets/images/portfolio/allstacks/conversational_component-statuses.svg" alt="Conversational component statuses for Product Studio">
+                        <img src="assets/images/portfolio/allstacks/conversational_component-statuses.svg" alt="High-fidelity conversational component statuses for Product Studio">
                     </a>
-                    <figcaption>Component statuses in the conversational flow: empty, running, scored, ready to act.</figcaption>
                 </figure>
+
                 <div class="cs-prose" style="margin-top:2rem;">
-                    <p>Two browser prototypes, on production components, let the team click the interaction:</p>
+                    <p>I built and maintained a unified design system in Figma and Vue 3, and created interactive desktop prototypes using real components to validate design ideas on the browser. This helped the team to better understand the interaction and experience. It also has made it easier to evolve our design system by testing our components and identifying where they may need to be adapted. The engineering handoffs are much more precise now.
+                    </p>
+                    <p>Here are two examples:</p>
                     <ul class="cs-facts">
                         <li><a class="cs-inline-link" href="https://allstacks-prototypes.surge.sh/evaluate-readiness" target="_blank" rel="noopener">Evaluate Readiness</a>, click “Running” to see the scored state.</li>
                         <li><a class="cs-inline-link" href="https://allstacks-prototypes.surge.sh/option-boxes" target="_blank" rel="noopener">Onboarding improvements</a>, click the middle box to send input.</li>
@@ -241,14 +247,14 @@
 
             <section class="cs-section" id="validation">
                 <p class="cs-section-label">07 · Validation &amp; outcome</p>
-                <h2>Customers measured planning in hours instead of a day. Token cost dropped. The design system had to catch up in public.</h2>
+                <h2>Customers measured planning in hours instead of a day.</h2>
                 <div class="cs-prose">
-                    <p>We validated in the browser with real components, not slideware. Some gaps were mixed: the prototypes exposed places the Vue 3 system was not ready, option boxes, readiness running states, and we extended the system instead of faking it in Figma. That slowed a few screens. It also meant engineering inherited working pieces.</p>
-                    <p>On the live product, teams report faster plan creation and cheaper token use because the graph routes small, cited calls instead of stuffing a single LLM window.</p>
+                    <p>On the live product, teams report faster plan creation and cheaper token use because the graph sends small, cited requests instead of putting everything into one huge AI prompt.</p>
+                    <p>The research chip UI element has helped to build trust in the agent and improve the overall user experience,</p>
                 </div>
                 <div class="cs-outcome">
                     <div>
-                        <b>4x</b>
+                        <b>3x</b>
                         <span>faster plan creation</span>
                     </div>
                     <div>
@@ -257,12 +263,12 @@
                     </div>
                     <div>
                         <b>2x</b>
-                        <span>development velocity after the design system and 0→1 launch</span>
+                        <span>development velocity after the new design system</span>
                     </div>
                 </div>
                 <p class="cs-quote">
                     What used to take us a full day with Claude, we now do in two to three hours. We came up with a complete work tree: epics, stories, everything the engineering team needed to start building.
-                    <cite>Julian Limon, CTO, co-founder</cite>
+                    <cite>CTO, co-founder</cite>
                 </p>
                 <a class="cs-cta" href="https://www.allstacks.com/product/product-studio" target="_blank" rel="noopener">Visit Product Studio →</a>
             </section>
