@@ -124,16 +124,17 @@
         <div id="portfolio-filters">
           <ul id="filters" class="p-0">
             <li><a class="link" href="*" class="active">All</a></li>
-            <li><a class="link" href="#sass">Saas Products - B2B</a></li>
+            <li><a class="link" href="#sass">B2B</a></li>
             <li><a class="link" href=".b2c">B2C</a></li>
-            <li><a class="link" href="#mobile">Mobile</a></li>
+            <li><a class="link" href=".mobile">Mobile</a></li>
+            <li><a class="link" href=".healthcare">Health Care</a></li>
             <li><a class="link" href=".ai">AI</a></li>
           </ul>
         </div>
         <div class="grid" data-cols="3" data-margin="30" data-height="1"
           data-masonry='{ "columnWidth": 200, "itemSelector": ".entry" }'>
                     <!-- entry -->
-          <div class="entry work-entry sass ai" id="ai">
+          <div class="entry work-entry sass ai cs-case-allstacks" id="ai">
             <a href="case-study-allstacks.html">
               <div class="entry-image imageBG" data-img="assets/images/portfolio/allstacks/PS-showcase.svg">
               </div>
@@ -148,13 +149,13 @@
                       design</br> + A/B
                       mockup testing</p>
                   </div>
-                  <span class="work-entry-chip bg-white text-primary px-2 py-1 rounded mt-5">AI Data platform</span>
+                  <span class="work-entry-chip bg-white text-body px-2 py-1 rounded mt-5">AI Enterprise</span>
                 </div>
               </div>
             </a>
           </div>
           <!-- Red hat -->
-          <div class="entry work-entry sass b2c w2" id="sass">
+          <div class="entry work-entry sass b2c w2 mobile cs-case-redhat" id="sass">
             <a href="case-study-redhat.html">
               <div class="entry-image imageBG" data-img="assets/images/portfolio/sa-laptop-clear.jpg">
               </div>
@@ -170,14 +171,15 @@
                       Interface deployment with React.js</br> + RWD
                     </p>
                   </div>
-                  <span class="work-entry-chip bg-white text-primary px-2 py-1 rounded mt-5">Cloud Enterprise
+                  <span class="work-entry-chip bg-white text-body px-2 py-1 rounded mt-5">Cloud Enterprise
                     Services</span>
+                  <span class="work-entry-chip bg-white text-body px-2 py-1 rounded mt-5 ml-2">Mobile</span>
                 </div>
               </div>
             </a>
           </div>
           <!-- CMRAD -->
-          <div class="entry work-entry sass" id="mobile">
+          <div class="entry work-entry sass healthcare mobile cs-case-cmrad" id="mobile">
             <a class="c-image-overlay t-image-overlay js-lightbox" href="assets/images/portfolio/cmrad.png"
               title="Collective Minds Radiology" data-lightbox-gallery="portfolio">
               <div class="entry-image imageBG" data-img="assets/images/portfolio/cmrad-laptop-blue.jpg">
@@ -193,7 +195,7 @@
                       design</br> + A/B mockup testing</br> +
                       Interface full deployment with Vue.js</br> + RWD</p>
                   </div>
-                  <span class="work-entry-chip bg-white text-primary px-2 py-1 rounded mt-5">Health Care</span>
+                  <span class="work-entry-chip bg-white text-body px-2 py-1 rounded mt-5">Health Care</span>
                 </div>
               </div>
             </a>
@@ -204,7 +206,7 @@
               title="Personas and user journey" data-lightbox-gallery="portfolio"></a> -->
           </div>
           <!-- REalyse -->
-          <div class="entry work-entry sass h2 ai" id="sass">
+          <div class="entry work-entry sass h2 ai mobile cs-case-realyse" id="sass">
             <a href="case-study-realyse.html">
               <div class="entry-image imageBG" data-img="assets/images/portfolio/REalyse-small-ok.jpg">
               </div>
@@ -219,14 +221,15 @@
                       design</br> + A/B
                       mockup testing</p>
                   </div>
-                  <span class="work-entry-chip bg-white text-primary px-2 py-1 rounded mt-5">Real Estate</span>
-                  <span class="work-entry-chip bg-white text-primary px-2 py-1 rounded mt-5 ml-2">AI</span>
+                  <span class="work-entry-chip bg-white text-body px-2 py-1 rounded mt-5">Real Estate</span>
+                  <span class="work-entry-chip bg-white text-body px-2 py-1 rounded mt-5 ml-2">AI</span>
+                  <span class="work-entry-chip bg-white text-body px-2 py-1 rounded mt-5 ml-2">Mobile</span>
                 </div>
               </div>
             </a>
           </div>
           <!-- Mobile App designs -->
-          <div class="entry work-entry" id="mobile">
+          <div class="entry work-entry mobile cs-case-mobile" id="mobile">
             <a class="c-image-overlay t-image-overlay js-lightbox" href="assets/images/portfolio/mobile-apps.gif"
               title="AI data app" data-lightbox-gallery="portfolio">
               <div class="entry-image imageBG" data-img="assets/images/portfolio/mobile-mockup-bg.jpg">
@@ -239,7 +242,7 @@
                   <div class="work-entry-cat">
                     <p>+ UI/UX mobile design</br> + Mobile app Interfaces</br>
                   </div>
-                  <span class="work-entry-chip bg-white text-primary px-2 py-1 rounded mt-5">Mobile</span>
+                  <span class="work-entry-chip bg-white text-body px-2 py-1 rounded mt-5">Mobile</span>
                 </div>
               </div>
             </a>
@@ -263,7 +266,7 @@
           </div>
           
           <!-- Ovejas Negras -->
-          <div class="entry work-entry b2c">
+          <div class="entry work-entry b2c cs-case-ovejas">
             <a class="c-image-overlay t-image-overlay js-lightbox" href="assets/images/portfolio/ovejas-web.jpg"
               title="Ovejas Negras Tapas - Wordpress" data-lightbox-gallery="portfolio">
               <div class="entry-image imageBG" data-img="assets/images/portfolio/0n-01.jpg"></div>
@@ -276,7 +279,7 @@
                     <p> + Wordpress cutom site development</br> + UI/UX design</br> + Photo
                       shooting</br> + WordPress theme dev from scratch</br></p>
                   </div>
-                  <span class="work-entry-chip bg-white text-primary px-2 py-1 rounded mt-5">Hospitality</span>
+                  <span class="work-entry-chip bg-white text-body px-2 py-1 rounded mt-5">Hospitality</span>
                 </div>
               </div>
             </a>
@@ -284,20 +287,21 @@
               title="Ovejas Negras Tapas - Wordpress" data-lightbox-gallery="portfolio"></a>
           </div>
           <!-- VENDO -->
-          <div class="entry work-entry sass" id="sass">
+          <div class="entry work-entry sass cs-case-vendo" id="sass">
             <a class="c-image-overlay t-image-overlay js-lightbox" href="assets/images/portfolio/traffic-report.jpg"
               title="AI data app" data-lightbox-gallery="portfolio">
               <div class="entry-image imageBG" data-img="assets/images/portfolio/dynamic-tall.jpg"></div>
               <div class="work-entry-hover">
                 <div class="work-entry-content">
                   <div class="work-entry-title">
-                    <h3>Vendo - AI pricing app</h3>
+                    <h3>Vendo - Dynamic pricing app</h3>
                   </div>
                   <div class="work-entry-cat">
                     <p>+ UI/UX design</br> + Interface full deployment</br> + For a app based on R
                       language over shinny apps</p>
                   </div>
-                  <span class="work-entry-chip bg-white text-primary px-2 py-1 rounded mt-5">Retail</span>
+                  <span class="work-entry-chip bg-white text-body px-2 py-1 rounded mt-5">FinTech</span>
+                  <span class="work-entry-chip bg-white text-body px-2 py-1 rounded mt-5">Mobile</span>
                 </div>
               </div>
             </a>
@@ -326,7 +330,7 @@
                     <p>+ UX audit & research</br> + UI/UX design</br> + A/B mockup testing</br> +
                       Interface full deployment</br> + RWD</p>
                   </div>
-                  <span class="work-entry-chip bg-white text-primary px-2 py-1 rounded mt-5">E-commerce</span>
+                  <span class="work-entry-chip bg-white text-body px-2 py-1 rounded mt-5">E-commerce</span>
                 </div>
               </div>
             </a>
@@ -346,7 +350,7 @@
                   <div class="work-entry-cat">
                     <p> + New Business Line Discovery</br> + UI/UX design</br></p>
                   </div>
-                  <span class="work-entry-chip bg-white text-primary px-2 py-1 rounded mt-5">Saas B2B</span>
+                  <span class="work-entry-chip bg-white text-body px-2 py-1 rounded mt-5">Saas B2B</span>
                 </div>
               </div>
             </a>
@@ -368,7 +372,7 @@
               <div class="work-entry-content">
                 <div class="work-entry-title">UX/UI Design</div>
                 <div class="work-entry-cat">Ovejas negras</div>
-                <span class="work-entry-chip bg-white text-primary px-2 py-1 rounded mt-5">Hospitality</span>
+                <span class="work-entry-chip bg-white text-body px-2 py-1 rounded mt-5">Hospitality</span>
               </div>
             </div>
           </div>
@@ -389,7 +393,7 @@
                       full deployment</br> + RWD </br> + WordPress </br> + UI engineering </br> +
                       Printing</p>
                   </div>
-                  <span class="work-entry-chip bg-white text-primary px-2 py-1 rounded mt-5">Hospitality</span>
+                  <span class="work-entry-chip bg-white text-body px-2 py-1 rounded mt-5">Hospitality</span>
                 </div>
               </div>
             </a>
@@ -431,7 +435,7 @@
                 <div class="work-entry-cat">Museo del Prado</div>
               </div>
             </div>
-            <span class="work-entry-chip bg-white text-primary px-2 py-1 rounded mt-5">Hospitality</span>
+            <span class="work-entry-chip bg-white text-body px-2 py-1 rounded mt-5">Hospitality</span>
           </div>
           <div class="entry work-entry h2 b2c">
 
@@ -440,7 +444,7 @@
               <div class="work-entry-content">
                 <div class="work-entry-title">UX/UI Design</div>
                 <div class="work-entry-cat">Ovejas negras</div>
-                <span class="work-entry-chip bg-white text-primary px-2 py-1 rounded mt-5">Hospitality</span>
+                <span class="work-entry-chip bg-white text-body px-2 py-1 rounded mt-5">Hospitality</span>
               </div>
             </div>
           </div>
@@ -452,7 +456,7 @@
               <div class="work-entry-content">
                 <div class="work-entry-title">UX/UI Design</div>
                 <div class="work-entry-cat">MpuntoR</div>
-                <span class="work-entry-chip bg-white text-primary px-2 py-1 rounded mt-5">Hospitality</span>
+                <span class="work-entry-chip bg-white text-body px-2 py-1 rounded mt-5">Hospitality</span>
               </div>
             </div>
           </div>

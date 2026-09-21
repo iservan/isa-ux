@@ -1196,8 +1196,16 @@ html[data-theme="dark"] body.cs-editorial .cs-inline-link::after {
 }
 
 .cs-home .work-entry-hover {
-    background: rgba(45, 98, 198, 0.9);
+    background: color-mix(in srgb, var(--cs-accent) 90%, transparent);
 }
+
+.cs-home .cs-case-allstacks { --cs-accent: #7C3AED; }
+.cs-home .cs-case-redhat { --cs-accent: #c41e3a; }
+.cs-home .cs-case-cmrad { --cs-accent: #7E929F; }
+.cs-home .cs-case-realyse { --cs-accent: #3571E5; }
+.cs-home .cs-case-mobile { --cs-accent: #8FBFA5; }
+.cs-home .cs-case-ovejas { --cs-accent: #F1BB00; }
+.cs-home .cs-case-vendo { --cs-accent: #0FB2F1; }
 
 .cs-home .work-entry-title,
 .cs-home .work-entry-title h3 {
