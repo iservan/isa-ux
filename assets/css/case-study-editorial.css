@@ -208,10 +208,21 @@ html[data-theme="dark"] body.cs-editorial.js-main-container {
 .cs-figure--crop-70 > a {
     display: block;
     overflow: hidden;
+    max-height: 870px;
 }
 
 .cs-figure--crop-70 img {
     margin-bottom: -30%;
+}
+
+.cs-figure--crop-40 > a {
+    display: block;
+    overflow: hidden;
+    max-height: 620px;
+}
+
+.cs-figure--crop-40 img {
+    margin-bottom: -60%;
 }
 
 .cs-context {
