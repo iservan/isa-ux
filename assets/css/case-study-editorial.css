@@ -1008,9 +1008,15 @@ html[data-theme="dark"] body.cs-editorial.cs-home {
     padding: 0 1.5rem 6rem;
 }
 
-.cs-home #portfolio.container {
+.cs-home #portfolio > .container ,
+.cs-home #portfolio-carousel > .container {
     max-width: 1240px;
     padding-bottom: 8rem;
+    overflow: hidden;
+}
+
+html[data-portfolio-layout="slide"] .cs-home #portfolio > .container {
+    padding-bottom: 1.5rem;
 }
 
 .cs-home .headline-content .headline-title {
@@ -1158,6 +1164,51 @@ html[data-theme="dark"] body.cs-editorial.cs-home {
     flex-wrap: wrap;
     gap: 0.5rem 3rem;
     text-transform: uppercase;
+}
+
+.cs-home .portfolio-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+
+.cs-home .layout-switch {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid var(--cs-line);
+    border-radius: 999px;
+    overflow: hidden;
+    background: var(--cs-paper-2);
+}
+
+.cs-home .layout-switch__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 36px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--cs-ink);
+    cursor: pointer;
+}
+
+.cs-home .layout-switch__btn.is-active {
+    background: var(--cs-accent);
+    color: #fff;
+}
+
+.cs-home .layout-switch__btn:focus {
+    outline: none;
+}
+
+.cs-home .layout-switch__btn:focus-visible {
+    outline: 2px solid var(--cs-accent);
+    outline-offset: -2px;
 }
 
 .cs-home #filters li {

@@ -2,7 +2,7 @@
    Scoped for portfolio section — does not reset site-wide base styles. */
 
 .portfolio-carousel {
-  --carousel-bg: #ffffff;
+  --carousel-bg: var(--cs-paper, #ffffff);
   --carousel-fg: #0b0b0b;
   --perspective: 1800px;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
@@ -28,7 +28,7 @@
   z-index: 100;
   display: grid;
   place-items: center;
-  background: #ffffff;
+  background: var(--carousel-bg);
   transition: opacity 0.2s var(--ease), visibility 0.2s linear;
 }
 
@@ -68,8 +68,8 @@
   display: block;
   filter: blur(28px) saturate(1.02);
   pointer-events: none;
-  -webkit-mask-image: radial-gradient(ellipse 110% 96% at 50% 50%, #000 62%, transparent 92%);
-  mask-image: radial-gradient(ellipse 110% 96% at 50% 50%, #000 62%, transparent 92%);
+  -webkit-mask-image: radial-gradient(ellipse 96% 54% at 50% 50%, #000 42%, transparent 78%);
+  mask-image: radial-gradient(ellipse 96% 54% at 50% 50%, #000 42%, transparent 78%);
 }
 
 .portfolio-carousel.carousel-mode {
@@ -88,6 +88,23 @@
   transform-style: preserve-3d;
 }
 
+.portfolio-carousel > .container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  pointer-events: none;
+}
+
+.portfolio-carousel > .container .cards {
+  pointer-events: auto;
+}
+
 .portfolio-carousel .card {
   position: absolute;
   top: 50%;
@@ -98,9 +115,18 @@
   transform-style: preserve-3d;
   backface-visibility: hidden;
   will-change: transform, filter;
-  transform-origin: 90% center;
+  transform-origin: 50% center;
   contain: layout paint;
   border-radius: 15px;
+  overflow: hidden;
+}
+
+.portfolio-carousel .card > a {
+  display: block;
+  position: absolute;
+  inset: 0;
+  color: inherit;
+  text-decoration: none;
 }
 
 .portfolio-carousel .card__img {
@@ -114,6 +140,55 @@
   pointer-events: none;
   -webkit-user-drag: none;
   user-select: none;
+}
+
+.portfolio-carousel .cs-case-allstacks { --cs-accent: #7C3AED; }
+.portfolio-carousel .cs-case-redhat { --cs-accent: #c41e3a; }
+.portfolio-carousel .cs-case-cmrad { --cs-accent: #7E929F; }
+.portfolio-carousel .cs-case-realyse { --cs-accent: #3571E5; }
+.portfolio-carousel .cs-case-mobile { --cs-accent: #8FBFA5; }
+.portfolio-carousel .cs-case-ovejas { --cs-accent: #F1BB00; }
+.portfolio-carousel .cs-case-vendo { --cs-accent: #0FB2F1; }
+
+.portfolio-carousel .work-entry-hover {
+  background: color-mix(in srgb, var(--cs-accent, #2d62c6) 90%, transparent);
+  border-radius: 15px;
+}
+
+.portfolio-carousel .card:hover .work-entry-hover {
+  opacity: 1;
+  visibility: visible;
+}
+
+.portfolio-carousel .card:hover .work-entry-title,
+.portfolio-carousel .card:hover .work-entry-cat,
+.portfolio-carousel .card:hover .work-entry-chip {
+  opacity: 1;
+  top: 0;
+}
+
+.portfolio-carousel .work-entry-content {
+  bottom: 20px;
+  left: 20px;
+  right: 16px;
+}
+
+.portfolio-carousel .work-entry-title,
+.portfolio-carousel .work-entry-title h3 {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.portfolio-carousel .work-entry-cat,
+.portfolio-carousel .work-entry-cat p {
+  color: #fff;
+  font-size: 13px;
+  margin: 0;
+  text-transform: none;
 }
 
 @media (max-width: 700px) {
@@ -132,4 +207,24 @@
     transition: none !important;
     animation: none !important;
   }
+}
+
+html:not([data-portfolio-layout="slide"]) .cs-home #portfolio-carousel {
+  display: none;
+}
+
+html[data-portfolio-layout="slide"] .cs-home #portfolio-grid {
+  display: none !important;
+}
+
+.cs-home #portfolio-carousel {
+  width: 100%;
+  margin: 0 0 4rem;
+  border-radius: 0;
+  --carousel-bg: var(--cs-paper);
+  background: var(--cs-paper);
+}
+
+html[data-theme="dark"] .portfolio-carousel {
+  --carousel-fg: #f3eee6;
 }

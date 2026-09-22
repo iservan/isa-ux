@@ -32,11 +32,13 @@ const WHEEL_SENS = 0.6; // Mouse wheel sensitivity
 const DRAG_SENS = 1.0; // Drag sensitivity
 
 // Visual constants
-const MAX_ROTATION = 28; // Maximum card rotation in degrees
-const MAX_DEPTH = 140; // Maximum Z-axis depth in pixels
-const MIN_SCALE = 0.92; // Minimum card scale
-const SCALE_RANGE = 0.1; // Scale variation range
-const GAP = 28; // Gap between cards in pixels
+const MAX_ROTATION = 48; // Maximum card rotation in degrees
+const MAX_DEPTH = 280; // Maximum Z-axis depth in pixels
+const MIN_SCALE = 0.60; // Side-card scale
+const SCALE_RANGE = 0.34; // Center reaches ~1.02
+const GAP = 0.5; // Gap between cards in pixels
+const SIDE_PUSH = 4; // Extra X offset for side cards
+const FOCUS_POWER = 1.88; // Sharper falloff so the center card stands out
 
 // ============================================================================
 // DOM REFERENCES
@@ -58,9 +60,12 @@ function stageHalfWidth() {
 
 // Carousel state
 let items = []; // Array of {el: HTMLElement, x: number}
+let allItems = []; // Unfiltered card list
 let positions = []; // Float32Array for wrapped positions
 let activeIndex = -1; // Currently centered card index
 let isEntering = true; // Prevents interaction during entry animation
+let initialized = false;
+let startPromise = null;
 
 // Layout measurements
 let CARD_W = 300; // Card width (measured dynamically)
@@ -179,6 +184,7 @@ function createCards() {
       card.style.willChange = 'transform';
       items.push({ el: card, x: i * STEP });
     });
+    allItems = items.slice();
     return;
   }
 
@@ -208,6 +214,7 @@ function createCards() {
   });
 
   cardsRoot.appendChild(fragment);
+  allItems = items.slice();
 }
 
 /**
@@ -239,25 +246,34 @@ function computeTransformComponents(screenX) {
  const norm = Math.max(-1, Math.min(1, screenX / VW_HALF));
  const absNorm = Math.abs(norm);
  const invNorm = 1 - absNorm;
+ const focus = Math.pow(invNorm, FOCUS_POWER);
 
  const ry = -norm * MAX_ROTATION;
- const tz = invNorm * MAX_DEPTH;
- const scale = MIN_SCALE + invNorm * SCALE_RANGE;
+ const tz = focus * MAX_DEPTH;
+ const scale = MIN_SCALE + focus * SCALE_RANGE;
+ const xPush = (screenX === 0 ? 0 : Math.sign(screenX)) * absNorm * SIDE_PUSH;
 
- return { norm, absNorm, invNorm, ry, tz, scale };
+ return { norm, absNorm, invNorm, focus, ry, tz, scale, xPush };
+}
+
+function cardTransform({ screenX, ry, tz, scale, xPush = 0, extraY = 0 }) {
+  const x = screenX + xPush;
+  const y = extraY ? `calc(-50% + ${extraY}px)` : '-50%';
+  return `translate3d(calc(-50% + ${x}px), ${y}, ${tz}px) rotateY(${ry}deg) scale(${scale})`;
 }
 
 /**
  * Calculate 3D transform for a card based on its screen position
  * @param {number} screenX - Card's X position relative to viewport center
- * @returns {{transform: string, z: number}} Transform string and Z-depth
+ * @returns {{transform: string, z: number, focus: number}} Transform string and Z-depth
  */
 function transformForScreenX(screenX) {
- const { ry, tz, scale } = computeTransformComponents(screenX);
+ const { ry, tz, scale, xPush, focus } = computeTransformComponents(screenX);
 
  return {
- transform: `translate3d(${screenX}px,-50%,${tz}px) rotateY(${ry}deg) scale(${scale})`,
+ transform: cardTransform({ screenX, ry, tz, scale, xPush }),
  z: tz,
+ focus,
  };
 }
 
@@ -265,6 +281,7 @@ function transformForScreenX(screenX) {
  * Update all card transforms based on current scroll position
  */
 function updateCarouselTransforms() {
+ if (!items.length || !TRACK) return;
  const half = TRACK / 2;
  let closestIdx = -1;
  let closestDist = Infinity;
@@ -291,11 +308,11 @@ function updateCarouselTransforms() {
  for (let i = 0; i < items.length; i++) {
  const it = items[i];
  const pos = positions[i];
- const { transform, z } = transformForScreenX(pos);
+ const { transform, z, focus } = transformForScreenX(pos);
 
  it.el.style.transform = transform;
  it.el.style.zIndex = String(1000 + Math.round(z)); // Higher z-index for cards in front
- it.el.style.filter = 'none';
+ it.el.style.filter = `brightness(${0.7 + focus * 0.3}) saturate(${0.65 + focus * 0.35})`;
  }
 
  // Update gradient if active card changed
@@ -419,6 +436,19 @@ function resizeBG() {
   }
 }
 
+function getPageBg() {
+  const source = stage || document.body;
+  const color = source ? window.getComputedStyle(source).backgroundColor : '';
+  if (color && color !== 'transparent' && color !== 'rgba(0, 0, 0, 0)') return color;
+  return window.getComputedStyle(document.body).backgroundColor || 'rgb(243, 238, 230)';
+}
+
+function parseRgb(color) {
+  const m = String(color).match(/(\d+)\s*,\s*(\d+)\s*,\s*(\d+)/);
+  if (!m) return [243, 238, 230];
+  return [Number(m[1]), Number(m[2]), Number(m[3])];
+}
+
 /**
  * Render animated gradient background
  */
@@ -439,35 +469,37 @@ function drawBackground() {
 
   const w = bgCanvas.clientWidth || stage.clientWidth;
   const h = bgCanvas.clientHeight || stage.clientHeight;
+  const pageBg = getPageBg();
+  const [pr, pg, pb] = parseRgb(pageBg);
 
-  bgCtx.fillStyle = '#ffffff';
+  bgCtx.fillStyle = pageBg;
   bgCtx.fillRect(0, 0, w, h);
 
   const time = now * 0.0002;
   const cx = w * 0.5;
   const cy = h * 0.5;
-  const a1 = w * 0.16;
-  const a2 = w * 0.1;
+  const a1 = w * 0.035;
+  const a2 = w * 0.025;
 
   const x1 = cx + Math.cos(time) * a1;
-  const y1 = cy + Math.sin(time * 0.8) * (h * 0.05);
+  const y1 = cy + Math.sin(time * 0.8) * (h * 0.02);
   const x2 = cx + Math.cos(-time * 0.9 + 1.2) * a2;
-  const y2 = cy + Math.sin(-time * 0.7 + 0.7) * (h * 0.04);
+  const y2 = cy + Math.sin(-time * 0.7 + 0.7) * (h * 0.016);
 
-  const r1 = Math.min(w * 0.93, h * 0.72);
-  const r2 = Math.min(w * 0.75, h * 0.6);
+  const r1 = w * 0.55;
+  const r2 = w * 0.4;
 
   const g1 = bgCtx.createRadialGradient(x1, y1, 0, x1, y1, r1);
-  g1.addColorStop(0, `rgba(${gradCurrent.r1},${gradCurrent.g1},${gradCurrent.b1},0.5)`);
+  g1.addColorStop(0, `rgba(${gradCurrent.r1},${gradCurrent.g1},${gradCurrent.b1},0.55)`);
   g1.addColorStop(0.55, `rgba(${gradCurrent.r1},${gradCurrent.g1},${gradCurrent.b1},0.22)`);
-  g1.addColorStop(1, 'rgba(255,255,255,0)');
+  g1.addColorStop(1, `rgba(${pr},${pg},${pb},0)`);
   bgCtx.fillStyle = g1;
   bgCtx.fillRect(0, 0, w, h);
 
   const g2 = bgCtx.createRadialGradient(x2, y2, 0, x2, y2, r2);
   g2.addColorStop(0, `rgba(${gradCurrent.r2},${gradCurrent.g2},${gradCurrent.b2},0.36)`);
   g2.addColorStop(0.6, `rgba(${gradCurrent.r2},${gradCurrent.g2},${gradCurrent.b2},0.14)`);
-  g2.addColorStop(1, 'rgba(255,255,255,0)');
+  g2.addColorStop(1, `rgba(${pr},${pg},${pb},0)`);
   bgCtx.fillStyle = g2;
   bgCtx.fillRect(0, 0, w, h);
 
@@ -530,6 +562,7 @@ if (stage) {
   let lastX = 0;
   let lastT = 0;
   let lastDelta = 0;
+  let dragDistance = 0;
 
   // Pointer down - start dragging
   stage.addEventListener('pointerdown', (e) => {
@@ -540,6 +573,7 @@ if (stage) {
     lastX = e.clientX;
     lastT = performance.now();
     lastDelta = 0;
+    dragDistance = 0;
     stage.setPointerCapture(e.pointerId);
     stage.classList.add('dragging');
   });
@@ -552,6 +586,7 @@ if (stage) {
     const dx = e.clientX - lastX;
     const dt = Math.max(1, now - lastT) / 1000;
 
+    dragDistance += Math.abs(dx);
     SCROLL_X = mod(SCROLL_X - dx * DRAG_SENS, TRACK);
     lastDelta = dx / dt; // Track velocity for momentum
     lastX = e.clientX;
@@ -566,6 +601,19 @@ if (stage) {
     vX = -lastDelta * DRAG_SENS; // Apply final velocity
     stage.classList.remove('dragging');
   });
+
+  if (cardsRoot) {
+    cardsRoot.addEventListener(
+      'click',
+      (e) => {
+        if (dragDistance > 10) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+      },
+      true
+    );
+  }
 }
 
 // Debounced resize handler
@@ -579,7 +627,7 @@ document.addEventListener('visibilitychange', () => {
   if (document.hidden) {
     cancelCarousel();
     cancelBG();
-  } else if (stage && items.length) {
+  } else if (stage && items.length && isCarouselVisible()) {
     startCarousel();
     startBG();
   }
@@ -609,17 +657,20 @@ async function animateEntry(visibleCards) {
 
   visibleCards.forEach(({ item, screenX }, idx) => {
     const state = { p: 0 }; // 0 -> 1
-    const { ry, tz, scale: baseScale } = computeTransformComponents(screenX);
+    const { ry, tz, scale: baseScale, xPush } = computeTransformComponents(screenX);
 
     const START_SCALE = 0.92;
     const START_Y = 40;
 
     item.el.style.opacity = '0';
-    item.el.style.transform =
-      `translate3d(${screenX}px,-50%,${tz}px) ` +
-      `rotateY(${ry}deg) ` +
-      `scale(${START_SCALE}) ` +
-      `translateY(${START_Y}px)`;
+    item.el.style.transform = cardTransform({
+      screenX,
+      ry,
+      tz,
+      scale: START_SCALE,
+      xPush,
+      extraY: START_Y,
+    });
 
     tl.to(
       state,
@@ -640,11 +691,14 @@ async function animateEntry(visibleCards) {
             const { transform } = transformForScreenX(screenX);
             item.el.style.transform = transform;
           } else {
-            item.el.style.transform =
-              `translate3d(${screenX}px,-50%,${tz}px) ` +
-              `rotateY(${ry}deg) ` +
-              `scale(${currentScale}) ` +
-              `translateY(${currentY}px)`;
+            item.el.style.transform = cardTransform({
+              screenX,
+              ry,
+              tz,
+              scale: currentScale,
+              xPush,
+              extraY: currentY,
+            });
           }
         },
       },
@@ -737,7 +791,7 @@ async function init() {
   if (bgCtx) {
     const w = bgCanvas.clientWidth || stage.clientWidth;
     const h = bgCanvas.clientHeight || stage.clientHeight;
-    bgCtx.fillStyle = '#ffffff';
+    bgCtx.fillStyle = getPageBg();
     bgCtx.fillRect(0, 0, w, h);
   }
 
@@ -788,8 +842,92 @@ async function init() {
 // START APPLICATION
 // ============================================================================
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', init);
-} else {
-  init();
+if (shouldAutoStart()) {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => ensureStarted());
+  } else {
+    ensureStarted();
+  }
 }
+
+function isCarouselVisible() {
+  if (!stage) return false;
+  const styles = window.getComputedStyle(stage);
+  return styles.display !== 'none' && styles.visibility !== 'hidden';
+}
+
+function shouldAutoStart() {
+  if (!stage || !cardsRoot) return false;
+  if (!document.getElementById('layoutSwitch')) return true;
+  return document.documentElement.getAttribute('data-portfolio-layout') === 'slide';
+}
+
+function normalizeFilter(filter) {
+  if (!filter || filter === '*') return '*';
+  if (filter === '#sass') return '.sass';
+  if (filter === '#mobile') return '.mobile';
+  if (filter === '#ai') return '.ai';
+  return filter;
+}
+
+function applyFilter(filter) {
+  const sel = normalizeFilter(filter);
+  const source = allItems.length ? allItems : items;
+
+  source.forEach((it) => {
+    const show = sel === '*' || it.el.matches(sel);
+    it.el.style.display = show ? '' : 'none';
+    it.el.setAttribute('aria-hidden', show ? 'false' : 'true');
+  });
+
+  items = source.filter((it) => sel === '*' || it.el.matches(sel));
+  if (!items.length) {
+    TRACK = 0;
+    return;
+  }
+
+  measure();
+  SCROLL_X = 0;
+  vX = 0;
+  updateCarouselTransforms();
+}
+
+function pause() {
+  cancelCarousel();
+  cancelBG();
+}
+
+async function ensureStarted() {
+  if (!stage || !cardsRoot) return;
+  if (startPromise) return startPromise;
+
+  startPromise = (async () => {
+    await new Promise((r) => requestAnimationFrame(r));
+    await new Promise((r) => requestAnimationFrame(r));
+
+    if (!initialized) {
+      await init();
+      initialized = true;
+      return;
+    }
+
+    isEntering = false;
+    if (loader) loader.classList.add('loader--hide');
+    onResize();
+    startBG();
+    startCarousel();
+  })();
+
+  try {
+    await startPromise;
+  } finally {
+    startPromise = null;
+  }
+}
+
+window.PortfolioCarousel = {
+  ensureStarted,
+  pause,
+  applyFilter,
+  refresh: onResize,
+};
