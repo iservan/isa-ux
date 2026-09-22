@@ -8,9 +8,6 @@
         if (localStorage.getItem('theme') === 'dark') {
           document.documentElement.setAttribute('data-theme', 'dark');
         }
-        if (localStorage.getItem('portfolio-layout') === 'slide') {
-          document.documentElement.setAttribute('data-portfolio-layout', 'slide');
-        }
       } catch (e) {}
     })();
   </script>
@@ -39,7 +36,6 @@
   <link rel="stylesheet" href="assets/css/main.css">
   <link href="assets/css/custom.css" rel="stylesheet">
   <link href="assets/css/case-study-editorial.css" rel="stylesheet">
-  <link href="assets/css/gradient-carousel.css" rel="stylesheet">
 </head>
 
 <body class="js-main-container cs-editorial cs-home">
@@ -124,28 +120,19 @@
 
     <section class="">
       <!-- portfolio -->
-      <div id="portfolio">
-        <div class="container">
-        <div id="portfolio-filters" class="portfolio-toolbar">
+      <div id="portfolio" class="container">
+        <div id="portfolio-filters">
           <ul id="filters" class="p-0">
             <li><a class="link" href="*" class="active">All</a></li>
             <li><a class="link" href="#sass">Enterprise B2B</a></li>
             <li><a class="link" href=".b2c">B2C</a></li>
-            <li><a class="link" href=".ai">AI</a></li>
             <li><a class="link" href=".mobile">Mobile</a></li>
             <li><a class="link" href=".fintech">Fintech</a></li>
             <li><a class="link" href=".healthcare">Health Care</a></li>
+            <li><a class="link" href=".ai">AI</a></li>
           </ul>
-          <div class="layout-switch" id="layoutSwitch" role="group" aria-label="Portfolio layout">
-            <button type="button" class="layout-switch__btn is-active" data-layout="grid" aria-pressed="true" aria-label="Grid layout" title="Grid">
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><rect x="1.5" y="1.5" width="6" height="6" rx="1.2" stroke="currentColor" stroke-width="1.6"/><rect x="10.5" y="1.5" width="6" height="6" rx="1.2" stroke="currentColor" stroke-width="1.6"/><rect x="1.5" y="10.5" width="6" height="6" rx="1.2" stroke="currentColor" stroke-width="1.6"/><rect x="10.5" y="10.5" width="6" height="6" rx="1.2" stroke="currentColor" stroke-width="1.6"/></svg>
-            </button>
-            <button type="button" class="layout-switch__btn" data-layout="slide" aria-pressed="false" aria-label="Slide layout" title="Slides">
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><rect x="5" y="3.5" width="8" height="11" rx="1.4" stroke="currentColor" stroke-width="1.6"/><path d="M3.5 5.5v7M14.5 5.5v7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-            </button>
-          </div>
         </div>
-        <div class="grid" id="portfolio-grid" data-cols="3" data-margin="30" data-height="1"
+        <div class="grid" data-cols="3" data-margin="30" data-height="1"
           data-masonry='{ "columnWidth": 200, "itemSelector": ".entry" }'>
                     <!-- entry -->
           <div class="entry work-entry sass ai cs-case-allstacks" id="ai">
@@ -155,7 +142,7 @@
               <div class="work-entry-hover">
                 <div class="work-entry-content">
                   <div class="work-entry-title">
-                    <h3>Allstacks - Product Studio</h3>
+                    <h3>Allstacks</h3>
                   </div>
                   <div class="work-entry-cat">
                     <p>+ UX research</br> + Establish design
@@ -176,7 +163,7 @@
               <div class="work-entry-hover">
                 <div class="work-entry-content">
                   <div class="work-entry-title">
-                    <h3>Red Hat - Skills Assessment</h3>
+                    <h3>Red Hat</h3>
                   </div>
                   <div class="work-entry-cat">
                     <p>+ UX research: User interview, A/B testing & focus group</br> + Design
@@ -227,7 +214,7 @@
               <div class="work-entry-hover">
                 <div class="work-entry-content">
                   <div class="work-entry-title">
-                    <h3>REalyse - Pulse</h3>
+                    <h3>REalyse - Portfolio Monitoring Tool</h3>
                   </div>
                   <div class="work-entry-cat">
                     <p>+ UX audit <br> + Implemented research strategy</br> + Establish design
@@ -251,7 +238,7 @@
               <div class="work-entry-hover">
                 <div class="work-entry-content">
                   <div class="work-entry-title">
-                    <h3>Mobile App & RWD</h3>
+                    <h3>Mobile App designs</h3>
                   </div>
                   <div class="work-entry-cat">
                     <p>+ UI/UX mobile design</br> + Mobile app Interfaces</br>
@@ -308,7 +295,7 @@
               <div class="work-entry-hover">
                 <div class="work-entry-content">
                   <div class="work-entry-title">
-                    <h3>Vendo - Dynamic pricing</h3>
+                    <h3>Vendo - Dynamic pricing app</h3>
                   </div>
                   <div class="work-entry-cat">
                     <p>+ UI/UX design</br> + Interface full deployment</br> + For a app based on R
@@ -476,152 +463,6 @@
           </div>
           -->
         </div>
-        </div>
-        <div class="portfolio-carousel stage" id="portfolio-carousel">
-          <canvas id="bg" aria-hidden="true"></canvas>
-          <div class="loader" id="loader">
-            <div class="loader__content">
-              <div class="loader__ring" aria-hidden="true"></div>
-              <span>Loading work</span>
-            </div>
-          </div>
-          <div class="container">
-          <div class="cards" id="cards">
-            <article class="card sass ai cs-case-allstacks" data-c1="#34379D" data-c2="#B8B9E1">
-              <a href="case-study-allstacks.html">
-                <img class="card__img" src="assets/images/portfolio/allstacks/PS-showcase.svg" alt="Allstacks Product Studio" decoding="async" draggable="false">
-                <div class="work-entry-hover">
-                  <div class="work-entry-content">
-                    <div class="work-entry-title">
-                      <h3>Allstacks</h3>
-                    </div>
-                    <div class="work-entry-cat">
-                      <p>+ UX research</br> + Establish design
-                        system </br> + UI/UX
-                        design</br> + A/B
-                        mockup testing</p>
-                    </div>
-                    <span class="work-entry-chip bg-white text-body px-2 py-1 rounded mt-5">AI Enterprise</span>
-                  </div>
-                </div>
-              </a>
-            </article>
-            <article class="card sass b2c mobile cs-case-redhat" data-c1="#EE0000" data-c2="#F0D0D0">
-              <a href="case-study-redhat.html">
-                <img class="card__img" src="assets/images/portfolio/sa-laptop-clear.jpg" alt="Red Hat" decoding="async" draggable="false">
-                <div class="work-entry-hover">
-                  <div class="work-entry-content">
-                    <div class="work-entry-title">
-                      <h3>Red Hat</h3>
-                    </div>
-                    <div class="work-entry-cat">
-                      <p>+ UX research: User interview, A/B testing & focus group</br> + Design
-                        system</br> + UI/UX
-                        design</br> + A/B mockup testing</br> +
-                        Interface deployment with React.js</br> + RWD
-                      </p>
-                    </div>
-                    <span class="work-entry-chip bg-white text-body px-2 py-1 rounded mt-5">Cloud Enterprise
-                      Services</span>
-                    <span class="work-entry-chip bg-white text-body px-2 py-1 rounded mt-5 ml-2">Mobile</span>
-                  </div>
-                </div>
-              </a>
-            </article>
-            <article class="card sass healthcare mobile cs-case-cmrad" data-c1="#5A7388" data-c2="#E24B4B">
-              <a class="js-lightbox" href="assets/images/portfolio/cmrad.png" title="Collective Minds Radiology" data-lightbox-gallery="carousel-cmrad">
-                <img class="card__img" src="assets/images/portfolio/cmrad-laptop-blue.jpg" alt="Collective Minds Radiology" decoding="async" draggable="false">
-                <div class="work-entry-hover">
-                  <div class="work-entry-content">
-                    <div class="work-entry-title">
-                      <h3>Collective Minds Radiology</h3>
-                    </div>
-                    <div class="work-entry-cat">
-                      <p>+ UX research strategy & audit</br>+ Design system creation (Figma & vuejs
-                        components)</br> + UI/UX
-                        design</br> + A/B mockup testing</br> +
-                        Interface full deployment with Vue.js</br> + RWD</p>
-                    </div>
-                    <span class="work-entry-chip bg-white text-body px-2 py-1 rounded mt-5">Health Care</span>
-                  </div>
-                </div>
-              </a>
-            </article>
-            <article class="card sass ai mobile cs-case-realyse" data-c1="#8AA8C8" data-c2="#C5D6EA">
-              <a href="case-study-realyse.html">
-                <img class="card__img" src="assets/images/portfolio/REalyse-small-ok.jpg" alt="REalyse" decoding="async" draggable="false">
-                <div class="work-entry-hover">
-                  <div class="work-entry-content">
-                    <div class="work-entry-title">
-                      <h3>REalyse - Portfolio Monitoring Tool</h3>
-                    </div>
-                    <div class="work-entry-cat">
-                      <p>+ UX audit <br> + Implemented research strategy</br> + Establish design
-                        system </br> + UI/UX
-                        design</br> + A/B
-                        mockup testing</p>
-                    </div>
-                    <span class="work-entry-chip bg-white text-body px-2 py-1 rounded mt-5">Real Estate</span>
-                    <span class="work-entry-chip bg-white text-body px-2 py-1 rounded mt-5 ml-2">AI</span>
-                    <span class="work-entry-chip bg-white text-body px-2 py-1 rounded mt-5 ml-2">Mobile</span>
-                  </div>
-                </div>
-              </a>
-            </article>
-            <article class="card mobile cs-case-mobile" data-c1="#7ECFB8" data-c2="#2BBBAD">
-              <a class="js-lightbox" href="assets/images/portfolio/mobile-apps.gif" title="Mobile App designs" data-lightbox-gallery="carousel-mobile">
-                <img class="card__img" src="assets/images/portfolio/mobile-mockup-bg.jpg" alt="Mobile work" decoding="async" draggable="false">
-                <div class="work-entry-hover">
-                  <div class="work-entry-content">
-                    <div class="work-entry-title">
-                      <h3>Mobile App designs</h3>
-                    </div>
-                    <div class="work-entry-cat">
-                      <p>+ UI/UX mobile design</br> + Mobile app Interfaces</br>
-                    </div>
-                    <span class="work-entry-chip bg-white text-body px-2 py-1 rounded mt-5">Mobile</span>
-                  </div>
-                </div>
-              </a>
-            </article>
-            <article class="card b2c cs-case-ovejas" data-c1="#C9A227" data-c2="#E8B86D">
-              <a class="js-lightbox" href="assets/images/portfolio/ovejas-web.jpg" title="Ovejas Negras Tapas - Wordpress" data-lightbox-gallery="carousel-ovejas">
-                <img class="card__img" src="assets/images/portfolio/0n-01.jpg" alt="Ovejas Negras" decoding="async" draggable="false">
-                <div class="work-entry-hover">
-                  <div class="work-entry-content">
-                    <div class="work-entry-title">
-                      <h3>Ovejas Negras Tapas</h3>
-                    </div>
-                    <div class="work-entry-cat">
-                      <p> + Wordpress cutom site development</br> + UI/UX design</br> + Photo
-                        shooting</br> + WordPress theme dev from scratch</br></p>
-                    </div>
-                    <span class="work-entry-chip bg-white text-body px-2 py-1 rounded mt-5">Hospitality</span>
-                  </div>
-                </div>
-              </a>
-            </article>
-            <article class="card sass cs-case-vendo" data-c1="#00AEEF" data-c2="#7DD8F7">
-              <a class="js-lightbox" href="assets/images/portfolio/traffic-report.jpg" title="Vendo - Dynamic pricing app" data-lightbox-gallery="carousel-vendo">
-                <img class="card__img" src="assets/images/portfolio/dynamic-tall.jpg" alt="Vendo - Dynamic pricing app" decoding="async" draggable="false">
-                <div class="work-entry-hover">
-                  <div class="work-entry-content">
-                    <div class="work-entry-title">
-                      <h3>Vendo - Dynamic pricing app</h3>
-                    </div>
-                    <div class="work-entry-cat">
-                      <p>+ UI/UX design</br> + Interface full deployment</br> + For a app based on R
-                        language over shinny apps</p>
-                    </div>
-                    <span class="work-entry-chip bg-white text-body px-2 py-1 rounded mt-5">FinTech</span>
-                    <span class="work-entry-chip bg-white text-body px-2 py-1 rounded mt-5">Mobile</span>
-                  </div>
-                </div>
-              </a>
-            </article>
-          </div>
-          </div>
-        </div>
       </div>
       <!-- /end:portfolio -->
     </section>
@@ -632,12 +473,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
   <script src="assets/plugins/nivo-lightbox/nivo-lightbox.js"></script>
   <script src="assets/js/scrollreveal.min.js"></script>
-  <script src="assets/js/gsap.min.js"></script>
   <script src="assets/js/custom.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/theme.js"></script>
-  <script src="assets/js/gradient-carousel.js"></script>
-  <script src="assets/js/portfolio-layout.js"></script>
 </body>
 
 </html>
