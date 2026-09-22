@@ -1203,8 +1203,8 @@ html[data-theme="dark"] body.cs-editorial .cs-inline-link::after {
 .cs-home .cs-case-redhat { --cs-accent: #c41e3a; }
 .cs-home .cs-case-cmrad { --cs-accent: #7E929F; }
 .cs-home .cs-case-realyse { --cs-accent: #3571E5; }
-.cs-home .cs-case-mobile { --cs-accent: #8FBFA5; }
-.cs-home .cs-case-ovejas { --cs-accent: #F1BB00; }
+.cs-home .cs-case-mobile { --cs-accent: #8BBA9E; }
+.cs-home .cs-case-ovejas { --cs-accent: #D58001; }
 .cs-home .cs-case-vendo { --cs-accent: #0FB2F1; }
 
 .cs-home .work-entry-title,
