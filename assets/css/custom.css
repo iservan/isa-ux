@@ -353,9 +353,9 @@ h1.case-heading {
     gap: 8px;
     margin-left: auto;
     padding: 8px 12px;
-    border: 1px solid rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 999px;
-    background: #f4f4f4;
+    background: #fff;
     color: #222;
     line-height: 1;
     cursor: pointer;
@@ -371,6 +371,11 @@ h1.case-heading {
     display: block;
     fill: currentColor;
     stroke: none;
+}
+
+.theme-toggle .icon-moon {
+    width: 13px;
+    height: 13px;
 }
 
 html:not([data-theme="dark"]) .theme-toggle .icon-sun,
@@ -462,8 +467,8 @@ html[data-theme="dark"] .navbar-light .navbar-toggler-icon {
 }
 
 html[data-theme="dark"] .theme-toggle {
-    background: #12101f;
-    border-color: rgba(255, 255, 255, 0.18);
+    background: #212121;
+    border-color: rgba(255, 255, 255, 0.21);
     color: #f4f3f8;
 }
 
