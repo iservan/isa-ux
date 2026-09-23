@@ -342,7 +342,9 @@
             var $this = this;
             if($this.options.clickOverlayToClose){
                 overlay.on('click', function(e){
-                    if(e.target === this || $(e.target).hasClass('nivo-lightbox-content') || $(e.target).hasClass('nivo-lightbox-image')){
+                    if($(e.target).closest('.nivo-lightbox-prev, .nivo-lightbox-next, .nivo-lightbox-close').length) return;
+                    if(e.target === this || $(e.target).closest('.nivo-lightbox-wrap').length){
+                        e.preventDefault();
                         $this.destructLightbox();
                     }
                 });
