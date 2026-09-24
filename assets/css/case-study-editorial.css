@@ -444,6 +444,7 @@ html[data-theme="dark"] body.cs-editorial .cs-insight {
     color: #d8cfc4;
     margin-top: 1.25rem;
     line-height: 1.65;
+    font-size: 18px;
 }
 
 .cs-pair {
