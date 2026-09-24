@@ -361,6 +361,10 @@ html[data-theme="dark"] body.cs-editorial h4 {
     border-radius: 2px;
 }
 
+body.cs-realyse .cs-learn article:nth-child(3) {
+    grid-column: 1 / -1;
+}
+
 html[data-theme="dark"] body.cs-editorial .cs-learn article {
     background: var(--cs-paper-2);
 }
