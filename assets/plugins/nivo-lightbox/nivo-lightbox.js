@@ -132,7 +132,10 @@
                 href = link.attr('href'),
                 video = href.match(/(youtube|youtube-nocookie|youtu|vimeo)\.(com|be)\/(watch\?v=([\w-]+)|([\w-]+))/);
 
-            if(href.match(/\.(jpeg|jpg|gif|png|svg)$/i) !== null){
+            if(href.match(/\.(jpeg|jpg|gif|png|svg|webp)$/i) !== null){
+				return true;
+			}
+            else if(href.match(/\.(mp4|webm)$/i) !== null){
 				return true;
 			}
 			// Video (Youtube/Vimeo)
@@ -168,7 +171,7 @@
             }
 
             // Image
-            if(href.match(/\.(jpeg|jpg|gif|png|svg)$/i) !== null){
+            if(href.match(/\.(jpeg|jpg|gif|png|svg|webp)$/i) !== null){
                 var img = $('<img>', { src: href, 'class': 'nivo-lightbox-image-display' });
                 img.one('load', function() {
 					var wrap = $('<div class="nivo-lightbox-image" />');
@@ -194,6 +197,30 @@
 					var wrap = $('<div class="nivo-lightbox-error"><p>'+ $this.options.errorMessage +'</p></div>');
                     content.html(wrap).removeClass('nivo-lightbox-loading');
 				});
+            }
+            // HTML5 video
+            else if(href.match(/\.(mp4|webm)$/i) !== null){
+                var videoWrap = $('<div class="nivo-lightbox-image" />');
+                var html5Video = $('<video>', {
+                    src: href,
+                    'class': 'nivo-lightbox-image-display',
+                    autoplay: true,
+                    muted: true,
+                    loop: true,
+                    playsinline: true
+                });
+                videoWrap.append(html5Video);
+                content.html(videoWrap).removeClass('nivo-lightbox-loading');
+                videoWrap.css({
+                    'line-height': $('.nivo-lightbox-content').height() +'px',
+                    'height': $('.nivo-lightbox-content').height() +'px'
+                });
+                $(window).resize(function() {
+                    videoWrap.css({
+                        'line-height': $('.nivo-lightbox-content').height() +'px',
+                        'height': $('.nivo-lightbox-content').height() +'px'
+                    });
+                });
             }
             // Video (Youtube/Vimeo)
             else if(video){

@@ -146,10 +146,23 @@ html[data-theme="dark"] body.cs-editorial.js-main-container {
     background: var(--cs-paper-2);
 }
 
-.cs-hero-split img {
+.cs-hero-split img,
+.cs-hero-split video {
     width: 100%;
     height: auto;
     display: block;
+}
+
+.cs-hero-side {
+    display: grid;
+    gap: 20px;
+    min-width: 0;
+}
+
+.cs-hero-split video {
+    border-radius: 6px;
+    background: var(--cs-paper-2);
+    pointer-events: none;
 }
 
 .cs-hero-visual {

@@ -62,7 +62,8 @@
 }
 
 .nivo-lightbox-image { text-align: center; }
-.nivo-lightbox-image img {
+.nivo-lightbox-image img,
+.nivo-lightbox-image video {
 	max-width: 100%;
 	max-height: 100%;
 	width: auto;
