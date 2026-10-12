@@ -416,12 +416,18 @@ html[data-theme="dark"] body.cs-editorial .cs-learn article {
     padding: 4.5rem 1.5rem;
 }
 
+@media (min-width: 992px) {
+    .cs-insight {
+      margin-left: calc(50% - 50vw - (200px + 2.5rem) / 2);
+    }
+}
+
 html[data-theme="dark"] body.cs-editorial .cs-insight {
     background: #000;
 }
 
 .cs-insight-inner {
-    max-width: 860px;
+    max-width: 700px;
     margin: 0 auto;
 }
 
@@ -763,6 +769,23 @@ body.cs-editorial.cs-realyse {
     --cs-accent-soft: #dbe8fb;
 }
 
+body.cs-editorial.cs-vendo {
+    --cs-accent: #2CB0E7;
+    --cs-accent-soft: #d7f3fc;
+}
+
+body.cs-editorial.cs-vendo .cs-learn {
+    grid-template-columns: 1fr;
+}
+
+html[data-theme="dark"] body.cs-editorial.cs-vendo .cs-cta {
+    color: #082433 !important;
+}
+
+body.cs-editorial.cs-vendo .cs-cta:hover {
+    color: #082433 !important;
+}
+
 html[data-theme="dark"] body.cs-editorial.cs-resume {
     --cs-accent: #8eb4ff;
     --cs-accent-soft: #1a2744;
@@ -776,6 +799,11 @@ html[data-theme="dark"] body.cs-editorial.cs-allstacks {
 html[data-theme="dark"] body.cs-editorial.cs-realyse {
     --cs-accent: #8eb4ff;
     --cs-accent-soft: #1a2744;
+}
+
+html[data-theme="dark"] body.cs-editorial.cs-vendo {
+    --cs-accent: #2CB0E7;
+    --cs-accent-soft: #123244;
 }
 
 html[data-theme="dark"] body.cs-editorial .cs-job-dates {
@@ -1177,6 +1205,11 @@ html[data-portfolio-layout="slide"] .cs-home #portfolio > .container {
     }
 }
 
+.cs-figure-cut {
+    overflow: hidden;
+    max-height: 589px;
+}
+
 .cs-home #filters {
     display: flex;
     flex-wrap: wrap;
@@ -1274,7 +1307,21 @@ html[data-theme="dark"] body.cs-editorial .cs-inline-link::after {
 .cs-home .cs-case-realyse { --cs-accent: #3571E5; }
 .cs-home .cs-case-mobile { --cs-accent: #8BBA9E; }
 .cs-home .cs-case-ovejas { --cs-accent: #D58001; }
-.cs-home .cs-case-vendo { --cs-accent: #0FB2F1; }
+.cs-home .cs-case-vendo { --cs-accent: #2CB0E7; }
+
+.cs-home .cs-case-vendo .cs-cta {
+    background: #082433;
+    color: #fff !important;
+}
+
+.cs-home .cs-case-vendo .cs-cta .fa {
+    margin-left: 0.45rem;
+}
+
+.cs-home .cs-case-vendo .cs-cta:hover {
+    background: #041018;
+    color: #fff !important;
+}
 
 .cs-home .work-entry-title,
 .cs-home .work-entry-title h3 {

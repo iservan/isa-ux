@@ -148,7 +148,7 @@
 .portfolio-carousel .cs-case-realyse { --cs-accent: #3571E5; }
 .portfolio-carousel .cs-case-mobile { --cs-accent: #8FBFA5; }
 .portfolio-carousel .cs-case-ovejas { --cs-accent: #F1BB00; }
-.portfolio-carousel .cs-case-vendo { --cs-accent: #0FB2F1; }
+.portfolio-carousel .cs-case-vendo { --cs-accent: #2CB0E7; }
 
 .portfolio-carousel .work-entry-hover {
   background: color-mix(in srgb, var(--cs-accent, #2d62c6) 90%, transparent);
