@@ -1315,6 +1315,10 @@ html[data-portfolio-layout="slide"] .cs-home #portfolio > .container {
         flex: 0 0 auto;
     }
 
+    .cs-home #filters li:last-child {
+        margin-right: 2.5rem;
+    }
+
     .cs-home #filters li a.link {
         display: inline-block;
         padding-bottom: 11px;
@@ -1345,10 +1349,6 @@ html[data-portfolio-layout="slide"] .cs-home #portfolio > .container {
 
     .cs-home .filters-more.is-hidden {
         display: none;
-    }
-    .cs-home .filters-more i {
-        font-size: 1.2rem;
-        font-weight: 600;
     }
 }
 
