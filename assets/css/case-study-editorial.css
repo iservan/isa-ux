@@ -752,13 +752,15 @@ html[data-theme="dark"] body.cs-editorial .chart-bar-wrapper {
         grid-template-columns: 1fr;
     }
 
-    .cs-vendo .cs-insight {
+    .cs-vendo .cs-insight,
+    .cs-allstacks .cs-insight {
         width: auto;
         margin-left: -1.5rem;
         margin-right: -1.5rem;
     }
 
-    .cs-vendo .cs-rail {
+    .cs-vendo .cs-rail,
+    .cs-allstacks .cs-rail {
         display: flex;
         align-items: center;
         gap: 0.75rem;
@@ -768,7 +770,8 @@ html[data-theme="dark"] body.cs-editorial .chart-bar-wrapper {
         padding-right: 0;
     }
 
-    .cs-vendo .cs-rail ol {
+    .cs-vendo .cs-rail ol,
+    .cs-allstacks .cs-rail ol {
         flex: 1;
         min-width: 0;
         flex-wrap: nowrap;
@@ -779,21 +782,25 @@ html[data-theme="dark"] body.cs-editorial .chart-bar-wrapper {
         -webkit-overflow-scrolling: touch;
     }
 
-    .cs-vendo .cs-rail li {
+    .cs-vendo .cs-rail li,
+    .cs-allstacks .cs-rail li {
         flex: 0 0 auto;
     }
 
-    .cs-vendo .cs-rail li:last-child {
+    .cs-vendo .cs-rail li:last-child,
+    .cs-allstacks .cs-rail li:last-child {
         margin-right: 2.5rem;
     }
 
-    .cs-vendo .cs-rail a {
+    .cs-vendo .cs-rail a,
+    .cs-allstacks .cs-rail a {
         display: inline-block;
         padding: 0.4rem 0 11px;
         border-bottom-width: 3px;
     }
 
-    .cs-vendo .filters-more {
+    .cs-vendo .filters-more,
+    .cs-allstacks .filters-more {
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -813,7 +820,8 @@ html[data-theme="dark"] body.cs-editorial .chart-bar-wrapper {
 }
 
 @media (min-width: 992px) {
-    .cs-vendo .filters-more {
+    .cs-vendo .filters-more,
+    .cs-allstacks .filters-more {
         display: none;
     }
 }
@@ -844,12 +852,16 @@ body.cs-editorial.cs-vendo .cs-learn {
 }
 
 body.cs-editorial.cs-vendo .cs-shell,
-body.cs-editorial.cs-vendo main {
+body.cs-editorial.cs-vendo main,
+body.cs-editorial.cs-allstacks .cs-shell,
+body.cs-editorial.cs-allstacks main {
     min-width: 0;
 }
 
 body.cs-editorial.cs-vendo img,
-body.cs-editorial.cs-vendo video {
+body.cs-editorial.cs-vendo video,
+body.cs-editorial.cs-allstacks img,
+body.cs-editorial.cs-allstacks video {
     max-width: 100%;
     height: auto;
 }
