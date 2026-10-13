@@ -754,7 +754,8 @@ html[data-theme="dark"] body.cs-editorial .chart-bar-wrapper {
 
     .cs-vendo .cs-insight,
     .cs-allstacks .cs-insight,
-    .cs-realyse .cs-insight {
+    .cs-realyse .cs-insight,
+    .cs-redhat .cs-insight {
         width: auto;
         margin-left: -1.5rem;
         margin-right: -1.5rem;
@@ -762,7 +763,8 @@ html[data-theme="dark"] body.cs-editorial .chart-bar-wrapper {
 
     .cs-vendo .cs-rail,
     .cs-allstacks .cs-rail,
-    .cs-realyse .cs-rail {
+    .cs-realyse .cs-rail,
+    .cs-redhat .cs-rail {
         display: flex;
         align-items: center;
         gap: 0.75rem;
@@ -774,7 +776,8 @@ html[data-theme="dark"] body.cs-editorial .chart-bar-wrapper {
 
     .cs-vendo .cs-rail ol,
     .cs-allstacks .cs-rail ol,
-    .cs-realyse .cs-rail ol {
+    .cs-realyse .cs-rail ol,
+    .cs-redhat .cs-rail ol {
         flex: 1;
         min-width: 0;
         flex-wrap: nowrap;
@@ -787,19 +790,22 @@ html[data-theme="dark"] body.cs-editorial .chart-bar-wrapper {
 
     .cs-vendo .cs-rail li,
     .cs-allstacks .cs-rail li,
-    .cs-realyse .cs-rail li {
+    .cs-realyse .cs-rail li,
+    .cs-redhat .cs-rail li {
         flex: 0 0 auto;
     }
 
     .cs-vendo .cs-rail li:last-child,
     .cs-allstacks .cs-rail li:last-child,
-    .cs-realyse .cs-rail li:last-child {
+    .cs-realyse .cs-rail li:last-child,
+    .cs-redhat .cs-rail li:last-child {
         margin-right: 2.5rem;
     }
 
     .cs-vendo .cs-rail a,
     .cs-allstacks .cs-rail a,
-    .cs-realyse .cs-rail a {
+    .cs-realyse .cs-rail a,
+    .cs-redhat .cs-rail a {
         display: inline-block;
         padding: 0.4rem 0 11px;
         border-bottom-width: 3px;
@@ -807,7 +813,8 @@ html[data-theme="dark"] body.cs-editorial .chart-bar-wrapper {
 
     .cs-vendo .filters-more,
     .cs-allstacks .filters-more,
-    .cs-realyse .filters-more {
+    .cs-realyse .filters-more,
+    .cs-redhat .filters-more {
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -829,7 +836,8 @@ html[data-theme="dark"] body.cs-editorial .chart-bar-wrapper {
 @media (min-width: 992px) {
     .cs-vendo .filters-more,
     .cs-allstacks .filters-more,
-    .cs-realyse .filters-more {
+    .cs-realyse .filters-more,
+    .cs-redhat .filters-more {
         display: none;
     }
 }
@@ -864,7 +872,9 @@ body.cs-editorial.cs-vendo main,
 body.cs-editorial.cs-allstacks .cs-shell,
 body.cs-editorial.cs-allstacks main,
 body.cs-editorial.cs-realyse .cs-shell,
-body.cs-editorial.cs-realyse main {
+body.cs-editorial.cs-realyse main,
+body.cs-editorial.cs-redhat .cs-shell,
+body.cs-editorial.cs-redhat main {
     min-width: 0;
 }
 
@@ -873,7 +883,9 @@ body.cs-editorial.cs-vendo video,
 body.cs-editorial.cs-allstacks img,
 body.cs-editorial.cs-allstacks video,
 body.cs-editorial.cs-realyse img,
-body.cs-editorial.cs-realyse video {
+body.cs-editorial.cs-realyse video,
+body.cs-editorial.cs-redhat img,
+body.cs-editorial.cs-redhat video {
     max-width: 100%;
     height: auto;
 }
