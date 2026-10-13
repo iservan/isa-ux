@@ -69,24 +69,34 @@ function show_hide_header() {
 /** BACKGROUND IMAGES */
 /** ===================== */
 
-function setupFiltersMore() {
-    var filters = document.getElementById('filters');
-    var more = document.querySelector('.filters-more');
-    if (!filters || !more) return;
+function setupHorizontalMore(scroller, button) {
+    if (!scroller || !button) return;
 
     function update() {
-        var overflows = filters.scrollWidth > filters.clientWidth + 4;
-        var atEnd = filters.scrollLeft + filters.clientWidth >= filters.scrollWidth - 4;
-        more.classList.toggle('is-hidden', !overflows || atEnd);
+        var overflows = scroller.scrollWidth > scroller.clientWidth + 4;
+        var atEnd = scroller.scrollLeft + scroller.clientWidth >= scroller.scrollWidth - 4;
+        button.classList.toggle('is-hidden', !overflows || atEnd);
     }
 
-    more.addEventListener('click', function () {
-        filters.scrollBy({ left: 160, behavior: 'smooth' });
+    button.addEventListener('click', function () {
+        scroller.scrollBy({ left: 160, behavior: 'smooth' });
     });
-    filters.addEventListener('scroll', update, { passive: true });
+    scroller.addEventListener('scroll', update, { passive: true });
     window.addEventListener('resize', update);
     window.addEventListener('load', update);
     update();
+}
+
+function setupFiltersMore() {
+    setupHorizontalMore(document.getElementById('filters'), document.querySelector('#portfolio-filters .filters-more'));
+    var railList = document.querySelector('.cs-rail ol');
+    var railMore = document.querySelector('.rail-more');
+    if (railMore) railMore.classList.remove('is-hidden');
+    if (railList && railMore) {
+        railMore.addEventListener('click', function () {
+            railList.scrollBy({ left: 160, behavior: 'smooth' });
+        });
+    }
 }
 
 function imageBG() {
