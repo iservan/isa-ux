@@ -681,7 +681,7 @@ html[data-theme="dark"] body.cs-editorial .chart-bar-wrapper {
 
     .cs-rail {
         position: sticky;
-        top: 88px;
+        top: 108px;
         z-index: 20;
         background: var(--cs-paper);
         padding: 0.5rem 0;
@@ -768,12 +768,15 @@ html[data-theme="dark"] body.cs-editorial .chart-bar-wrapper {
         display: flex;
         align-items: center;
         gap: 0.75rem;
+        box-sizing: border-box;
+        width: calc(100% + 3rem);
         min-width: 0;
-        margin-left: 0;
-        padding-top: 0.9rem;
-        padding-left: 0.75rem;
-        padding-right: 0;
-        padding-bottom: 0.45rem;
+        margin-left: -1.5rem;
+        margin-right: -1.5rem;
+        padding: 0.85rem 1rem 0.55rem 1.5rem;
+        top: 108px;
+        z-index: 30;
+        background: var(--cs-paper);
     }
 
     .cs-vendo .cs-rail ol,
