@@ -12,6 +12,7 @@ $(document).ready(function() {
     // load functions
     imageBG();
     grid();
+    setupFiltersMore();
 
 });
 
@@ -67,6 +68,26 @@ function show_hide_header() {
 
 /** BACKGROUND IMAGES */
 /** ===================== */
+
+function setupFiltersMore() {
+    var filters = document.getElementById('filters');
+    var more = document.querySelector('.filters-more');
+    if (!filters || !more) return;
+
+    function update() {
+        var overflows = filters.scrollWidth > filters.clientWidth + 4;
+        var atEnd = filters.scrollLeft + filters.clientWidth >= filters.scrollWidth - 4;
+        more.classList.toggle('is-hidden', !overflows || atEnd);
+    }
+
+    more.addEventListener('click', function () {
+        filters.scrollBy({ left: 160, behavior: 'smooth' });
+    });
+    filters.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    window.addEventListener('load', update);
+    update();
+}
 
 function imageBG() {
 
