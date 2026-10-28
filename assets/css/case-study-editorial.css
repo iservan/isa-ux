@@ -1166,6 +1166,314 @@ html[data-theme="dark"] body.cs-editorial .cs-job-dates {
     }
 }
 
+/* Collapsible experience chapters. Company and dates stay visible. */
+#experience .cs-experience-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem 1.5rem;
+}
+
+#experience .cs-experience-toolbar h2,
+#experience .cs-experience-toolbar h3 {
+    margin: 0;
+}
+
+#experience .cs-expand-all {
+    display: none;
+    flex: 0 0 auto;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--cs-accent);
+    font-family: var(--cs-sans);
+    font-size: 0.98rem;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 1.2;
+    text-transform: none;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+html.js #experience .cs-expand-all {
+    display: inline-flex;
+}
+
+#experience .cs-expand-all-label {
+    position: relative;
+}
+
+#experience .cs-expand-all-label::after {
+    content: "";
+    width: 0;
+    height: 1.5px;
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    background: currentColor;
+    transition: width 0.2s ease-in-out;
+}
+
+#experience .cs-expand-all:hover,
+#experience .cs-expand-all:focus-visible {
+    color: var(--cs-accent);
+}
+
+#experience .cs-expand-all:hover .cs-expand-all-label::after,
+#experience .cs-expand-all:focus-visible .cs-expand-all-label::after {
+    width: 100%;
+}
+
+#experience .cs-expand-all:focus {
+    outline: none;
+}
+
+#experience .cs-expand-all:focus-visible {
+    outline: 2px solid var(--cs-accent);
+    outline-offset: 3px;
+}
+
+#experience .cs-expand-all.cs-job-summary-aside {
+    padding-top: 0;
+}
+
+#experience .cs-expand-all .cs-job-toggle-icon {
+    color: var(--cs-accent);
+}
+
+#experience .cs-expand-all[aria-expanded="true"] .cs-job-toggle-icon {
+    transform: rotate(45deg);
+}
+
+html.js #experience .cs-expand-all:hover .cs-job-toggle,
+html.js #experience .cs-expand-all:focus-visible .cs-job-toggle {
+    color: var(--cs-accent);
+}
+
+#experience .cs-job {
+    display: block;
+    padding: 0;
+}
+
+#experience .cs-job:first-of-type {
+    border-top: 1px solid var(--cs-line);
+    margin-top: 1.15rem;
+    padding-top: 0;
+}
+
+#experience .cs-job:last-of-type {
+    border-bottom: 1px solid var(--cs-line);
+}
+
+#experience .cs-job-summary {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.75rem 1.5rem;
+    align-items: start;
+    padding: 1.35rem 0;
+}
+
+#experience .cs-job:first-of-type .cs-job-summary {
+    padding-top: 1.2rem;
+}
+
+#experience .cs-job-summary h3 {
+    margin: 0 0 0.12rem;
+    line-height: 1.25;
+}
+
+#experience .cs-job-summary h3 .cs-inline-link {
+    text-decoration: none;
+    font-weight: 700;
+}
+
+#experience .cs-job-summary h3 .cs-inline-link:hover {
+    text-decoration: none;
+}
+
+#experience .cs-job-role {
+    margin: 0;
+    font-size: 0.98rem;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--cs-ink);
+}
+
+#experience .cs-job-summary-aside {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding-top: 0.35rem;
+}
+
+#experience .cs-job:not(.is-open) .cs-job-summary {
+    align-items: center;
+}
+
+#experience .cs-job:not(.is-open) .cs-job-summary-aside {
+    padding-top: 0;
+}
+
+#experience .cs-job-summary .cs-job-dates {
+    display: block;
+    margin: 0;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #6f6a66;
+    white-space: nowrap;
+}
+
+#experience .cs-job-toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    width: 1.75rem;
+    height: 1.75rem;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--cs-accent);
+    line-height: 1;
+    cursor: pointer;
+    position: relative;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+html.js #experience .cs-job-summary {
+    cursor: pointer;
+}
+
+html.js #experience .cs-job-toggle {
+    display: inline-flex;
+}
+
+#experience .cs-job-toggle:focus {
+    outline: none;
+}
+
+#experience .cs-job-toggle:focus-visible {
+    outline: 2px solid var(--cs-accent);
+    outline-offset: 3px;
+}
+
+#experience .cs-job-toggle-icon {
+    position: relative;
+    width: 0.9rem;
+    height: 0.9rem;
+    transition: transform 0.2s ease;
+}
+
+#experience .cs-job-toggle-icon::before,
+#experience .cs-job-toggle-icon::after {
+    content: "";
+    position: absolute;
+    background: currentColor;
+    border-radius: 1px;
+}
+
+#experience .cs-job-toggle-icon::before {
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 1.5px;
+    transform: translateX(-50%);
+}
+
+#experience .cs-job-toggle-icon::after {
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 1.5px;
+    transform: translateY(-50%);
+}
+
+#experience .cs-job.is-open .cs-job-toggle-icon {
+    transform: rotate(45deg);
+}
+
+html.js #experience .cs-job-summary:hover .cs-job-toggle,
+html.js #experience .cs-job-toggle:hover {
+    color: var(--cs-accent);
+}
+
+#experience .cs-job-panel-inner {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 1.15rem 2rem;
+    align-items: start;
+}
+
+#experience .cs-job-panel-inner::after {
+    content: "";
+    grid-column: 1 / -1;
+    height: 0.85rem;
+}
+
+#experience .cs-job-meta p {
+    margin: 0;
+}
+
+html.js #experience .cs-job-panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.32s ease;
+}
+
+html.js #experience .cs-job.is-open .cs-job-panel {
+    grid-template-rows: 1fr;
+}
+
+html.js #experience .cs-job-panel-inner {
+    overflow: hidden;
+    min-height: 0;
+}
+
+html[data-theme="dark"] #experience .cs-job-summary .cs-job-dates {
+    color: #b4aea8;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html.js #experience .cs-job-panel,
+    #experience .cs-job-toggle-icon {
+        transition: none;
+    }
+}
+
+@media (max-width: 991px) {
+    #experience .cs-job-panel-inner {
+        grid-template-columns: 1fr;
+        gap: 0.85rem;
+    }
+}
+
+@media (max-width: 560px) {
+    #experience .cs-job-summary {
+        gap: 0.65rem 0.85rem;
+    }
+
+    #experience .cs-job-summary h3 {
+        font-size: 1.15rem;
+    }
+
+    #experience .cs-job-summary .cs-job-dates {
+        letter-spacing: 0.04em;
+        font-size: 0.68rem;
+        line-height: 1.35;
+        white-space: normal;
+        text-align: right;
+        max-width: 6.5rem;
+    }
+}
+
 /* Editorial home */
 body.cs-editorial.cs-home {
     --cs-accent: #2d62c6;

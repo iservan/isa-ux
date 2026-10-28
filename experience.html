@@ -4,6 +4,7 @@
 <head>
     <script>
         (function () {
+            document.documentElement.classList.add('js');
             try {
                 if (localStorage.getItem('theme') === 'dark') {
                     document.documentElement.setAttribute('data-theme', 'dark');
@@ -85,7 +86,7 @@
                 <p class="cs-kicker">Resume · Senior Product Designer</p>
                 <h1 class="cs-hook">Isabel Servan</h1>
                 <div class="cs-bio-split">
-                    <p>I've spent the last 11+ years designing products that help people make sense of complicated things, dense datasets, multi-step workflows, high-stakes decisions, across enterprise SaaS, real estate, and healthcare. Over the past three years, my work has centered on AI/LLM-powered products.</p>
+                    <p>I've spent the last 14+ years designing products that help people make sense of complicated things, dense datasets, multi-step workflows, high-stakes decisions, across enterprise SaaS, real estate, and healthcare. Over the past three years, my work has centered on AI/LLM-powered products.</p>
                     <p>I figure out how to turn complex systems into conversational experiences that feel simple to use. I care a lot about the "how" and "why" behind design, which is why I'm a data-driven and UXR passionate. I write frontend code (HTML, CSS, Vue.js, React) so I can work shoulder-to-shoulder with engineering.</p>
                 </div>
                 <p class="cs-note" style="margin-top:0;">For the most current details and a smoother view, please see my latest <a class="cs-inline-link" href="https://iservan.github.io/isa-ux/Isabel-Servan-New-Resume.pdf" target="_blank" rel="noopener">PDF Resume</a></p>
@@ -112,161 +113,247 @@
             </header>
 
             <section class="cs-section" id="experience">
-                <p class="cs-section-label">02</p>
-                <h3>Professional Experience</h3>
+                <div class="cs-experience-toolbar">
+                    <h2>Professional Experience</h2>
+                    <button type="button" class="cs-expand-all cs-job-summary-aside" id="expandAllJobs" aria-expanded="false">
+                        <span class="cs-expand-all-label">Expand all</span>
+                        <span class="cs-job-toggle" aria-hidden="true">
+                            <span class="cs-job-toggle-icon"></span>
+                        </span>
+                    </button>
+                </div>
 
-                <article class="cs-job">
-                    <div class="cs-job-meta">
-                        <span class="cs-job-dates">Jan 2025 – Present</span>
-                        <h3><a class="cs-inline-link" href="https://www.allstacks.com/" target="_blank" rel="noopener">Allstacks</a></h3>
-                        <h4>Senior AI/LLM Product Designer</h4>
-                        <p>Hybrid · Raleigh, NC</p>
-                        <a class="cs-cta" href="case-study-allstacks.html">Case study →</a>
-                    </div>
-                    <div class="cs-prose">
-                        <p>Allstacks is a Series A startup focused on AI workflow tools for product and engineering professionals, providing a context graph layer that helps IT leaders make better decisions.</p>
-                        <div class="cs-highlight">
-                            <p>Conceptualized and launched <a class="cs-inline-link" href="https://www.allstacks.com/product/product-studio" target="_blank" rel="noopener">Product Studio</a>, an AI-driven 0-to-1 conversational workflow that transforms rough ideas into build-ready technical specs, grounded in codebase analysis, customer feedback, and delivery metrics.</p>
+                <article class="cs-job" data-company="Allstacks">
+                    <div class="cs-job-summary">
+                        <div class="cs-job-summary-main">
+                            <h3 id="job-allstacks-title"><a class="cs-inline-link" href="https://www.allstacks.com/" target="_blank" rel="noopener">Allstacks</a></h3>
+                            <p class="cs-job-role">Senior AI/LLM Product Designer</p>
                         </div>
-                        <ul class="cs-bullets">
-                            <li>Led end-to-end product design and UX strategy across two core platforms: an operational, data-heavy engineering-metrics product for CTOs and engineering managers, and <a class="cs-inline-link" href="https://www.allstacks.com/product/product-studio" target="_blank" rel="noopener">Product Studio</a>, a conversational AI workflow tool.</li>
-                            <li>Built and maintained a unified design system using Figma and Vue 3, connecting design tokens, reusable components, and production implementation so brand and engineering stayed aligned.</li>
-                            <li>Drove core design initiatives that directly supported venture funding, accelerated development velocity by 2x, and contributed to company growth and expansion of the engineering team.</li>
-                        </ul>
-                    </div>
-                </article>
-
-                <article class="cs-job">
-                    <div class="cs-job-meta">
-                        <span class="cs-job-dates">Oct 2023 – Oct 2025</span>
-                        <h3><a class="cs-inline-link" href="https://www.realyse.com/" target="_blank" rel="noopener">REalyse</a></h3>
-                        <h4>Senior Product Designer</h4>
-                        <p>Remote · Raleigh, NC</p>
-                        <a class="cs-cta" href="case-study-realyse.html">Case study →</a>
-                    </div>
-                    <div class="cs-prose">
-                        <div class="cs-highlight">
-                            <p>Designed and launched <a class="cs-inline-link" href="https://pulse.realyse.com/" target="_blank" rel="noopener">REalyse Pulse</a>, an AI valuation and market intelligence platform for institutional real estate investors. After a 5-month 0→1 launch, Pulse reached 73% user adoption in the first quarter and increased property report requests by 43.7%.</p>
+                        <div class="cs-job-summary-aside">
+                            <span class="cs-job-dates">Jan 2025 – Present</span>
+                            <button type="button" class="cs-job-toggle" aria-expanded="false" aria-controls="job-allstacks">
+                                <span class="cs-job-toggle-icon" aria-hidden="true"></span>
+                                <span class="sr-only cs-job-toggle-label">Show details for Allstacks</span>
+                            </button>
                         </div>
-                        <ul class="cs-bullets">
-                            <li>Led product design across two AI-driven data analytics platforms tailored for real estate institutional investors.</li>
-                            <li>Designed and launched REalyse Pulse, an AI valuation engine that increased property report requests by 43.7% and significantly boosted platform retention.</li>
-                            <li>Designed conversational AI virtual assistants and an automated AI renovation cost-estimation and inventory tool.</li>
-                            <li>Embedded end-to-end UX research and heuristic evaluation into the product lifecycle, building an integrated cross-product design system.</li>
-                        </ul>
                     </div>
-                </article>
-
-                <article class="cs-job">
-                    <div class="cs-job-meta">
-                        <span class="cs-job-dates">Sep 2021 – Sep 2023</span>
-                        <h3><a class="cs-inline-link" href="https://www.redhat.com/" target="_blank" rel="noopener">Red Hat</a></h3>
-                        <h4>Systems Design Engineer, UX/UI</h4>
-                        <p>Remote · Raleigh, NC</p>
-                        <a class="cs-cta" href="case-study-redhat.html">Case study →</a>
-                    </div>
-                    <div class="cs-prose">
-                        <p>Systems Design Engineer for Global Learning Services at Red Hat.</p>
-                        <div class="cs-highlight">
-                            <p>Led design for the learning-path tool <a class="cs-inline-link" href="https://skills.ole.redhat.com/en" target="_blank" rel="noopener">Skills Assessment</a>. Training and certification sales rose 15% in the first month. The product now holds more than 10,000 monthly visits.</p>
+                    <div class="cs-job-panel" id="job-allstacks" role="region" aria-labelledby="job-allstacks-title">
+                        <div class="cs-job-panel-inner">
+                            <div class="cs-job-meta">
+                                <p>Hybrid · Raleigh, NC</p>
+                                <a class="cs-cta" href="case-study-allstacks.html">Case study →</a>
+                            </div>
+                            <div class="cs-prose">
+                                <p>Allstacks is a Series A startup focused on AI workflow tools for product and engineering professionals, providing a context graph layer that helps IT leaders make better decisions.</p>
+                                <div class="cs-highlight">
+                                    <p>Conceptualized and launched <a class="cs-inline-link" href="https://www.allstacks.com/product/product-studio" target="_blank" rel="noopener">Product Studio</a>, an AI-driven 0-to-1 conversational workflow that transforms rough ideas into build-ready technical specs, grounded in codebase analysis, customer feedback, and delivery metrics.</p>
+                                </div>
+                                <ul class="cs-bullets">
+                                    <li>Led end-to-end product design and UX strategy across two core platforms: an operational, data-heavy engineering-metrics product for CTOs and engineering managers, and <a class="cs-inline-link" href="https://www.allstacks.com/product/product-studio" target="_blank" rel="noopener">Product Studio</a>, a conversational AI workflow tool.</li>
+                                    <li>Built and maintained a unified design system using Figma and Vue 3, connecting design tokens, reusable components, and production implementation so brand and engineering stayed aligned.</li>
+                                    <li>Drove core design initiatives that directly supported venture funding, accelerated development velocity by 2x, and contributed to company growth and expansion of the engineering team.</li>
+                                </ul>
+                            </div>
                         </div>
-                        <ul class="cs-bullets">
-                            <li>Ran UX research: stakeholder and user interviews, think-aloud sessions, surveys, and A/B testing.</li>
-                            <li>Crafted wireframes, journeys, and flows from research, then socialized them in demos and weekly UX meetings.</li>
-                            <li>Designed UI in Figma to Red Hat’s brand and product style guides.</li>
-                            <li>Coded standalone sites to show interactions in the browser, and shipped features into the React codebase.</li>
-                        </ul>
                     </div>
                 </article>
 
-                <article class="cs-job">
-                    <div class="cs-job-meta">
-                        <span class="cs-job-dates">Nov 2020 – Sep 2021</span>
-                        <h3><a class="cs-inline-link" href="https://smith.ai/" target="_blank" rel="noopener">Smith.ai</a></h3>
-                        <h4>UX/UI designer &amp; developer (Vue.js)</h4>
-                        <p>Los Altos, CA · Remote</p>
-                    </div>
-                    <div class="cs-prose">
-                        <p>Full-time at Silicon Valley startup <a class="cs-inline-link" href="https://smith.ai/" target="_blank" rel="noopener">Smith.ai</a>.</p>
-                        <div class="cs-highlight">
-                            <p>Created tailored chatbot playbooks for law firms. Lawyers reported 57% fewer interruptions and a 63% increase in lead capture and conversion within three weeks.</p>
+                <article class="cs-job" data-company="REalyse">
+                    <div class="cs-job-summary">
+                        <div class="cs-job-summary-main">
+                            <h3 id="job-realyse-title"><a class="cs-inline-link" href="https://www.realyse.com/" target="_blank" rel="noopener">REalyse</a></h3>
+                            <p class="cs-job-role">Senior Product Designer</p>
                         </div>
-                        <ul class="cs-bullets">
-                            <li>User interviews and think-aloud video sessions to find UX optimization areas.</li>
-                            <li>Designed flows and mockups for new features and revamps of existing ones.</li>
-                            <li>Developed mockups into the frontend codebase in Vue.js.</li>
-                        </ul>
+                        <div class="cs-job-summary-aside">
+                            <span class="cs-job-dates">Oct 2023 – Oct 2025</span>
+                            <button type="button" class="cs-job-toggle" aria-expanded="false" aria-controls="job-realyse">
+                                <span class="cs-job-toggle-icon" aria-hidden="true"></span>
+                                <span class="sr-only cs-job-toggle-label">Show details for REalyse</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="cs-job-panel" id="job-realyse" role="region" aria-labelledby="job-realyse-title">
+                        <div class="cs-job-panel-inner">
+                            <div class="cs-job-meta">
+                                <p>Remote · Raleigh, NC</p>
+                                <a class="cs-cta" href="case-study-realyse.html">Case study →</a>
+                            </div>
+                            <div class="cs-prose">
+                                <div class="cs-highlight">
+                                    <p>Designed and launched <a class="cs-inline-link" href="https://pulse.realyse.com/" target="_blank" rel="noopener">REalyse Pulse</a>, an AI valuation and market intelligence platform for institutional real estate investors. After a 5-month 0→1 launch, Pulse reached 73% user adoption in the first quarter and increased property report requests by 43.7%.</p>
+                                </div>
+                                <ul class="cs-bullets">
+                                    <li>Led product design across two AI-driven data analytics platforms tailored for real estate institutional investors.</li>
+                                    <li>Designed and launched REalyse Pulse, an AI valuation engine that increased property report requests by 43.7% and significantly boosted platform retention.</li>
+                                    <li>Designed conversational AI virtual assistants and an automated AI renovation cost-estimation and inventory tool.</li>
+                                    <li>Embedded end-to-end UX research and heuristic evaluation into the product lifecycle, building an integrated cross-product design system.</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </article>
 
-                <article class="cs-job">
-                    <div class="cs-job-meta">
-                        <span class="cs-job-dates">Mar 2019 – Nov 2020</span>
-                        <h3><a class="cs-inline-link" href="https://www.cmrad.com/" target="_blank" rel="noopener">CMRAD</a></h3>
-                        <h4>Lead UX designer &amp; UI developer</h4>
-                        <p>Remote · Stockholm, Sweden</p>
+                <article class="cs-job" data-company="Red Hat">
+                    <div class="cs-job-summary">
+                        <div class="cs-job-summary-main">
+                            <h3 id="job-redhat-title"><a class="cs-inline-link" href="https://www.redhat.com/" target="_blank" rel="noopener">Red Hat</a></h3>
+                            <p class="cs-job-role">Systems Design Engineer, UX/UI</p>
+                        </div>
+                        <div class="cs-job-summary-aside">
+                            <span class="cs-job-dates">Sep 2021 – Sep 2023</span>
+                            <button type="button" class="cs-job-toggle" aria-expanded="false" aria-controls="job-redhat">
+                                <span class="cs-job-toggle-icon" aria-hidden="true"></span>
+                                <span class="sr-only cs-job-toggle-label">Show details for Red Hat</span>
+                            </button>
+                        </div>
                     </div>
-                    <div class="cs-prose">
-                        <p>Contributed to <a class="cs-inline-link" href="https://www.cmrad.com/" target="_blank" rel="noopener">Collective Minds Radiology</a>, an online workspace for radiologists to share challenging cases and improve diagnosis through collaboration.</p>
-                        <ul class="cs-bullets">
-                            <li>Research: interviews, personas, journeys, A/B testing, and think-aloud sessions ahead of new features.</li>
-                            <li>Developed new features in Vue.js, including components and views.</li>
-                        </ul>
-                    </div>
-                </article>
-
-                <article class="cs-job">
-                    <div class="cs-job-meta">
-                        <span class="cs-job-dates">Feb 2015 – Mar 2019</span>
-                        <h3><a class="cs-inline-link" href="https://vendoservices.com/" target="_blank" rel="noopener">Vendo Services</a></h3>
-                        <h4>Lead Product Designer</h4>
-                        <p>Remote · Barcelona, Spain</p>
-                    </div>
-                    <div class="cs-prose">
-                        <p>Owned Vendo product endpoints: UX audit and research, redesign, A/B testing, RWD, and full development of the corporate site, <a class="cs-inline-link" href="https://secure.vend-o.com/customers/profile/login/" target="_blank" rel="noopener">customer portal</a>, and <a class="cs-inline-link" href="https://start.vendoservices.com/" target="_blank" rel="noopener">onboarding</a>.</p>
-                        <ul class="cs-bullets">
-                            <li>Designed, built, and maintained responsive standalone sites across VPC, corporate, and meetup properties.</li>
-                            <li>Worked daily with data science on AI-application UIs and <a class="cs-inline-link" href="https://vendoservices.com/reporting/" target="_blank" rel="noopener">custom reports</a> in Python and R. <a class="cs-inline-link" href="vendo.html">Risk reporting case</a>.</li>
-                            <li>Designed highly optimized payment forms and supported marketing on technical requirements.</li>
-                        </ul>
-                    </div>
-                </article>
-
-                <article class="cs-job">
-                    <div class="cs-job-meta">
-                        <span class="cs-job-dates">2013 – 2015</span>
-                        <h3>Freelance</h3>
-                        <h4>WordPress developer &amp; UI/UX designer</h4>
-                        <p>Remote</p>
-                    </div>
-                    <div class="cs-prose">
-                        <ul class="cs-bullets">
-                            <li>WordPress themes and full site builds: <a class="cs-inline-link" href="https://www.endoca.com/" target="_blank" rel="noopener">Endoca</a>, <a class="cs-inline-link" href="https://www.tuhogarfueradecasa.com/" target="_blank" rel="noopener">Ovejas negras</a>, <a class="cs-inline-link" href="https://ovejasnegrascompany.com/" target="_blank" rel="noopener">On company</a>, and others.</li>
-                            <li>Corporate graphic design for print: menus, flyers, posters, merchandising.</li>
-                        </ul>
+                    <div class="cs-job-panel" id="job-redhat" role="region" aria-labelledby="job-redhat-title">
+                        <div class="cs-job-panel-inner">
+                            <div class="cs-job-meta">
+                                <p>Remote · Raleigh, NC</p>
+                                <a class="cs-cta" href="case-study-redhat.html">Case study →</a>
+                            </div>
+                            <div class="cs-prose">
+                                <p>Systems Design Engineer for Global Learning Services at Red Hat.</p>
+                                <div class="cs-highlight">
+                                    <p>Led design for the learning-path tool <a class="cs-inline-link" href="https://skills.ole.redhat.com/en" target="_blank" rel="noopener">Skills Assessment</a>. Training and certification sales rose 15% in the first month. The product now holds more than 10,000 monthly visits.</p>
+                                </div>
+                                <ul class="cs-bullets">
+                                    <li>Ran UX research: stakeholder and user interviews, think-aloud sessions, surveys, and A/B testing.</li>
+                                    <li>Crafted wireframes, journeys, and flows from research, then socialized them in demos and weekly UX meetings.</li>
+                                    <li>Designed UI in Figma to Red Hat’s brand and product style guides.</li>
+                                    <li>Coded standalone sites to show interactions in the browser, and shipped features into the React codebase.</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </article>
 
-                <article class="cs-job">
-                    <div class="cs-job-meta">
-                        <span class="cs-job-dates">Mar 2008 – Nov 2013</span>
-                        <h3>Yaco</h3>
-                        <h4>Lead designer, interface developer</h4>
-                        <p>Sevilla, Spain</p>
+                <article class="cs-job" data-company="CMRAD">
+                    <div class="cs-job-summary">
+                        <div class="cs-job-summary-main">
+                            <h3 id="job-cmrad-title"><a class="cs-inline-link" href="https://www.cmrad.com/" target="_blank" rel="noopener">CMRAD</a></h3>
+                            <p class="cs-job-role">Founding Lead UX Designer &amp; UI Engineer</p>
+                        </div>
+                        <div class="cs-job-summary-aside">
+                            <span class="cs-job-dates">Apr 2019 – Sep 2021</span>
+                            <button type="button" class="cs-job-toggle" aria-expanded="false" aria-controls="job-cmrad">
+                                <span class="cs-job-toggle-icon" aria-hidden="true"></span>
+                                <span class="sr-only cs-job-toggle-label">Show details for CMRAD</span>
+                            </button>
+                        </div>
                     </div>
-                    <div class="cs-prose">
-                        <ul class="cs-bullets">
-                            <li>UI/UX and visual design for digital and advertising material.</li>
-                            <li>Frontend for Python/Django projects: custom themes and interfaces.</li>
-                            <li>Brand and online presence for clients including <a class="cs-inline-link" href="http://www.andalucia.org/" target="_blank" rel="noopener">Andalusia Tourism</a>, <a class="cs-inline-link" href="http://www.uca.es/" target="_blank" rel="noopener">University of Cádiz</a>, <a class="cs-inline-link" href="http://www.visitelche.com/" target="_blank" rel="noopener">Elche Tourism</a>, and the <a class="cs-inline-link" href="http://www.alhambra-patronato.es/ria/" target="_blank" rel="noopener">Alhambra Archive</a>.</li>
-                        </ul>
+                    <div class="cs-job-panel" id="job-cmrad" role="region" aria-labelledby="job-cmrad-title">
+                        <div class="cs-job-panel-inner">
+                            <div class="cs-job-meta">
+                                <p>Collective Minds Radiology · Full-time · 2 yrs 6 mos</p>
+                                <p>Stockholm, Stockholm County, Sweden</p>
+                            </div>
+                            <div class="cs-prose">
+                                <p>Contributed to <a class="cs-inline-link" href="https://www.cmrad.com/" target="_blank" rel="noopener">Collective Minds Radiology</a>, an online workspace for radiologists to share challenging cases and improve diagnosis through collaboration.</p>
+                                <ul class="cs-bullets">
+                                    <li>Research: interviews, personas, journeys, A/B testing, and think-aloud sessions ahead of new features.</li>
+                                    <li>Developed new features in Vue.js, including components and views.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="cs-job" data-company="Vendo Services">
+                    <div class="cs-job-summary">
+                        <div class="cs-job-summary-main">
+                            <h3 id="job-vendo-title"><a class="cs-inline-link" href="https://vendoservices.com/" target="_blank" rel="noopener">Vendo Services</a></h3>
+                            <p class="cs-job-role">Lead User Experience Designer and Engineer</p>
+                        </div>
+                        <div class="cs-job-summary-aside">
+                            <span class="cs-job-dates">Feb 2015 – Apr 2019</span>
+                            <button type="button" class="cs-job-toggle" aria-expanded="false" aria-controls="job-vendo">
+                                <span class="cs-job-toggle-icon" aria-hidden="true"></span>
+                                <span class="sr-only cs-job-toggle-label">Show details for Vendo Services</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="cs-job-panel" id="job-vendo" role="region" aria-labelledby="job-vendo-title">
+                        <div class="cs-job-panel-inner">
+                            <div class="cs-job-meta">
+                                <p>Vendo · Full-time · 4 yrs 3 mos</p>
+                                <p>Greater Barcelona Metropolitan Area · Remote</p>
+                            </div>
+                            <div class="cs-prose">
+                                <p>Owned Vendo product endpoints: UX audit and research, redesign, A/B testing, RWD, and full development of the corporate site, <a class="cs-inline-link" href="https://secure.vend-o.com/customers/profile/login/" target="_blank" rel="noopener">customer portal</a>, and <a class="cs-inline-link" href="https://start.vendoservices.com/" target="_blank" rel="noopener">onboarding</a>.</p>
+                                <ul class="cs-bullets">
+                                    <li>Designed, built, and maintained responsive standalone sites across VPC, corporate, and meetup properties.</li>
+                                    <li>Worked daily with data science on AI-application UIs and <a class="cs-inline-link" href="https://vendoservices.com/reporting/" target="_blank" rel="noopener">custom reports</a> in Python and R. <a class="cs-inline-link" href="vendo.html">Risk reporting case</a>.</li>
+                                    <li>Designed highly optimized payment forms and supported marketing on technical requirements.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="cs-job" data-company="Freelance">
+                    <div class="cs-job-summary">
+                        <div class="cs-job-summary-main">
+                            <h3 id="job-freelance-title">Freelance</h3>
+                            <p class="cs-job-role">WordPress developer &amp; UI/UX designer</p>
+                        </div>
+                        <div class="cs-job-summary-aside">
+                            <span class="cs-job-dates">Feb 2014 – Feb 2015</span>
+                            <button type="button" class="cs-job-toggle" aria-expanded="false" aria-controls="job-freelance">
+                                <span class="cs-job-toggle-icon" aria-hidden="true"></span>
+                                <span class="sr-only cs-job-toggle-label">Show details for Freelance</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="cs-job-panel" id="job-freelance" role="region" aria-labelledby="job-freelance-title">
+                        <div class="cs-job-panel-inner">
+                            <div class="cs-job-meta">
+                                <p>Remote</p>
+                            </div>
+                            <div class="cs-prose">
+                                <ul class="cs-bullets">
+                                    <li>WordPress themes and full site builds: <a class="cs-inline-link" href="https://www.endoca.com/" target="_blank" rel="noopener">Endoca</a>, <a class="cs-inline-link" href="https://www.tuhogarfueradecasa.com/" target="_blank" rel="noopener">Ovejas negras</a>, <a class="cs-inline-link" href="https://ovejasnegrascompany.com/" target="_blank" rel="noopener">On company</a>, and others.</li>
+                                    <li>Corporate graphic design for print: menus, flyers, posters, merchandising.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="cs-job" data-company="Yaco">
+                    <div class="cs-job-summary">
+                        <div class="cs-job-summary-main">
+                            <h3 id="job-yaco-title"><a class="cs-inline-link" href="https://www.linkedin.com/company/yaco-sistemas/home/" target="_blank" rel="noopener">Yaco</a></h3>
+                            <p class="cs-job-role">Lead designer, interface developer</p>
+                        </div>
+                        <div class="cs-job-summary-aside">
+                            <span class="cs-job-dates">Mar 2008 – Feb 2014</span>
+                            <button type="button" class="cs-job-toggle" aria-expanded="false" aria-controls="job-yaco">
+                                <span class="cs-job-toggle-icon" aria-hidden="true"></span>
+                                <span class="sr-only cs-job-toggle-label">Show details for Yaco</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="cs-job-panel" id="job-yaco" role="region" aria-labelledby="job-yaco-title">
+                        <div class="cs-job-panel-inner">
+                            <div class="cs-job-meta">
+                                <p>Sevilla, Spain</p>
+                            </div>
+                            <div class="cs-prose">
+                                <ul class="cs-bullets">
+                                    <li>UI/UX and visual design for digital and advertising material.</li>
+                                    <li>Frontend for Python/Django projects: custom themes and interfaces.</li>
+                                    <li>Brand and online presence for clients including <a class="cs-inline-link" href="http://www.andalucia.org/" target="_blank" rel="noopener">Andalusia Tourism</a>, <a class="cs-inline-link" href="http://www.uca.es/" target="_blank" rel="noopener">University of Cádiz</a>, <a class="cs-inline-link" href="http://www.visitelche.com/" target="_blank" rel="noopener">Elche Tourism</a>, and the <a class="cs-inline-link" href="http://www.alhambra-patronato.es/ria/" target="_blank" rel="noopener">Alhambra Archive</a>.</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </article>
             </section>
 
             <section class="cs-section" id="education">
-                <p class="cs-section-label">03</p>
-                <h3>Education</h3>
+                <h2>Education</h2>
 
                 <article class="cs-job">
                     <div class="cs-job-meta">
@@ -338,6 +425,61 @@
             }
             window.addEventListener('scroll', setActive, { passive: true });
             setActive();
+        })();
+    </script>
+    <script>
+        (function () {
+            var section = document.getElementById('experience');
+            if (!section) return;
+
+            var jobs = section.querySelectorAll('.cs-job');
+            var expandAll = document.getElementById('expandAllJobs');
+
+            function setOpen(job, open) {
+                var button = job.querySelector('.cs-job-toggle');
+                var panel = job.querySelector('.cs-job-panel');
+                var label = job.querySelector('.cs-job-toggle-label');
+                var company = job.getAttribute('data-company') || 'this role';
+                job.classList.toggle('is-open', open);
+                if (button) button.setAttribute('aria-expanded', open ? 'true' : 'false');
+                if (label) label.textContent = (open ? 'Hide' : 'Show') + ' details for ' + company;
+                if (panel) {
+                    panel.setAttribute('aria-hidden', open ? 'false' : 'true');
+                    if (open) panel.removeAttribute('inert');
+                    else panel.setAttribute('inert', '');
+                }
+            }
+
+            function syncExpandAll() {
+                if (!expandAll) return;
+                var open = Array.prototype.every.call(jobs, function (job) {
+                    return job.classList.contains('is-open');
+                });
+                expandAll.setAttribute('aria-expanded', open ? 'true' : 'false');
+                var expandLabel = expandAll.querySelector('.cs-expand-all-label');
+                if (expandLabel) expandLabel.textContent = open ? 'Collapse all' : 'Expand all';
+            }
+
+            jobs.forEach(function (job) {
+                var summary = job.querySelector('.cs-job-summary');
+                setOpen(job, job.classList.contains('is-open'));
+                if (!summary) return;
+                summary.addEventListener('click', function (event) {
+                    if (event.target.closest('a')) return;
+                    setOpen(job, !job.classList.contains('is-open'));
+                    syncExpandAll();
+                });
+            });
+
+            if (expandAll) {
+                expandAll.addEventListener('click', function () {
+                    var open = expandAll.getAttribute('aria-expanded') !== 'true';
+                    jobs.forEach(function (job) { setOpen(job, open); });
+                    syncExpandAll();
+                });
+            }
+
+            syncExpandAll();
         })();
     </script>
 </body>
