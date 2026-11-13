@@ -138,7 +138,7 @@
                 <p class="cs-section-label">03 · The problem</p>
                 <h2>41% of features in the high-tier cloud subscription were never set up.</h2>
                 <div class="cs-prose">
-                    <p>Red Hat enterprise clients were buying cloud solutions they could not fully use. Teams had no shared view of technical skill, So training was based on guesses, lost value was seen as “just the way it is”.</p>
+                    <p>Red Hat enterprise clients were buying cloud solutions they could not fully use. Teams had no shared view of technical skill, and unused product was treated as normal.</p>
                 </div>
                 <div class="cs-stat-row">
                     <div class="cs-stat">
@@ -151,15 +151,80 @@
                     </div>
                 </div>
                 <div class="cs-prose">
-                    <p>Curriculum had already documented business requirements in a long spreadsheet. Those requirements described what the business wanted to ship, not what users needed to.</p>
-                    <p>I led the UX research, collaborating cross-functionally with Sales, Marketing, and Curriculum teams. The real challenge wasn't just balancing different team priorities: Sales wanted conversion, Marketing wanted engagement, Curriculum wanted the content to be centered. The bigger issue was that none of those requirements actually reflected what users needed.</p>
-                    <p>The decision I drove was to apply mix qualitative research methods like stakeholders workshops, user surveys, and users interviews to make sure what we were building actually matched what users needed, not just what was on the requirements spreadsheet. That work surfaced a few key findings:</p>
+                    <p>These numbers came from observing at how enterprise clients had set up their high-tier subscriptions and checking it against survey results. The 32% is the gain in usage that training could still unlock. Together, those two figures defined the problem. My job after that was to make it clear to enterprise tech managers (B2B users) that training could help them get more value from their cloud solutions and make it more engaging for learners (B2C users).</p>
+                    <p>Curriculum team had already documented business requirements in a long spreadsheet. Those requirements described what the business wanted to ship, not what users needed to.</p>
+                    
+            </section>
+
+            <!-- 4. Research & discovery -->
+            <section class="cs-section" id="research">
+                <p class="cs-section-label">04 · Research &amp; discovery</p>
+                <h2>I talked to the people involved in the process, then treated business requirements as hypotheses.</h2>
+                <div class="cs-who">
+                    <div><strong>2</strong> surveys with B2B and B2C learners</div>
+                    <div><strong>4</strong> Design Thinking workshops with stakeholders</div>
+                    <div><strong>Weekly</strong> engineering follow-ups</div>
+                    <div><strong>35</strong> stakeholders across Sales, Marketing, Curriculum, Engineering</div>
+                </div>
+                <div class="cs-prose">
+                    <p>My first job was to validate the business requirements spreadsheet against user needs. I led the UX research, collaborating cross-functionally with Sales, Marketing, and Curriculum teams. The real challenge wasn't just balancing what different teams wanted. The product served several user journeys, and we had to build around what each of them actually needed.</p>                    
+                    <p>The decision I drove was to apply mix qualitative research methods like stakeholders workshops, user surveys, and users interviews with end users and internal staff. I synthesized themes into a shared document so teams without a UX background could see the same evidence. That work surfaced a few key findings:</p>
                     <ul class="cs-facts">
-                        <li>End customers needed the ability to build custom assessments rather than one-size-fits-all templates. </li>
-                        <li>Managers could not see team skill at a glance, so budget went to unused services instead of targeted learning.</li>
-                        <li>Learners could not filter assessments by role, product, or interest, so they abandoned the path.</li>
-                        <li>Red Hat technical team need it better developer tools, like a YAML editor and React Flow integration to speed up how they built assessments. They also needed the ability to reuse questions across different assessments, instead of duplicating them everywhere, which would cut down on maintenance work.</li>
+                        <li><strong>Enterprise tech managers</strong> needed a centralized view, so they could spot skill gaps across a large team, track progress over time and see the value of training investments.</li>
+                        <li><strong>Technical learners</strong> needed the ability to filter assessments by role, product, or interest, so they could quickly find the most relevant training.</li>
+                        <li><strong>Red Hat technical</strong> team need it better developer tools, like a YAML editor and React Flow integration to speed up how they built assessments. They also needed the ability to reuse questions across custom assessments, instead of duplicating them everywhere, which would cut down on maintenance work.</li>
                     </ul>
+                
+
+                </div>
+
+                <div class="cs-stack">
+                    <figure class="cs-figure">
+                        <a class="js-lightbox" href="assets/images/portfolio/redhat/SA-requirements.png" data-lightbox-gallery="research">
+                            <img src="assets/images/portfolio/redhat/SA-requirements.png" alt="Business requirements documentation">
+                        </a>
+                        <figcaption>Starting point: business requirements before they were tested against users.</figcaption>
+                    </figure>
+                    <div class="cs-pair">
+                        <figure>
+                            <a class="js-lightbox" href="assets/images/portfolio/redhat/SA-survey.png" data-lightbox-gallery="research">
+                                <img src="assets/images/portfolio/redhat/SA-survey.png" alt="Survey synthesis">
+                            </a>
+                            <figcaption>Survey synthesis from B2B and B2C learners.</figcaption>
+                        </figure>
+                        <figure>
+                            <a class="js-lightbox" href="assets/images/portfolio/redhat/SA-interviews.png" data-lightbox-gallery="research">
+                                <img src="assets/images/portfolio/redhat/SA-interviews.png" alt="Interview notes">
+                            </a>
+                            <figcaption>Interview notes with learners and internal teams.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+                <div class="cs-learn">
+                    <article>
+                        <h3>01 · Surveys &amp; account data</h3>
+                        <p><strong>What I wanted to know:</strong> how much of the subscription went unused, and how people prefer to learn.</p>
+                        <p><strong>How I checked:</strong> I reviewed how enterprise clients had set up their accounts, then ran two surveys with 128 B2B and B2C learners.</p>
+                        <p><strong>What I found:</strong> 41% of top-tier features were never switched on. People learn by watching videos and reading docs, and barely touch in-app help. So the product points people to training they already trust, instead of burying a help center inside it.</p>
+                    </article>
+                    <article>
+                        <h3>02 · Interviews</h3>
+                        <p><strong>What I wanted to know:</strong> where the product would actually fail in someone’s real week.</p>
+                        <p><strong>How I checked:</strong> I interviewed learners and internal staff.</p>
+                        <p><strong>What I found:</strong> managers wanted their team’s skills in one view, developers wanted assessments matched to their real work, and Sales wanted that same report to bring to customer meetings. One generic catalog could not do any of it. Walking the teams through this evidence is what finally changed the spreadsheet.</p>
+                    </article>
+                    <article>
+                        <h3>03 · Workshops</h3>
+                        <p><strong>What I wanted to know:</strong> could this just be a public catalog for individual learners?</p>
+                        <p><strong>How I checked:</strong> four workshops with Sales, Marketing, Curriculum, and Engineering.</p>
+                        <p><strong>What I found:</strong> no. Sales had nothing to bring to a meeting, and Curriculum had no way to write or reuse questions. So we designed for three audiences, not one. That meant more work, but the right product.</p>
+                    </article>
+                    <article>
+                        <h3>04 · Focus groups</h3>
+                        <p><strong>What I wanted to know:</strong> which screen would people struggle with most?</p>
+                        <p><strong>How I checked:</strong> two focus groups on the prototype. I asked people to find an assessment for their role and interest, then read a skill-gap report.</p>
+                        <p><strong>What I found:</strong> the report was easy. The filter was not, people could not match their interests to an assessment. So we rebuilt it with simpler, standard controls and tested it again before engineering locked it in.</p>
+                    </article>
                 </div>
                 <div class="cs-charts">
                     <h3>How people actually learned Red Hat skills</h3>
@@ -207,63 +272,10 @@
                         </div>
                     </div>
                 </div>
-            </section>
+                <p>The three user personas: enterprise technical managers, developers, and internal Red Hat users, started as assumptions. We used them to map out the journeys, then tested whether people's actual behavior backed them up.</p>
 
-            <!-- 4. Research & discovery -->
-            <section class="cs-section" id="research">
-                <p class="cs-section-label">04 · Research &amp; discovery</p>
-                <h2>I talked to the people closest to the data, then treated personas as hypotheses.</h2>
-                <div class="cs-who">
-                    <div><strong>2</strong> surveys with B2B and B2C learners</div>
-                    <div><strong>4</strong> Design Thinking workshops with stakeholders</div>
-                    <div><strong>Weekly</strong> engineering follow-ups</div>
-                    <div><strong>35</strong> stakeholders across Sales, Marketing, Curriculum, Engineering</div>
-                </div>
-                <div class="cs-prose">
-                    <p>My first job was to validate the business requirements spreadsheet against user needs. Due to the multi-role nature of the product, I ran workshops with Marketing, Sales, and Engineering, interviewed end users and internal staff, and synthesized themes into a shared document so teams without a UX background could see the same evidence.</p>
-                    <p>The three user personas: enterprise technical managers, developers, and internal Red Hat users, started as assumptions. We used them to map out the journeys, then tested whether people's actual behavior backed them up.</p>
-                </div>
-                <div class="cs-learn">
-                    <article>
-                        <h3>01 · Sales</h3>
-                        <p>Needed a report that named client skill gaps and doubled as a sales deck. Without that artifact, conversations stayed generic.</p>
-                    </article>
-                    <article>
-                        <h3>02 · Learners</h3>
-                        <p>Needed dynamic filtering by role, interest, and product. A static catalog made assessment selection slow and irrelevant.</p>
-                    </article>
-                    <article>
-                        <h3>03 · Curriculum &amp; engineering</h3>
-                        <p>Needed a YAML editor, React Flow, and question reuse. Duplicate items were slowing authoring and breaking consistency.</p>
-                    </article>
-                    <article>
-                        <h3>04 · Alignment</h3>
-                        <p>Stakeholders could not interpret research on their own. Walking them through methods was how we got permission to change the requirements.</p>
-                    </article>
-                </div>
-                <div class="cs-stack">
-                    <figure class="cs-figure">
-                        <a class="js-lightbox" href="assets/images/portfolio/redhat/SA-requirements.png" data-lightbox-gallery="research">
-                            <img src="assets/images/portfolio/redhat/SA-requirements.png" alt="Business requirements documentation">
-                        </a>
-                        <figcaption>Starting point: business requirements before they were tested against users.</figcaption>
-                    </figure>
-                    <div class="cs-pair">
-                        <figure>
-                            <a class="js-lightbox" href="assets/images/portfolio/redhat/SA-survey.png" data-lightbox-gallery="research">
-                                <img src="assets/images/portfolio/redhat/SA-survey.png" alt="Survey synthesis">
-                            </a>
-                            <figcaption>Survey synthesis from B2B and B2C learners.</figcaption>
-                        </figure>
-                        <figure>
-                            <a class="js-lightbox" href="assets/images/portfolio/redhat/SA-interviews.png" data-lightbox-gallery="research">
-                                <img src="assets/images/portfolio/redhat/SA-interviews.png" alt="Interview notes">
-                            </a>
-                            <figcaption>Interview notes with learners and internal teams.</figcaption>
-                        </figure>
-                    </div>
-                </div>
                 <div class="cs-personas">
+
                     <article>
                         <h3>Hypothesis · Managers</h3>
                         <p>Need full visibility of team skills to spend budget on learning instead of unused services.</p>
