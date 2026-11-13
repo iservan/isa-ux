@@ -22,8 +22,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="@isaiso" />
-    <meta name="description" content="Red Hat Skills Assessment, product design case study by Isabel Servan">
-    <title>Isabel Servan :: Red Hat Skills Assessment</title>
+    <meta name="description" content="Red Hat Skills Assessment, product design case study by Isabel Servan (research structure)">
+    <title>Isabel Servan :: Red Hat Skills Assessment (research)</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22>
         <text y=%22.9em%22 font-size=%2290%22>
           👩🏻‍💻
@@ -37,6 +37,162 @@
     <link rel="stylesheet" href="assets/css/main.css">
     <link href="assets/css/custom.css" rel="stylesheet">
     <link href="assets/css/case-study-editorial.css" rel="stylesheet">
+    <style>
+        /* Research: clickable submenu + progressive disclosure (v3) */
+        .rs-submenu { display: none; }
+        .rs-research.rs-js .rs-submenu {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.5rem 3rem;
+            margin: 1.75rem 0 2rem;
+            padding: 0;
+            text-transform: uppercase;
+        }
+        .rs-research.rs-js .rs-submenu--top {
+            position: sticky;
+            top: 72px;
+            z-index: 5;
+            padding: 0.85rem 0;
+            background: var(--cs-paper);
+        }
+        .rs-tab {
+            appearance: none;
+            position: relative;
+            border: 0;
+            background: transparent;
+            color: var(--cs-ink);
+            font-family: var(--cs-sans);
+            font-size: 19px;
+            font-weight: 600;
+            letter-spacing: 0;
+            line-height: 1.2;
+            text-transform: uppercase;
+            padding: 0 0 8px;
+            border-radius: 0;
+            cursor: pointer;
+            transition: color 0.2s ease-in-out;
+        }
+        .rs-tab::after {
+            content: "";
+            width: 0;
+            height: 1.5px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            background: var(--cs-accent);
+            transition: width 0.2s ease-in-out;
+        }
+        .rs-tab:hover,
+        .rs-tab[aria-selected="true"] { color: var(--cs-accent); background: transparent; }
+        .rs-tab:hover::after,
+        .rs-tab[aria-selected="true"]::after { width: 100%; }
+        .rs-tab:focus { outline: none; }
+        .rs-tab:focus-visible { outline: 2px solid var(--cs-accent); outline-offset: 3px; }
+        .rs-submenu--pills .rs-tab:focus-visible { outline: 2px solid var(--cs-accent); outline-offset: 2px; }
+
+        .rs-research.rs-js .rs-submenu-stack {
+            position: sticky;
+            top: 72px;
+            z-index: 5;
+            margin: 1.75rem 0 2.25rem;
+            padding: 0.55rem;
+            background: var(--cs-paper-2);
+            border-radius: 999px;
+        }
+        .rs-research.rs-js .rs-submenu-stack .rs-submenu { margin: 0; }
+        .rs-research.rs-js .rs-submenu--pills {
+            gap: 0.55rem 0.85rem;
+            text-transform: none;
+        }
+        .rs-submenu--pills .rs-sep { color: var(--cs-muted);  opacity: 0.55; }
+        .rs-submenu--pills .rs-tab {
+            border: 1px solid transparent;
+            background: transparent;
+            color: var(--cs-muted);
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 0.01em;
+            text-transform: none;
+            padding: 0.45rem 0.95rem;
+            border-radius: 999px;
+            transition: background 0.35s ease, color 0.35s ease, box-shadow 0.35s ease;
+        }
+        .rs-submenu--pills .rs-tab::after { content: none; }
+        .rs-submenu--pills .rs-tab:hover { color: var(--cs-ink); background: var(--cs-paper); }
+        .rs-submenu--pills .rs-tab[aria-selected="true"] {
+            background: var(--cs-dark);
+            border-color: var(--cs-dark);
+            color: #fff;
+            box-shadow: 0 6px 16px -8px rgba(22, 18, 16, 0.55);
+        }
+        html[data-theme="dark"] .rs-submenu--pills .rs-tab:hover { background: var(--cs-paper); }
+        html[data-theme="dark"] .rs-submenu--pills .rs-tab[aria-selected="true"] {
+            background: var(--cs-dark);
+            color: #fff;
+        }
+
+        /* Inactive panels stay hidden. Decisions is open on load. */
+        .rs-research .rs-panel { display: none; }
+        .rs-research .rs-panel.is-active { display: block; animation: rsFade 0.25s ease; }
+        @keyframes rsFade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+        .rs-panel-intro { color: var(--cs-muted); font-size: 1.05rem; line-height: 1.6; max-width: 62ch; margin: 0 0 1.5rem; }
+
+        .rs-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .rs-card { border: 1px solid var(--cs-line); border-radius: 12px; padding: 1.25rem 1.35rem; background: #fff; }
+        html[data-theme="dark"] .rs-card { background: var(--cs-paper-2); }
+        .rs-card--wide { grid-column: 1 / -1; }
+        .rs-card h4 { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--cs-muted); margin: 0 0 0.6rem; display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
+        .rs-maps { font-size: 0.68rem; letter-spacing: 0.04em; color: var(--cs-accent); border: 1px solid var(--cs-line); border-radius: 999px; padding: 0.1rem 0.5rem; text-transform: none; }
+        .rs-card-lead { font-size: 1.1rem; line-height: 1.45; margin: 0 0 0.4rem; color: var(--cs-ink); }
+        body.cs-editorial p.rs-card-lead {
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            line-height: 1.35;
+            color: var(--cs-muted);
+            margin: 0 0 0.9rem;
+            padding-bottom: 0.7rem;
+            border-bottom: 1px solid var(--cs-line);
+        }
+        .rs-card-sub { color: var(--cs-muted); margin: 0; line-height: 1.5; }
+        .rs-card-sub + .rs-card-sub { margin-top: 0.65rem; }
+
+        .rs-more { margin-top: 0.95rem; border-top: 1px dashed var(--cs-line); padding-top: 0.65rem; }
+        .rs-more > summary { cursor: pointer; list-style: none; font-size: 0.8rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--cs-accent); font-weight: 700; display: inline-flex; align-items: center; gap: 0.45rem; }
+        .rs-more > summary::-webkit-details-marker { display: none; }
+        .rs-more > summary::before { content: "+"; font-size: 1.05rem; line-height: 1; width: 1ch; text-align: center; }
+        .rs-more[open] > summary::before { content: "\2013"; }
+        .rs-more-body { margin-top: 0.75rem; color: var(--cs-muted); line-height: 1.6; }
+        .rs-more-body p { margin: 0 0 0.6rem; }
+        .rs-more-body p:last-child { margin-bottom: 0; }
+
+        .rs-decisions { margin-top: 0.5rem; }
+        .rs-decision { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem 1.5rem; align-items: start; padding: 1rem 0; border-top: 1px solid var(--cs-line); }
+        .rs-decision:first-child { border-top: 0; padding-top: 0; }
+        .rs-decision h5 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--cs-ink); margin: 0 0 0.3rem; }
+        .rs-decision p { margin: 0; line-height: 1.5; }
+        .rs-action { color: var(--cs-accent); }
+        a.rs-action { position: relative; display: inline; color: var(--cs-accent); text-decoration: none; }
+        a.rs-action::after { content: ""; position: absolute; left: 0; bottom: -2px; width: 0; height: 1.5px; background: currentColor; transition: width 0.2s ease-in-out; }
+        a.rs-action:hover, a.rs-action:focus-visible { color: var(--cs-accent); }
+        a.rs-action:hover::after, a.rs-action:focus-visible::after { width: 100%; }
+        .rs-action-ico { font-size: 0.8em; }
+
+        @media (max-width: 768px) {
+            .rs-research.rs-js .rs-submenu-stack { top: 60px; border-radius: 18px; }
+            .rs-cards { grid-template-columns: 1fr; }
+            .rs-decision { grid-template-columns: 1fr; gap: 0.2rem; }
+            .rs-decision .rs-do { margin-top: 0.5rem; }
+        }
+
+        /* Normalize every paragraph to a 17px minimum */
+        body.cs-editorial p { font-size: 17px; }
+        body.cs-editorial p.cs-lede { font-size: 1.2rem; }
+        body.cs-editorial p.cs-caption-bar { font-size: 0.75rem; }
+    </style>
 </head>
 
 <body class="js-main-container cs-editorial cs-redhat">
@@ -75,7 +231,6 @@
         <aside class="cs-rail" aria-label="Case study sections">
             <ol>
                 <li><a href="#hook" class="is-active">01 Outcome</a></li>
-                <li><a href="#context">02 Context</a></li>
                 <li><a href="#problem">03 Problem</a></li>
                 <li><a href="#research">04 Research</a></li>
                 <li><a href="#insight">05 Insight</a></li>
@@ -93,7 +248,7 @@
             <header id="hook">
                 <p class="cs-kicker">Skills Assessment · Enterprise learning platform</p>
                 <h1 class="cs-hook">Learning subscription sales increased by <em>15%</em> in the first month, and the product now holds <em>10,000+ monthly visits</em></h1>
-                <p class="cs-lede">Enterprise clients teams could finally see what they were missing and how to get more value from their cloud solutions, while Red Hat’s sales team could walk into customer meetings with real data and proof instead of just a pitch.</p>
+                <p class="cs-lede">Enterprise client teams could finally see what they were missing and how to get more value from their cloud solutions, while Red Hat’s sales team could walk into customer meetings with real data and proof instead of just a pitch.</p>
                 <div class="cs-hero-visual">
                     <a class="js-lightbox cs-hero-tl" href="assets/images/portfolio/sa-laptop-clear.jpg" data-lightbox-gallery="sa">
                         <img src="assets/images/portfolio/sa-laptop-clear.jpg" alt="Skills Assessment on a laptop">
@@ -153,150 +308,183 @@
                 <div class="cs-prose">
                     <p>These numbers came from observing at how enterprise clients had set up their high-tier subscriptions and checking it against survey results. The 32% is the gain in usage that training could still unlock. Together, those two figures defined the problem. My job after that was to make it clear to enterprise tech managers (B2B users) that training could help them get more value from their cloud solutions and make it more engaging for learners (B2C users).</p>
                     <p>Curriculum team had already documented business requirements in a long spreadsheet. Those requirements described what the business wanted to ship, not what users needed to.</p>
-                    
+                </div>
             </section>
 
             <!-- 4. Research & discovery -->
-            <section class="cs-section" id="research">
+            <section class="cs-section rs-research" id="research">
                 <p class="cs-section-label">04 · Research &amp; discovery</p>
-                <h2>I talked to the people involved in the process, then treated business requirements as hypotheses.</h2>
-                <div class="cs-who">
-                    <div><strong>2</strong> surveys with B2B and B2C learners</div>
-                    <div><strong>4</strong> Design Thinking workshops with stakeholders</div>
-                    <div><strong>Weekly</strong> engineering follow-ups</div>
-                    <div><strong>35</strong> stakeholders across Sales, Marketing, Curriculum, Engineering</div>
-                </div>
+                <h2>I treated the business requirements as assumptions and I talked to the people involved in the process.</h2>
                 <div class="cs-prose">
-                    <p>My first job was to validate the business requirements spreadsheet against user needs. I led the UX research, collaborating cross-functionally with Sales, Marketing, and Curriculum teams. The real challenge wasn't just balancing what different teams wanted. The product served several user journeys, and we had to build around what each of them actually needed.</p>                    
-                    <p>The decision I drove was to apply mix qualitative research methods like stakeholders workshops, user surveys, and users interviews with end users and internal staff. I synthesized themes into a shared document so teams without a UX background could see the same evidence. That work surfaced a few key findings:</p>
-                    <ul class="cs-facts">
-                        <li><strong>Enterprise tech managers</strong> needed a centralized view, so they could spot skill gaps across a large team, track progress over time and see the value of training investments.</li>
-                        <li><strong>Technical learners</strong> needed the ability to filter assessments by role, product, or interest, so they could quickly find the most relevant training.</li>
-                        <li><strong>Red Hat technical</strong> team need it better developer tools, like a YAML editor and React Flow integration to speed up how they built assessments. They also needed the ability to reuse questions across custom assessments, instead of duplicating them everywhere, which would cut down on maintenance work.</li>
-                    </ul>
-                
-
+                    <p>My first job was to validate the business requirements spreadsheet against user needs. I led the UX research, collaborating cross-functionally with Sales, Marketing, and Curriculum teams. The real challenge wasn't just balancing what different teams wanted, it was designing for multiple user journeys, each with different goals and needs, while keeping the overall experience consistent.</p>                    
+                    <p>The decision I drove was to apply mixed qualitative research methods like stakeholders workshops, user surveys, and users interviews with end users and internal staff. I synthesized themes into a shared document so teams without a UX background could see the same evidence. That work surfaced a few key findings:</p>
                 </div>
 
-                <div class="cs-stack">
-                    <figure class="cs-figure">
-                        <a class="js-lightbox" href="assets/images/portfolio/redhat/SA-requirements.png" data-lightbox-gallery="research">
-                            <img src="assets/images/portfolio/redhat/SA-requirements.png" alt="Business requirements documentation">
+                <!-- Clickable submenu = the content scheme -->
+                <div class="rs-submenu-stack">
+                    <div class="rs-submenu rs-submenu--pills" role="tablist" aria-label="Research sections">
+                        <button class="rs-tab" type="button" role="tab" id="rs-tab-methods" aria-controls="rs-panel-methods" aria-selected="false">Methods</button>
+                        <i class="fa fa-arrow-right rs-sep" aria-hidden="true"></i>
+                        <button class="rs-tab" type="button" role="tab" id="rs-tab-evidence" aria-controls="rs-panel-evidence" aria-selected="false">Evidence</button>
+                        <i class="fa fa-arrow-right rs-sep" aria-hidden="true"></i>
+                        <button class="rs-tab" type="button" role="tab" id="rs-tab-decisions" aria-controls="rs-panel-decisions" aria-selected="true">Decisions</button>
+                    </div>
+                </div>
+
+                <!-- 04.2 Methods -->
+                <div class="rs-panel" id="rs-panel-methods" role="tabpanel" aria-labelledby="rs-tab-methods" hidden>
+                    <div class="cs-who">
+                        <div><strong>3</strong> surveys with B2B and B2C learners and internal stakeholdersz</div>
+                        <div><strong>4</strong> Design Thinking workshops with stakeholders</div>
+                        <div><strong>Weekly</strong> engineering follow-ups</div>
+                        <div><strong>35</strong> stakeholders across Sales, Marketing, Curriculum, Engineering</div>
+                    </div>
+                    <div class="rs-cards">
+                        <article class="rs-card">
+                            <p class="rs-card-lead">01 · Surveys &amp; account data</p>
+                            <p class="rs-card-sub"><strong>What we wanted to know:</strong> how much of the subscription went unused, and how people prefer to learn.</p>
+                            <p class="rs-card-sub"><strong>How we checked:</strong> I reviewed how enterprise clients had set up their accounts, then ran two surveys with B2B and B2C learners.</p>
+                            <p class="rs-card-sub"><strong>What we found:</strong> 41% of top-tier features were never switched on. People learn by watching videos and reading docs, and barely touch in-app help. That way, the product connects people with training they already trust.</p>
+                        </article>
+                        <article class="rs-card">
+                            <p class="rs-card-lead">02 · Focus groups</p>
+                            <p class="rs-card-sub"><strong>What I wanted to know:</strong> which screen would people struggle with most?</p>
+                            <p class="rs-card-sub"><strong>How I checked:</strong> two focus groups on the prototype. I asked people to find an assessment for their role and interest, then read a skill-gap report.</p>
+                            <p class="rs-card-sub"><strong>What I found:</strong> the report was easy. The filter was not, people could not match their interests to an assessment. So we rebuilt it with simpler, standard controls and tested it again before engineering locked it in.</p>
+                        </article>
+                        <article class="rs-card rs-card--wide">
+                            <p class="rs-card-lead">03 · Interviews &amp; Workshops</p>
+                            <p class="rs-card-sub"><strong>What I wanted to know:</strong> Who was this product really for, were we designing for one audience, or for several types of users with different goals and needs.</p>
+                            <p class="rs-card-sub"><strong>How I checked:</strong> I interviewed enterprise tech managers (B2B), learners (B2C) and internal staff, then ran four workshops with Sales, Marketing, Curriculum, and Engineering.</p>
+                            <p class="rs-card-sub"><strong>What I found:</strong> the main finding was that we had to treat internal users as their own user journey. Giving those teams the proper internal tools would unlock significant operational cost savings. Managers wanted their team’s skills in one view, Sales needed that report to bring to customer meetings, and Curriculum needed to write and reuse questions, none of which a generic catalog could do. That is what finally changed the spreadsheet: internal users became first-class, not an afterthought.</p>
+                        </article>
+                    </div>
+                    <div class="cs-stack">
+                        <figure class="cs-figure">
+                            <a class="js-lightbox" href="assets/images/portfolio/redhat/SA-requirements.png" data-lightbox-gallery="research">
+                                <img src="assets/images/portfolio/redhat/SA-requirements.png" alt="Business requirements documentation">
+                            </a>
+                            <figcaption>Starting point: business requirements before they were tested against users.</figcaption>
+                        </figure>
+                        <div class="cs-pair">
+                            <figure>
+                                <a class="js-lightbox" href="assets/images/portfolio/redhat/SA-survey.png" data-lightbox-gallery="research">
+                                    <img src="assets/images/portfolio/redhat/SA-survey.png" alt="Survey synthesis">
+                                </a>
+                                <figcaption>Survey synthesis from B2B and B2C learners.</figcaption>
+                            </figure>
+                            <figure>
+                                <a class="js-lightbox" href="assets/images/portfolio/redhat/SA-interviews.png" data-lightbox-gallery="research">
+                                    <img src="assets/images/portfolio/redhat/SA-interviews.png" alt="Interview notes">
+                                </a>
+                                <figcaption>Interview notes with learners and internal teams.</figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 04.3 Evidence -->
+                <div class="rs-panel" id="rs-panel-evidence" role="tabpanel" aria-labelledby="rs-tab-evidence" hidden>
+                    <div class="cs-charts">
+                        <h3>How people actually learned Red Hat skills</h3>
+                        <p class="cs-note" style="margin-top:0;margin-bottom:1.25rem;">Survey of B2B and B2C learners. Takeaway: route people to video and docs, do not build an in-app help center.</p>
+                        <div class="chart-container">
+                            <div class="chart-item">
+                                <div class="chart-bar-wrapper">
+                                    <div class="chart-bar" style="width: 65%;">
+                                        <div class="chart-label">Watch a video</div>
+                                    </div>
+                                    <div class="chart-number">83 / 65%</div>
+                                </div>
+                            </div>
+                            <div class="chart-item">
+                                <div class="chart-bar-wrapper">
+                                    <div class="chart-bar" style="width: 59%;">
+                                        <div class="chart-label">Read Red Hat documentation or guides</div>
+                                    </div>
+                                    <div class="chart-number">76 / 59%</div>
+                                </div>
+                            </div>
+                            <div class="chart-item">
+                                <div class="chart-bar-wrapper">
+                                    <div class="chart-bar" style="width: 44%;">
+                                        <div class="chart-label">Talk to colleagues</div>
+                                    </div>
+                                    <div class="chart-number">56 / 44%</div>
+                                </div>
+                            </div>
+                            <div class="chart-item">
+                                <div class="chart-bar-wrapper">
+                                    <div class="chart-bar" style="width: 32%;">
+                                        <div class="chart-label">Read other websites</div>
+                                    </div>
+                                    <div class="chart-number">41 / 32%</div>
+                                </div>
+                            </div>
+                            <div class="chart-item">
+                                <div class="chart-bar-wrapper">
+                                    <div class="chart-bar" style="width: 19%;">
+                                        <div class="chart-label">In-app support</div>
+                                    </div>
+                                    <div class="chart-number">24 / 19%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3>3 user personas</h3>
+                    <p>The three user personas: enterprise technical managers, developers, and internal Red Hat users, started as assumptions. We used them to map out the journeys, then tested whether people's actual behavior backed them up.</p>
+                    <div class="cs-personas">
+                        <article>
+                            <h3>Hypothesis · Managers</h3>
+                            <p>Need full visibility of team skills to spend budget on learning instead of unused services.</p>
+                        </article>
+                        <article>
+                            <h3>Hypothesis · Developers</h3>
+                            <p>Need assessments that match the work they actually do, not a generic certification path.</p>
+                        </article>
+                        <article>
+                            <h3>Hypothesis · Internal users</h3>
+                            <p>Need a report that helps a technical manager choose a learning subscription over more Red Hat services.</p>
+                        </article>
+                    </div>
+                    <p class="cs-note">These were not finished truths. They were bets we took into flows, then into usability tests.</p>
+                    <figure class="cs-figure" style="margin-top:1.5rem;">
+                        <a class="js-lightbox" href="assets/images/portfolio/user-persona.png" data-lightbox-gallery="research">
+                            <img src="assets/images/portfolio/user-persona.png" alt="User persona artifacts">
                         </a>
-                        <figcaption>Starting point: business requirements before they were tested against users.</figcaption>
+                        <figcaption>Persona artifacts used as shared language, not as a one-and-done deliverable.</figcaption>
                     </figure>
-                    <div class="cs-pair">
-                        <figure>
-                            <a class="js-lightbox" href="assets/images/portfolio/redhat/SA-survey.png" data-lightbox-gallery="research">
-                                <img src="assets/images/portfolio/redhat/SA-survey.png" alt="Survey synthesis">
-                            </a>
-                            <figcaption>Survey synthesis from B2B and B2C learners.</figcaption>
-                        </figure>
-                        <figure>
-                            <a class="js-lightbox" href="assets/images/portfolio/redhat/SA-interviews.png" data-lightbox-gallery="research">
-                                <img src="assets/images/portfolio/redhat/SA-interviews.png" alt="Interview notes">
-                            </a>
-                            <figcaption>Interview notes with learners and internal teams.</figcaption>
-                        </figure>
-                    </div>
                 </div>
-                <div class="cs-learn">
-                    <article>
-                        <h3>01 · Surveys &amp; account data</h3>
-                        <p><strong>What we wanted to know:</strong> how much of the subscription went unused, and how people prefer to learn.</p>
-                        <p><strong>How we checked:</strong> I reviewed how enterprise clients had set up their accounts, then ran two surveys with B2B and B2C learners.</p>
-                        <p><strong>What we found:</strong> 41% of top-tier features were never switched on. People learn by watching videos and reading docs, and barely touch in-app help. That way, the product connects people with training they already trust.</p>
-                    </article>
-                    <article>
-                        <h3>02 · Focus groups</h3>
-                        <p><strong>What I wanted to know:</strong> which screen would people struggle with most?</p>
-                        <p><strong>How I checked:</strong> two focus groups on the prototype. I asked people to find an assessment for their role and interest, then read a skill-gap report.</p>
-                        <p><strong>What I found:</strong> the report was easy. The filter was not, people could not match their interests to an assessment. So we rebuilt it with simpler, standard controls and tested it again before engineering locked it in.</p>
-                    </article>
-                    <article style="grid-column: 1 / -1;">
-                        <h3>03 · Interviews &amp; Workshops</h3>
-                        <p><strong>What I wanted to know:</strong> Who was this product really for, were we designing for one audience, or for several type of users with different goals and needs.</p>
-                        <p><strong>How I checked:</strong> I interviewed enterprise tech managers (B2B), learners (B2C) and internal staff, then ran four workshops with Sales, Marketing, Curriculum, and Engineering.</p>
-                        <p><strong>What I found:</strong> the main finding was that we had to treat internal users as their own user journey. Giving those teams the proper internal tools would unlock significant operational cost savings. Managers wanted their team’s skills in one view, Sales needed that report to bring to customer meetings, and Curriculum needed to write and reuse questions, none of which a generic catalog could do. That is what finally changed the spreadsheet: internal users became first-class, not an afterthought.</p>
-                    </article>
-                </div>
-                <div class="cs-charts">
-                    <h3>How people actually learned Red Hat skills</h3>
-                    <p class="cs-note" style="margin-top:0;margin-bottom:1.25rem;">Survey of B2B and B2C learners results.</p>
-                    <div class="chart-container">
-                        <div class="chart-item">
-                            <div class="chart-bar-wrapper">
-                                <div class="chart-bar" style="width: 65%;">
-                                    <div class="chart-label">Watch a video</div>
-                                </div>
-                                <div class="chart-number">83 / 65%</div>
-                            </div>
+
+                <!-- 04.4 Decisions -->
+                <div class="rs-panel is-active" id="rs-panel-decisions" role="tabpanel" aria-labelledby="rs-tab-decisions">
+                    <p class="rs-panel-intro">Each finding had to become a design decision, including where the primary action lives in each context.</p>
+                    <div class="rs-decisions">
+                        <div class="rs-decision">
+                            <div class="rs-find"><h5>Finding</h5><p>Managers need a centralized view of team skills.</p></div>
+                            <div class="rs-do"><h5>Design decision</h5><p>A reporting dashboard as its own journey. <a class="rs-action" href="#mock-report">Design <i class="fa fa-arrow-down rs-action-ico" aria-hidden="true"></i></a></p></div>
                         </div>
-                        <div class="chart-item">
-                            <div class="chart-bar-wrapper">
-                                <div class="chart-bar" style="width: 59%;">
-                                    <div class="chart-label">Read Red Hat documentation or guides</div>
-                                </div>
-                                <div class="chart-number">76 / 59%</div>
-                            </div>
+                        <div class="rs-decision">
+                            <div class="rs-find"><h5>Finding</h5><p>Learners cannot find relevant assessments in a static catalog.</p></div>
+                            <div class="rs-do"><h5>Design decision</h5><p>Filter-first information architecture on the landing page. <a class="rs-action" href="#mock-filter">Design <i class="fa fa-arrow-down rs-action-ico" aria-hidden="true"></i></a></p></div>
                         </div>
-                        <div class="chart-item">
-                            <div class="chart-bar-wrapper">
-                                <div class="chart-bar" style="width: 44%;">
-                                    <div class="chart-label">Talk to colleagues</div>
-                                </div>
-                                <div class="chart-number">56 / 44%</div>
-                            </div>
+                        <div class="rs-decision">
+                            <div class="rs-find"><h5>Finding</h5><p>Internal teams are first-class users, and operational savings depend on them.</p></div>
+                            <div class="rs-do"><h5>Design decision</h5><p>A dedicated authoring space of their own, instead of bolting onto the learner UI. <a class="rs-action" href="#mock-authoring">Design <i class="fa fa-arrow-down rs-action-ico" aria-hidden="true"></i></a></p></div>
                         </div>
-                        <div class="chart-item">
-                            <div class="chart-bar-wrapper">
-                                <div class="chart-bar" style="width: 32%;">
-                                    <div class="chart-label">Read other websites</div>
-                                </div>
-                                <div class="chart-number">41 / 32%</div>
-                            </div>
-                        </div>
-                        <div class="chart-item">
-                            <div class="chart-bar-wrapper">
-                                <div class="chart-bar" style="width: 19%;">
-                                    <div class="chart-label">In-app support</div>
-                                </div>
-                                <div class="chart-number">24 / 19%</div>
-                            </div>
+                        <div class="rs-decision">
+                            <div class="rs-find"><h5>Finding</h5><p>The technical team built assessments slowly and copied questions by hand across assessments.</p></div>
+                            <div class="rs-do"><h5>Design decision</h5><p>A YAML editor and React Flow to speed authoring, with questions reused across assessments instead of duplicated, which cut maintenance work. <a class="rs-action" href="#mock-devtools">Design <i class="fa fa-arrow-down rs-action-ico" aria-hidden="true"></i></a></p></div>
                         </div>
                     </div>
                 </div>
-                <p>The three user personas: enterprise technical managers, developers, and internal Red Hat users, started as assumptions. We used them to map out the journeys, then tested whether people's actual behavior backed them up.</p>
-
-                <div class="cs-personas">
-
-                    <article>
-                        <h3>Hypothesis · Managers</h3>
-                        <p>Need full visibility of team skills to spend budget on learning instead of unused services.</p>
-                    </article>
-                    <article>
-                        <h3>Hypothesis · Developers</h3>
-                        <p>Need assessments that match the work they actually do, not a generic certification path.</p>
-                    </article>
-                    <article>
-                        <h3>Hypothesis · Internal users</h3>
-                        <p>Need a report that helps a technical manager choose a learning subscription over more Red Hat services.</p>
-                    </article>
-                </div>
-                <p class="cs-note">These were not finished truths. They were bets we took into flows, then into usability tests.</p>
-                <figure class="cs-figure" style="margin-top:1.5rem;">
-                    <a class="js-lightbox" href="assets/images/portfolio/user-persona.png" data-lightbox-gallery="research">
-                        <img src="assets/images/portfolio/user-persona.png" alt="User persona artifacts">
-                    </a>
-                    <figcaption>Persona artifacts used as shared language, not as a one-and-done deliverable.</figcaption>
-                </figure>
             </section>
             <!-- 5. Key insight, full bleed -->
             <section class="cs-insight" id="insight">
                 <div class="cs-insight-inner">
                     <p class="cs-section-label">05 · The key insight</p>
-                    <h2>Balancing Sales, Marketing, and Curriculum would still have failed if we never asked the users.</h2>
-                    <p>The pivot was to treat the spreadsheet as a hypothesis, then replace it with what research actually found: custom assessments for customers, centralized group reporting for corporate users, and technical tools so developers could maintain volume. Conversion, engagement, and content still mattered. They just could not be the spec.</p>
+                    <h2>The real requirements came from users, not spreadsheets.</h2>
+                    <p>The turning point was treating the requirements spreadsheet as a set of assumptions to test, rather than a final specification. Research revealed three distinct user journeys: learners needed an easier way to find relevant assessments, managers needed a centralized view of team skills, and internal teams needed dedicated tools to create, reuse, and maintain assessment content efficiently. Business goals still mattered, but user evidence shaped how the product delivered them.</p>
                 </div>
             </section>
 
@@ -308,13 +496,13 @@
                     <p>My design process is iterative and user-centered. I start by conducting user research to understand the needs and pain points of the users. This helps me to define the problem and develop the user personas. I then ideate and brainstorm possible solutions, creating wireframes and prototypes to test with users and stakeholders. I iterate on the design based on user feedback until we’re satisfied that the solution is user-friendly and meets the needs of the target users.</p>
                 </div>
 
-                <p class="cs-caption-bar"><span>Prototyping · user flows</span><span>Three role-based journeys, one system</span></p>
                 <div class="cs-prose">
                     <p>UXR findings surfaced the core problems and the three personas driving it. From there, I mapped role-based user journeys for enterprise technical managers, developers, and internal Red Hat users.</p>
                 </div>
                 <div class="cs-highlight">
                     <p>We initially framed the product as primarily B2C learner experience, underestimating the internal users. As we worked through stakeholder workshops, we realized that Sales, Curriculum, and developers were also key users. This shifted our approach to a multi-role product, considering different goals, workflows, and pain points across each role.</p>
                 </div>
+                <p class="cs-caption-bar"><span>Prototyping · user flows</span><span>Three role-based journeys, one system</span></p>
 
                 <div class="cs-pair">
                     <figure>
@@ -369,7 +557,7 @@
                     <figcaption>A short look at the Red Hat system applied to the product. The screens below are the real deliverable.</figcaption>
                 </figure>
                 <div class="cs-stack">
-                    <figure class="cs-figure">
+                    <figure class="cs-figure" id="mock-filter" style="scroll-margin-top:90px;">
                         <a class="js-lightbox" href="assets/images/portfolio/redhat/SA-ui-landing.png" data-lightbox-gallery="ui">
                             <img src="assets/images/portfolio/redhat/SA-ui-landing.png" alt="Landing page with assessment filtering">
                         </a>
@@ -384,7 +572,7 @@
                         </a>
                         <figcaption>Individual assessment, the learner path after the filter had done its job.</figcaption>
                     </figure>
-                    <figure class="cs-figure">
+                    <figure class="cs-figure" id="mock-report" style="scroll-margin-top:90px;">
                         <a class="js-lightbox" href="assets/images/portfolio/redhat/SA-ui-reports-2.png" data-lightbox-gallery="ui">
                             <img src="assets/images/portfolio/redhat/SA-ui-reports-2.png" alt="Technical manager skill-gap reports">
                         </a>
@@ -393,7 +581,7 @@
                     <div class="cs-highlight">
                         <p><strong>Finding in action · 01 Sales.</strong> A report that names client skill gaps and also works as a sales presentation.</p>
                     </div>
-                    <figure class="cs-figure">
+                    <figure class="cs-figure" id="mock-authoring" style="scroll-margin-top:90px;">
                         <a class="js-lightbox" href="assets/images/portfolio/redhat/SA-ui-admin-01.png" data-lightbox-gallery="ui">
                             <img src="assets/images/portfolio/redhat/SA-ui-admin-01.png" alt="Internal assessment authoring">
                         </a>
@@ -402,7 +590,7 @@
                     <div class="cs-highlight">
                         <p><strong>Finding in action · 03 Curriculum.</strong> The same question can appear in different assessments, so authoring and maintenance do not duplicate work.</p>
                     </div>
-                    <figure class="cs-figure">
+                    <figure class="cs-figure" id="mock-devtools" style="scroll-margin-top:90px;">
                         <a class="js-lightbox" href="assets/images/portfolio/redhat/SA-ui-admin-03.png" data-lightbox-gallery="ui">
                             <img src="assets/images/portfolio/redhat/SA-ui-admin-03.png" alt="Developer tools with YAML and flow editor">
                         </a>
@@ -503,6 +691,49 @@
             }
             window.addEventListener('scroll', setActive, { passive: true });
             setActive();
+        })();
+    </script>
+    <script>
+        (function () {
+            var root = document.querySelector('.rs-research');
+            if (!root) return;
+            root.classList.add('rs-js');
+            var groups = Array.prototype.slice.call(root.querySelectorAll('.rs-submenu')).map(function (menu) {
+                return Array.prototype.slice.call(menu.querySelectorAll('.rs-tab'));
+            });
+            function select(name) {
+                root.querySelectorAll('.rs-tab').forEach(function (t) {
+                    var on = t.getAttribute('aria-controls') === name;
+                    t.setAttribute('aria-selected', on ? 'true' : 'false');
+                    t.tabIndex = on ? 0 : -1;
+                });
+                root.querySelectorAll('.rs-panel').forEach(function (panel) {
+                    var on = panel.id === name;
+                    panel.classList.toggle('is-active', on);
+                    panel.hidden = !on;
+                });
+            }
+            groups.forEach(function (tabs) {
+                tabs.forEach(function (t, i) {
+                    t.addEventListener('click', function () { select(t.getAttribute('aria-controls')); });
+                    t.addEventListener('keydown', function (e) {
+                        var n;
+                        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') n = (i + 1) % tabs.length;
+                        else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') n = (i - 1 + tabs.length) % tabs.length;
+                        else return;
+                        e.preventDefault();
+                        tabs[n].focus();
+                        select(tabs[n].getAttribute('aria-controls'));
+                    });
+                });
+            });
+            var start = 'rs-panel-methods';
+            if (groups[0]) {
+                groups[0].forEach(function (t) {
+                    if (t.getAttribute('aria-selected') === 'true') start = t.getAttribute('aria-controls');
+                });
+            }
+            select(start);
         })();
     </script>
 </body>
