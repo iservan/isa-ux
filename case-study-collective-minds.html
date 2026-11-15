@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        (function () {
+            try {
+                if (localStorage.getItem('theme') === 'dark') {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                }
+            } catch (e) {}
+        })();
+    </script>
+    <script defer src="https://t.contentsquare.net/uxa/19c3e0b4b2092.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V95WD8DEG6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-5C60B5T94B');
+    </script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="@isaiso" />
+    <meta name="description" content="Collective Minds Radiology, a service design case study by Isabel Servan. Six months of hospital research led to a small PACS device that prepares each MRI before it reaches the cloud.">
+    <title>Isabel Servan :: Collective Minds Radiology</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22>
+        <text y=%22.9em%22 font-size=%2290%22>
+          👩🏻‍💻
+        </text>
+      </svg>" />
+    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome-font-awesome.min.css">
+    <link rel="stylesheet" href="assets/plugins/nivo-lightbox/nivo-lightbox.css" />
+    <link rel="stylesheet" href="assets/plugins/nivo-lightbox/themes/default/default.css" />
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link href="assets/css/custom.css" rel="stylesheet">
+    <link href="assets/css/case-study-editorial.css" rel="stylesheet">
+    <style>
+        .rs-submenu { display: none; }
+        .rs-research.rs-js .rs-submenu {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.5rem 3rem;
+            margin: 1.75rem 0 2rem;
+            padding: 0;
+            text-transform: uppercase;
+        }
+        .rs-research.rs-js .rs-submenu--top {
+            position: sticky;
+            top: 72px;
+            z-index: 5;
+            padding: 0.85rem 0;
+            background: var(--cs-paper);
+        }
+        .rs-tab {
+            appearance: none;
+            position: relative;
+            border: 0;
+            background: transparent;
+            color: var(--cs-ink);
+            font-family: var(--cs-sans);
+            font-size: 19px;
+            font-weight: 600;
+            letter-spacing: 0;
+            line-height: 1.2;
+            text-transform: uppercase;
+            padding: 0 0 8px;
+            border-radius: 0;
+            cursor: pointer;
+            transition: color 0.2s ease-in-out;
+        }
+        .rs-tab::after {
+            content: "";
+            width: 0;
+            height: 1.5px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            background: var(--cs-accent);
+            transition: width 0.2s ease-in-out;
+        }
+        .rs-tab:hover,
+        .rs-tab[aria-selected="true"] { color: var(--cs-accent); background: transparent; }
+        .rs-tab:hover::after,
+        .rs-tab[aria-selected="true"]::after { width: 100%; }
+        .rs-tab:focus { outline: none; }
+        .rs-tab:focus-visible { outline: 2px solid var(--cs-accent); outline-offset: 3px; }
+        .rs-submenu--pills .rs-tab:focus-visible { outline: 2px solid var(--cs-accent); outline-offset: 2px; }
+
+        .rs-research.rs-js .rs-submenu-stack {
+            position: sticky;
+            top: 72px;
+            z-index: 5;
+            margin: 1.75rem 0 2.25rem;
+            padding: 0.55rem;
+            background: var(--cs-paper-2);
+            border-radius: 999px;
+        }
+        .rs-research.rs-js .rs-submenu-stack .rs-submenu { margin: 0; }
+        .rs-research.rs-js .rs-submenu--pills {
+            gap: 0.55rem 0.85rem;
+            text-transform: none;
+        }
+        .rs-submenu--pills .rs-sep { color: var(--cs-muted);  opacity: 0.55; }
+        .rs-submenu--pills .rs-tab {
+            border: 1px solid transparent;
+            background: transparent;
+            color: var(--cs-muted);
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 0.01em;
+            text-transform: none;
+            padding: 0.45rem 0.95rem;
+            border-radius: 999px;
+            transition: background 0.35s ease, color 0.35s ease, box-shadow 0.35s ease;
+        }
+        .rs-submenu--pills .rs-tab::after { content: none; }
+        .rs-submenu--pills .rs-tab:hover { color: var(--cs-ink); background: var(--cs-paper); }
+        .rs-submenu--pills .rs-tab[aria-selected="true"] {
+            background: var(--cs-dark);
+            border-color: var(--cs-dark);
+            color: #fff;
+            box-shadow: 0 6px 16px -8px rgba(22, 18, 16, 0.55);
+        }
+        html[data-theme="dark"] .rs-submenu--pills .rs-tab:hover { background: var(--cs-paper); }
+        html[data-theme="dark"] .rs-submenu--pills .rs-tab[aria-selected="true"] {
+            background: var(--cs-dark);
+            color: #fff;
+        }
+
+        .rs-research .rs-panel { display: none; }
+        .rs-research .rs-panel.is-active { display: block; animation: rsFade 0.25s ease; }
+        @keyframes rsFade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+        .rs-panel-intro { color: var(--cs-muted); font-size: 1.05rem; line-height: 1.6; max-width: 62ch; margin: 0 0 1.5rem; }
+
+        .rs-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .rs-card { border: 1px solid var(--cs-line); border-radius: 12px; padding: 1.25rem 1.35rem; background: #fff; }
+        html[data-theme="dark"] .rs-card { background: var(--cs-paper-2); }
+        .rs-card--wide { grid-column: 1 / -1; }
+        .rs-card h4 { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--cs-muted); margin: 0 0 0.6rem; display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
+        .rs-card-lead { font-size: 1.1rem; line-height: 1.45; margin: 0 0 0.4rem; color: var(--cs-ink); }
+        body.cs-editorial p.rs-card-lead {
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            line-height: 1.35;
+            color: var(--cs-muted);
+            margin: 0 0 0.9rem;
+            padding-bottom: 0.7rem;
+            border-bottom: 1px solid var(--cs-line);
+        }
+        .rs-card-sub { color: var(--cs-muted); margin: 0; line-height: 1.5; }
+        .rs-card-sub + .rs-card-sub { margin-top: 0.65rem; }
+
+        .rs-decisions { margin-top: 0.5rem; }
+        .rs-decision { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem 1.5rem; align-items: start; padding: 1rem 0; border-top: 1px solid var(--cs-line); }
+        .rs-decision:first-child { border-top: 0; padding-top: 0; }
+        .rs-decision h5 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--cs-ink); margin: 0 0 0.3rem; }
+        .rs-decision p { margin: 0; line-height: 1.5; }
+        .rs-action { color: var(--cs-accent); }
+        a.rs-action { position: relative; display: inline; color: var(--cs-accent); text-decoration: none; }
+        a.rs-action::after { content: ""; position: absolute; left: 0; bottom: -2px; width: 0; height: 1.5px; background: currentColor; transition: width 0.2s ease-in-out; }
+        a.rs-action:hover, a.rs-action:focus-visible { color: var(--cs-accent); }
+        a.rs-action:hover::after, a.rs-action:focus-visible::after { width: 100%; }
+        .rs-action-ico { font-size: 0.8em; }
+
+        @media (max-width: 768px) {
+            .rs-research.rs-js .rs-submenu-stack { top: 60px; border-radius: 18px; }
+            .rs-cards { grid-template-columns: 1fr; }
+            .rs-decision { grid-template-columns: 1fr; gap: 0.2rem; }
+            .rs-decision .rs-do { margin-top: 0.5rem; }
+        }
+
+        body.cs-editorial p { font-size: 17px; }
+        body.cs-editorial p.cs-lede { font-size: 1.2rem; }
+        body.cs-editorial p.cs-caption-bar { font-size: 0.75rem; }
+    </style>
+</head>
+
+<body class="js-main-container cs-editorial cs-cmrad">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top py-3" id="mainNav">
+        <div class="container">
+            <a href="index.html" class="logo d-flex">
+                <div class="c-avatar mr-3">
+                    <img id="avatar" class="c-avatar__img" src="assets/images/header/avatar-300.png" alt=""
+                        attr="data-no-retina">
+                </div>
+                <div class="pt-2">
+                    <span class="navbar-brand js-scroll-trigger">Isabel Servan</span>
+                    <p class="lead">Senior Product Designer</p>
+                </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="case-study-allstacks.html">Allstacks Case</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="case-study-redhat.html">Red Hat Case</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="case-study-realyse.html">REalyse Case</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="case-study-collective-minds.html">Collective Minds</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="experience.html">Resume</a></li>
+                </ul>
+                <button type="button" class="theme-toggle" id="themeToggle" aria-pressed="false" aria-label="Switch to dark mode">
+                    <svg class="icon-sun" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M10 2V1C10 0.71667 10.096 0.479337 10.288 0.288003C10.48 0.0966701 10.7173 0.000670115 11 3.44828e-06C11.2827 -0.000663218 11.5203 0.0953368 11.713 0.288003C11.9057 0.48067 12.0013 0.718003 12 1V2C12 2.28334 11.904 2.521 11.712 2.713C11.52 2.905 11.2827 3.00067 11 3C10.7173 2.99934 10.48 2.90334 10.288 2.712C10.096 2.52067 10 2.28334 10 2ZM10 21V20C10 19.7167 10.096 19.4793 10.288 19.288C10.48 19.0967 10.7173 19.0007 11 19C11.2827 18.9993 11.5203 19.0953 11.713 19.288C11.9057 19.4807 12.0013 19.718 12 20V21C12 21.2833 11.904 21.521 11.712 21.713C11.52 21.905 11.2827 22.0007 11 22C10.7173 21.9993 10.48 21.9033 10.288 21.712C10.096 21.5207 10 21.2833 10 21ZM21 12H20C19.7167 12 19.4793 11.904 19.288 11.712C19.0967 11.52 19.0007 11.2827 19 11C18.9993 10.7173 19.0953 10.48 19.288 10.288C19.4807 10.096 19.718 10 20 10H21C21.2833 10 21.521 10.096 21.713 10.288C21.905 10.48 22.0007 10.7173 22 11C21.9993 11.2827 21.9033 11.5203 21.712 11.713C21.5207 11.9057 21.2833 12.0013 21 12ZM2 12H1C0.71667 12 0.479337 11.904 0.288003 11.712C0.0966701 11.52 0.000670115 11.2827 3.44828e-06 11C-0.000663218 10.7173 0.0953368 10.48 0.288003 10.288C0.48067 10.096 0.718003 10 1 10H2C2.28334 10 2.521 10.096 2.713 10.288C2.905 10.48 3.00067 10.7173 3 11C2.99934 11.2827 2.90334 11.5203 2.712 11.713C2.52067 11.9057 2.28334 12.0013 2 12ZM18.75 4.675L18.4 5.025C18.2167 5.20834 17.9877 5.3 17.713 5.3C17.4383 5.3 17.2007 5.2 17 5C16.8167 4.81667 16.7207 4.58767 16.712 4.313C16.7033 4.03834 16.791 3.80067 16.975 3.6L17.35 3.225C17.5333 3.025 17.7667 2.925 18.05 2.925C18.3333 2.925 18.575 3.025 18.775 3.225C18.975 3.425 19.071 3.66667 19.063 3.95C19.055 4.23334 18.9507 4.475 18.75 4.675ZM5.025 18.4L4.65 18.775C4.46667 18.975 4.23334 19.075 3.95 19.075C3.66667 19.075 3.425 18.975 3.225 18.775C3.025 18.575 2.929 18.3333 2.937 18.05C2.945 17.7667 3.04934 17.525 3.25 17.325L3.6 16.975C3.78334 16.7917 4.01267 16.7 4.288 16.7C4.56334 16.7 4.80067 16.8 5 17C5.18334 17.1833 5.27934 17.4127 5.288 17.688C5.29667 17.9633 5.209 18.2007 5.025 18.4ZM17.325 18.75L16.975 18.4C16.7917 18.2167 16.7 17.9877 16.7 17.713C16.7 17.4383 16.8 17.2007 17 17C17.1833 16.8167 17.4127 16.721 17.688 16.713C17.9633 16.705 18.2007 16.7923 18.4 16.975L18.775 17.35C18.975 17.5333 19.075 17.7667 19.075 18.05C19.075 18.3333 18.975 18.575 18.775 18.775C18.575 18.975 18.3333 19.071 18.05 19.063C17.7667 19.055 17.525 18.9507 17.325 18.75ZM3.6 5.025L3.225 4.65C3.025 4.46667 2.925 4.23334 2.925 3.95C2.925 3.66667 3.025 3.425 3.225 3.225C3.425 3.025 3.66667 2.929 3.95 2.937C4.23334 2.945 4.475 3.04934 4.675 3.25L5.025 3.6C5.20834 3.78334 5.3 4.01267 5.3 4.288C5.3 4.56334 5.2 4.80067 5 5C4.81667 5.18334 4.58767 5.27934 4.313 5.288C4.03834 5.29667 3.80067 5.209 3.6 5.025ZM6.75 15.25C5.58334 14.0833 5 12.6667 5 11C5 9.33334 5.58334 7.91667 6.75 6.75C7.91667 5.58334 9.33334 5 11 5C12.6667 5 14.0833 5.58334 15.25 6.75C16.4167 7.91667 17 9.33334 17 11C17 12.6667 16.4167 14.0833 15.25 15.25C14.0833 16.4167 12.6667 17 11 17C9.33334 17 7.91667 16.4167 6.75 15.25Z" fill="currentColor"/></svg>
+                    <svg class="icon-moon" width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5.68799 0.846153C6.21426 0.594519 6.76569 0.395512 7.34229 0.249131C7.91888 0.102751 8.49809 0.0197838 9.0799 0.000225938C9.28124 -0.00367777 9.47049 0.0443883 9.64764 0.144424C9.82479 0.244459 9.9565 0.384694 10.0428 0.565129C10.1075 0.700455 10.1385 0.842641 10.1359 0.991689C10.1333 1.14074 10.0934 1.28913 10.0162 1.43686C9.35911 2.76712 9.03244 4.1703 9.03623 5.6464C9.04002 7.12251 9.36184 8.52967 10.0017 9.86789C10.6416 11.2061 11.5367 12.3347 12.687 13.2538C13.8373 14.1728 15.1402 14.8013 16.5956 15.1391C16.744 15.179 16.877 15.2447 16.9947 15.3363C17.1124 15.4278 17.2036 15.5412 17.2683 15.6765C17.3545 15.857 17.3846 16.0458 17.3585 16.2431C17.3323 16.4403 17.2548 16.6159 17.126 16.7699C16.7304 17.2176 16.2947 17.62 15.8187 17.9769C15.3428 18.3337 14.8417 18.638 14.3154 18.8896C13.0674 19.4864 11.7813 19.8102 10.457 19.8611C9.13277 19.912 7.87069 19.7259 6.67079 19.3027C5.47088 18.8796 4.3714 18.2322 3.37233 17.3606C2.37327 16.489 1.57581 15.4293 0.979971 14.1816C0.384129 12.9339 0.0603163 11.6478 0.00853339 10.3232C-0.0432495 8.99864 0.142862 7.73656 0.566872 6.53697C0.990881 5.33738 1.63826 4.2379 2.509 3.23852C3.37975 2.23914 4.43941 1.44168 5.68799 0.846153Z" fill="currentColor"/></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="cs-shell">
+        <aside class="cs-rail" aria-label="Case study sections">
+            <ol>
+                <li><a href="#hook" class="is-active">01 Outcome</a></li>
+                <li><a href="#problem">03 Problem</a></li>
+                <li><a href="#research">04 Research</a></li>
+                <li><a href="#insight">05 Insight</a></li>
+                <li><a href="#process">06 Process</a></li>
+                <li><a href="#validation">07 Validation</a></li>
+                <li><a href="#reflection">08 Reflection</a></li>
+            </ol>
+            <button type="button" class="filters-more rail-more" aria-label="Show more sections">
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+            </button>
+        </aside>
+
+        <main>
+            <header id="hook">
+                <p class="cs-kicker">Collective Minds Radiology · Service design for the MRI path</p>
+                <h1 class="cs-hook">Radiologists <em>share MRI images online</em> with experts worldwide, to diagnose<em> rare cases</em> together.</h1>
+                <p class="cs-lede">I joined as the first in-house designer and spent more than six months on research: 1:1 interviews, usability tests with focus groups, and observation of radiologists at their hospital workstations. The result was a service design, integrated into the day to day rutines of radiologists and clinical trial coordinators. A small hardware device, with a gateway sits beside the hospital PACS, prepares each MRI, and uploads it to the cloud, managed by a custom web and mobile app.</p>
+                <div class="cs-hero-visual">
+                    <a class="js-lightbox cs-hero-tl" href="assets/images/portfolio/cmrad/review-mode.png" data-lightbox-gallery="cm">
+                        <img src="assets/images/portfolio/cmrad/review-mode.png" alt="Full-screen review of an MR study, with a filmstrip of key images">
+                    </a>
+                    <a class="js-lightbox cs-hero-bl" id="mock-feed" href="assets/images/portfolio/cmrad-laptop-blue.jpg" data-lightbox-gallery="cm">
+                        <img src="assets/images/portfolio/cmrad-laptop-blue.jpg" alt="Collective Minds Radiology on a laptop, with the mobile app beside the login">
+                    </a>
+                    <a class="js-lightbox cs-hero-main" href="assets/images/portfolio/cmrad/post-a-case.png" data-lightbox-gallery="cm">
+                        <img src="assets/images/portfolio/cmrad/post-a-case.png" alt="Post a new case: select a study from PACS or upload images, with a previewer beside the study table">
+                    </a>
+                </div>
+            </header>
+
+            <section id="context">
+                <dl class="cs-context">
+                    <div>
+                        <dt>Role</dt>
+                        <dd>Founding Lead UX Designer &amp; UI Engineer. Service design from the PACS to the cloud.</dd>
+                    </div>
+                    <div>
+                        <dt>Team</dt>
+                        <dd>First in-house design hire. The company grew from <em>3 to 27 people in 18 months</em>.</dd>
+                    </div>
+                    <div>
+                        <dt>Tools</dt>
+                        <dd>1:1 interviews, focus-group usability tests, workstation observation, service blueprint.</dd>
+                    </div>
+                    <div>
+                        <dt>Timeline</dt>
+                        <dd>Mar 2019 – Sep 2021. Research ran for more than six months. Remote, with time in hospitals.</dd>
+                    </div>
+                    <div>
+                        <dt>Platform</dt>
+                        <dd>Web and mobile. Live at <a class="cs-inline-link" href="https://collectiveminds.health/" target="_blank" rel="noopener">collectiveminds.health</a></dd>
+                    </div>
+                </dl>
+            </section>
+
+            <section class="cs-section" id="problem">
+                <p class="cs-section-label">03 · The problem</p>
+                <h2>An MRI was easy to read and hard to send.</h2>
+                <div class="cs-prose">
+                    <p>A radiologist read the MRI on a black diagnostic display wired to the hospital PACS. A coordinator at another trial site needed the same study. Between them sat a manual export: someone pulled files off the PACS and sent them. Patient identity travelled with the images, a series could arrive incomplete, and the person waiting could not open the scan until the last file landed.</p>
+                </div>
+                <div class="cs-stat-row">
+                    <div class="cs-stat">
+                        <b>6+ mo</b>
+                        <span>of 1:1 interviews, focus groups, and hospital observation before the service was settled</span>
+                    </div>
+                    <div class="cs-stat">
+                        <b>0→1</b>
+                        <span>designed the first online workflow for radiologists, from the hospital PACS to the review</span>
+                    </div>
+                    <div class="cs-stat">
+                        <b>3→27</b>
+                        <span>people on the team in 18 months, with one design system to build on</span>
+                    </div>
+                </div>
+                <div class="cs-prose">
+                    <p>The research moved the problem earlier in the path. The MRI had to be prepared inside the hospital, before anything went to the cloud. The online product could then start from a study that was already ready.</p>
+                </div>
+            </section>
+
+            <section class="cs-section rs-research" id="research">
+                <p class="cs-section-label">04 · Research &amp; discovery</p>
+                <h2>Six months of listening, then watching.</h2>
+                <div class="cs-prose">
+                    <p>Research ran for more than six months, next to the build. I interviewed radiologists and clinical trial coordinators one to one, tested the posting flow with focus groups, and sat with radiologists at their workstations in the hospitals. I mapped what I saw as a service: who touches a study, where it sits, and what has to happen before it leaves the building.</p>
+                </div>
+
+                <div class="rs-submenu-stack">
+                    <div class="rs-submenu rs-submenu--pills" role="tablist" aria-label="Research sections">
+                        <button class="rs-tab" type="button" role="tab" id="rs-tab-methods" aria-controls="rs-panel-methods" aria-selected="false">Methods</button>
+                        <i class="fa fa-arrow-right rs-sep" aria-hidden="true"></i>
+                        <button class="rs-tab" type="button" role="tab" id="rs-tab-evidence" aria-controls="rs-panel-evidence" aria-selected="false">Evidence</button>
+                        <i class="fa fa-arrow-right rs-sep" aria-hidden="true"></i>
+                        <button class="rs-tab" type="button" role="tab" id="rs-tab-decisions" aria-controls="rs-panel-decisions" aria-selected="true">Decisions</button>
+                    </div>
+                </div>
+
+                <div class="rs-panel" id="rs-panel-methods" role="tabpanel" aria-labelledby="rs-tab-methods" hidden>
+                    <div class="cs-who">
+                        <div><strong>Radiologists</strong> interviewed 1:1, then observed at the workstation</div>
+                        <div><strong>Coordinators</strong> receiving a study at another trial site</div>
+                        <div><strong>Focus groups</strong> usability tests on the posting flow</div>
+                        <div><strong>Hospitals</strong> the PACS, the device, then the cloud</div>
+                    </div>
+                    <div class="rs-cards">
+                        <article class="rs-card">
+                            <p class="rs-card-lead">01 · One-to-one interviews</p>
+                            <p class="rs-card-sub"><strong>What I wanted to know:</strong> who starts a case, who needs to see it, and what “done” means for each of them.</p>
+                            <p class="rs-card-sub"><strong>How I checked:</strong> 1:1 interviews with radiologists and trial coordinators, repeated across the six months.</p>
+                            <p class="rs-card-sub"><strong>What I found:</strong> radiologists present a case, suggest a diagnosis, reply, and search, with the images in reach. A coordinator needs the same study at another site, with identity already handled.</p>
+                        </article>
+                        <article class="rs-card">
+                            <p class="rs-card-lead">02 · Focus groups</p>
+                            <p class="rs-card-sub"><strong>What I wanted to know:</strong> where people lost the study they had just selected.</p>
+                            <p class="rs-card-sub"><strong>How I checked:</strong> recorded usability tests with focus groups on the posting prototype, the wizard against a single screen.</p>
+                            <p class="rs-card-sub"><strong>What I found:</strong> one task was split across three screens. People needed the study table, the image preview, date filters, and help together.</p>
+                        </article>
+                        <article class="rs-card rs-card--wide">
+                            <p class="rs-card-lead">03 · Hospital workstations</p>
+                            <p class="rs-card-sub"><strong>What I wanted to know:</strong> how an MRI really leaves the building.</p>
+                            <p class="rs-card-sub"><strong>How I checked:</strong> I observed radiologists at the review workstation, and followed studies pushed from the PACS to the coordinators who received them.</p>
+                            <p class="rs-card-sub"><strong>What I found:</strong> radiologists review on black displays and asked for the same online. The handoff had to start inside the hospital, so we designed a small device on the PACS, <a class="cs-inline-link" href="https://collectiveminds.health/articles/collective-minds-connect-seamless-secure-and-efficient-medical-imaging-data-transfer" target="_blank" rel="noopener">Collective Minds Connect</a>. It receives the MRI, prepares it, and uploads it to the cloud.</p>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="rs-panel" id="rs-panel-evidence" role="tabpanel" aria-labelledby="rs-tab-evidence" hidden>
+                    <h3>The radiologist job, written down early</h3>
+                    <p>The first personas were working documents from the interviews. The jobs were already specific. The empty fields were the questions for the next sessions: how often people would teach with a prepared study, and how a coordinator’s week runs once the MRI stops travelling as a file.</p>
+                    <figure class="cs-figure" style="margin-top:1.25rem;">
+                        <a class="js-lightbox" href="assets/images/portfolio/cmrad/cmard-personas-all.png" data-lightbox-gallery="research">
+                            <img src="assets/images/portfolio/cmrad/cmard-personas-all.png" alt="Persona set for Josep, Greta, and Yves, with Greta's journey from a new scan notification to downloaded results">
+                        </a>
+                        <figcaption>Personas for the radiologists who post and review a case, and Greta’s journey from a new scan to the downloaded results. <a class="cs-inline-link" href="assets/images/portfolio/cmrad/personas.pdf">Full persona set (PDF)</a>.</figcaption>
+                    </figure>
+                    <div class="cs-personas" style="margin-top:1.5rem;">
+                        <article>
+                            <h3>Hypothesis · Radiologist</h3>
+                            <p>Wants to teach and ask for a second read on the black field they already use, once the hospital has prepared the MRI.</p>
+                        </article>
+                        <article>
+                            <h3>Hypothesis · Trial coordinator</h3>
+                            <p>Wants the study at another site with identity handled before upload and the series still readable.</p>
+                        </article>
+                        <article>
+                            <h3>Hypothesis · Institution</h3>
+                            <p>Keeps the PACS as the source of truth. A device in the hospital prepares the MRI before the cloud receives it.</p>
+                        </article>
+                    </div>
+                    <p class="cs-note">These were bets. Focus-group tests turned the posting bet into one screen. Workstation observation turned the integration bet into Connect.</p>
+                </div>
+
+                <div class="rs-panel is-active" id="rs-panel-decisions" role="tabpanel" aria-labelledby="rs-tab-decisions">
+                    <p class="rs-panel-intro">Each finding became a decision in the service, from the device in the hospital to the screen a radiologist opens.</p>
+                    <div class="rs-decisions">
+                        <div class="rs-decision">
+                            <div class="rs-find"><h5>Finding</h5><p>An MRI should be prepared inside the hospital, before it goes to the cloud, to protect patient identity.</p></div>
+                            <div class="rs-do"><h5>Design decision</h5><p>A small hardware gateway on the PACS that receives DICOM, pseudonymizes per channel, and uploads the prepared study. <a class="rs-action" href="#mock-connect">Connect <i class="fa fa-arrow-down rs-action-ico" aria-hidden="true"></i></a></p></div>
+                        </div>
+                        <div class="rs-decision">
+                            <div class="rs-find"><h5>Finding</h5><p>In the hospital, radiologists read scans on black diagnostic displays, and they asked for the same look in the product.</p></div>
+                            <div class="rs-do"><h5>Design decision</h5><p>A black interface for every review surface, so a scan reads the way it does at the workstation. <a class="rs-action" href="#mock-review">Design <i class="fa fa-arrow-down rs-action-ico" aria-hidden="true"></i></a></p></div>
+                        </div>
+                        <div class="rs-decision">
+                            <div class="rs-find"><h5>Finding</h5><p>Radiologists discuss a case by suggesting a diagnosis and replying, and they still need the scan at full size while they do it.</p></div>
+                            <div class="rs-do"><h5>Design decision</h5><p>A case view with tags, confidence, replies, and similar cases, plus a full-screen review mode with a way back to the case. <a class="rs-action" href="#mock-case">Case <i class="fa fa-arrow-down rs-action-ico" aria-hidden="true"></i></a></p></div>
+                        </div>
+                        <div class="rs-decision">
+                            <div class="rs-find"><h5>Finding</h5><p>A hospital or a trial works as a team, and the team needs one shared place to post and follow its cases.</p></div>
+                            <div class="rs-do"><h5>Design decision</h5><p>Group workspaces, so a team posts into a shared room. <a class="rs-action" href="#mock-group">Design <i class="fa fa-arrow-down rs-action-ico" aria-hidden="true"></i></a></p></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="cs-insight" id="insight">
+                <div class="cs-insight-inner">
+                    <p class="cs-section-label">05 · The key insight</p>
+                    <h2>Radiologists trust their workstation, so the service meets them there.</h2>
+                    <p>Every radiologist I observed worked inside one trusted setup: a black diagnostic display, the hospital PACS, and a study they knew was complete. A new tool earns trust when it feels like an extension of that setup. So the service begins at the workstation. Connect prepares the MRI inside the hospital and protects patient identity before anything is uploaded, and the online review looks and reads like the place radiologists already work.</p>
+                </div>
+            </section>
+
+            <section class="cs-section" id="process" style="border-top:0;padding-top:4rem;">
+                <p class="cs-section-label">06 · Process</p>
+                <h2>Blueprint first, device second, screens last</h2>
+                <div class="cs-prose">
+                    <p>I worked in the order the service needed. A blueprint of the whole path came first, then the device in the hospital, then the screens a radiologist uses. The design system grew alongside, so a growing team shared one black canvas and one coral action color.</p>
+                </div>
+
+                <p class="cs-caption-bar" id="mock-blueprint" style="margin-top:2.5rem;scroll-margin-top:128px;"><span>Service blueprint</span><span>From the PACS to the review</span></p>
+                <div class="cs-blueprint">
+                    <div class="cs-bp-head" aria-hidden="true">
+                        <span></span><span>1 · Scan</span><span>2 · Prepare</span><span>3 · Upload</span><span>4 · Review</span>
+                    </div>
+                    <div class="cs-bp-row">
+                        <b>Radiologist</b>
+                        <span data-stage="1 · Scan">Reads the MRI at the black workstation</span>
+                        <span data-stage="2 · Prepare">Sends the study from the PACS to Connect</span>
+                        <span data-stage="3 · Upload">Finds it in the list, under their institution</span>
+                        <span data-stage="4 · Review">Posts the case, reviews it, replies</span>
+                    </div>
+                    <div class="cs-bp-row is-device">
+                        <b>Hospital</b>
+                        <span data-stage="1 · Scan">The PACS keeps the original study</span>
+                        <span data-stage="2 · Prepare">Connect receives the DICOM and pseudonymizes it per channel</span>
+                        <span data-stage="3 · Upload">Connect uploads the whole payload over narrow, known ports</span>
+                        <span data-stage="4 · Review">Logs and health metrics track every transfer</span>
+                    </div>
+                    <div class="cs-bp-row">
+                        <b>Cloud</b>
+                        <span class="is-empty" data-stage="1 · Scan">–</span>
+                        <span class="is-empty" data-stage="2 · Prepare">–</span>
+                        <span data-stage="3 · Upload">The DICOM Study Service stores the study</span>
+                        <span data-stage="4 · Review">Teaching and Research open it on web and mobile</span>
+                    </div>
+                </div>
+
+                <p class="cs-caption-bar" id="mock-connect" style="margin-top:2.5rem;scroll-margin-top:128px;"><span>Connect</span><span>The device in the hospital</span></p>
+                <div class="cs-prose" id="mock-institutions" style="scroll-margin-top:128px;">
+                    <p><a class="cs-inline-link" href="https://collectiveminds.health/articles/collective-minds-connect-seamless-secure-and-efficient-medical-imaging-data-transfer" target="_blank" rel="noopener">Collective Minds Connect</a> is the back stage: a small hardware device that sits with the hospital’s own systems and prepares each MRI where it already lives. The hospital PACS pushes to it over standard DICOM communication. Below are the implementation details, taken from the Connect documentation published today.</p>
+                </div>
+                <dl class="cs-spec">
+                    <dt>Inflow</dt>
+                    <dd>DICOM instances pushed from the PACS, or files dropped into designated folders.</dd>
+                    <dt>Channels</dt>
+                    <dd>Several channels run in parallel. Each has its own receiver, transformation, and destination.</dd>
+                    <dt>Pseudonymization</dt>
+                    <dd>It follows the NEMA 2024b standard, and SHA2-512/256 hashing keeps a study traceable without exposing the patient.</dd>
+                    <dt>Transfer</dt>
+                    <dd>The whole payload arrives, or the log records exactly what did not.</dd>
+                    <dt>Network</dt>
+                    <dd>Connect talks only to company-owned domains on specific ports, so the hospital firewall needs a minimal rule.</dd>
+                    <dt>Runtime</dt>
+                    <dd>Runs on Windows Server, LSB-compliant Linux, and macOS, and updates itself without human intervention.</dd>
+                    <dt>Observability</dt>
+                    <dd>Activity logs and health metrics show transfers and the health of the system.</dd>
+                    <dt>Destination</dt>
+                    <dd>The DICOM Study Service, which feeds Teaching and Research.</dd>
+                </dl>
+                <div class="cs-prose" style="margin-top:1.5rem;">
+                    <p>Once Connect has done its work, the radiologist meets the study on the posting screen. It is the first option, listed under the hospital that sent it. The page checks the patient ID and states that the review is anonymous. Uploading from a computer is the second option, for a case that never went through a connected PACS.</p>
+                </div>
+
+                <figure class="cs-figure" style="margin-top:2.5rem;">
+                    <a class="js-lightbox" href="assets/images/portfolio/cmrad/cmrad-service-design.png" data-lightbox-gallery="ui">
+                        <img src="assets/images/portfolio/cmrad/cmrad-service-design.png" alt="Service design board: sketches and wireframes for the results table, a project, a baseline scan, the repository, and the pipeline">
+                    </a>
+                    <figcaption>Service design, from notes to wireframes. The results table, a project, a baseline scan, the repository, and the pipeline.</figcaption>
+                </figure>
+
+                <p class="cs-caption-bar" id="mock-post" style="margin-top:2.5rem;scroll-margin-top:128px;"><span>Post a case</span><span>The front stage</span></p>
+                <div class="cs-prose">
+                    <p>This is the screen where a radiologist starts a case. They pick a study the hospital has already sent, or upload DICOM, PNG, JPG, or a screenshot. The study table and the previewer sit side by side, so selecting a row shows its key images before anything is posted. Once posted, the case opens for discussion with its key images, a suggested diagnosis, replies, and similar cases.</p>
+                </div>
+                <div class="cs-pair">
+                    <figure class="cs-figure--ui">
+                        <a class="js-lightbox" href="assets/images/portfolio/cmrad/post-a-case.png" data-lightbox-gallery="ui">
+                            <img src="assets/images/portfolio/cmrad/post-a-case.png" alt="Post a new case: select a study from PACS or upload images, with a previewer beside the study table">
+                        </a>
+                        <figcaption>Post a case. Select from PACS, or upload. The previewer stays open while the list is scanned.</figcaption>
+                    </figure>
+                    <figure class="cs-figure--ui" id="mock-case" style="scroll-margin-top:128px;">
+                        <a class="js-lightbox" href="assets/images/portfolio/cmrad/case-view.png" data-lightbox-gallery="ui">
+                            <img src="assets/images/portfolio/cmrad/case-view.png" alt="Case discussion with key images, replies, tags, suggested diagnosis, and similar cases">
+                        </a>
+                        <figcaption>Case view. Key images on top, diagnosis and replies in the thread, similar cases on the side.</figcaption>
+                    </figure>
+                </div>
+
+                <p class="cs-caption-bar" id="mock-review" style="margin-top:2.5rem;scroll-margin-top:128px;"><span>Review mode</span><span>Black, like the hospital workstation</span></p>
+                <figure class="cs-figure">
+                    <a class="js-lightbox" href="assets/images/portfolio/cmrad/review-mode.png" data-lightbox-gallery="ui">
+                        <img src="assets/images/portfolio/cmrad/review-mode.png" alt="Full-screen MR review with a filmstrip and a return path to the case">
+                    </a>
+                    <figcaption>Review mode, on the black field radiologists asked for after we watched them read in the hospital. The series fills the screen, a filmstrip keeps the rest of the study close, and the way back to the case stays in the corner.</figcaption>
+                </figure>
+
+                <p class="cs-caption-bar" id="mock-group" style="margin-top:2.5rem;scroll-margin-top:128px;"><span>Groups</span><span>A hospital or a trial, in one room</span></p>
+                <figure class="cs-figure cs-figure--ui">
+                    <a class="js-lightbox" href="assets/images/portfolio/cmrad/group-workspace.png" data-lightbox-gallery="ui">
+                        <img src="assets/images/portfolio/cmrad/group-workspace.png" alt="Group workspace with members and a shared grid of cases">
+                    </a>
+                    <figcaption>A group has members and a caseload. Posting can go to the group, so a service or a trial shares one stream.</figcaption>
+                </figure>
+
+                <p class="cs-caption-bar" id="mock-system" style="margin-top:2.5rem;scroll-margin-top:128px;"><span>Design system</span><span>Atomic Design, built with the product</span></p>
+                <div class="cs-prose">
+                    <p>As the team grew from 3 to 27, I built the company design system from scratch on Atomic Design, together with the engineering lead. Small parts like the coral button, the tag, and the study row combine into the case card, the diagnosis block, and the image previewer. Web and mobile share them, and I coded them in Vue.js.</p>
+                </div>
+            </section>
+
+            <section class="cs-section" id="validation">
+                <p class="cs-section-label">07 · Validation &amp; outcome</p>
+                <h2>One screen made posting a case easier, and the numbers followed.</h2>
+                <div class="cs-prose">
+                    <p>The focus groups showed us where the initial, post a case flow, with three-step wizard lost people, so we rebuilt it as a single screen. Hotjar tracked the posting funnel after the change, and the results are below.</p>
+                    <p>Behind that screen, <a class="cs-inline-link" href="https://collectiveminds.health/articles/collective-minds-connect-seamless-secure-and-efficient-medical-imaging-data-transfer" target="_blank" rel="noopener">Connect</a> keeps doing its job. It takes DICOM from the PACS, prepares it, and feeds Teaching and Research. Collective Minds is now an imaging platform for clinical trials, live at <a class="cs-inline-link" href="https://collectiveminds.health/" target="_blank" rel="noopener">collectiveminds.health</a>.</p>
+                </div>
+                <figure class="cs-figure" style="margin-top:1.5rem;">
+                    <a class="js-lightbox" href="assets/images/portfolio/post-new-case-results.jpg" data-lightbox-gallery="proof">
+                        <img src="assets/images/portfolio/post-new-case-results.jpg" alt="Hotjar funnel for posting a case: 61.9% conversion after the design revamp, a 27.1% increase">
+                    </a>
+                    <figcaption>Hotjar on the posting flow after the wizard became one screen. Conversion reached 61.9%, a 27.1% increase after the design revamp.</figcaption>
+                </figure>
+                <div class="cs-outcome">
+                    <div>
+                        <b>6+ mo</b>
+                        <span>of 1:1 interviews, focus groups, and hospital observation before the service was settled</span>
+                    </div>
+                    <div>
+                        <b>0→1</b>
+                        <span>designed the first online workflow for radiologists, from the hospital PACS to the review</span>
+                    </div>
+                    <div>
+                        <b>3→27</b>
+                        <span>people on the team in 18 months, with one design system to build on</span>
+                    </div>
+                </div>
+                <a class="cs-cta" href="https://collectiveminds.health/" target="_blank" rel="noopener">Visit Collective Minds →</a>
+            </section>
+
+            <section class="cs-section" id="reflection">
+                <p class="cs-section-label">08 · Reflection</p>
+                <h2>The best design decision happened outside the screen.</h2>
+                <div class="cs-prose">
+                    <p>Six months with radiologists changed where I look for answers. Interviews told me what they needed to do. Watching them at the workstation showed me what they trusted: a black display and the PACS. The most useful decision followed from that, and it lives in the hospital as a small device that prepares the MRI before the cloud ever sees it.</p>
+                    <p>It taught me to design the whole path first and the screens second. A service has a front stage and a back stage, and the back stage comes with constraints, such as what a hospital network will let through. Treating those constraints as design material kept the screens simple.</p>
+                    <p>As the first designer, I also learned to build for the people who would come after me. The design system, made with the engineering lead, let a team that grew from 3 to 27 ship on one black field. The product is live today at <a class="cs-inline-link" href="https://collectiveminds.health/" target="_blank" rel="noopener">collectiveminds.health</a>.</p>
+                </div>
+                <div class="cs-footer-nav">
+                    <a href="index.html">← All work</a>
+                    <a href="case-study-redhat.html">Red Hat →</a>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"
+        integrity="sha256-ihAoc6M/JPfrIiIeayPE9xjin4UWjsx2mjW/rtmxLM4=" crossorigin="anonymous"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/plugins/jquery.easing.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
+    <script src="assets/plugins/nivo-lightbox/nivo-lightbox.js"></script>
+    <script src="assets/js/scrollreveal.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/custom.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script>
+        (function () {
+            var links = document.querySelectorAll('.cs-rail a');
+            var ids = ['hook', 'context', 'problem', 'research', 'insight', 'process', 'validation', 'reflection'];
+            var sections = ids.map(function (id) { return document.getElementById(id); }).filter(Boolean);
+            function setActive() {
+                var current = sections[0];
+                var fromTop = window.scrollY + 140;
+                sections.forEach(function (sec) {
+                    if (sec.offsetTop <= fromTop) current = sec;
+                });
+                links.forEach(function (link) {
+                    link.classList.toggle('is-active', link.getAttribute('href') === '#' + current.id);
+                });
+            }
+            window.addEventListener('scroll', setActive, { passive: true });
+            setActive();
+        })();
+    </script>
+    <script>
+        (function () {
+            var root = document.querySelector('.rs-research');
+            if (!root) return;
+            root.classList.add('rs-js');
+            var groups = Array.prototype.slice.call(root.querySelectorAll('.rs-submenu')).map(function (menu) {
+                return Array.prototype.slice.call(menu.querySelectorAll('.rs-tab'));
+            });
+            function select(name) {
+                root.querySelectorAll('.rs-tab').forEach(function (t) {
+                    var on = t.getAttribute('aria-controls') === name;
+                    t.setAttribute('aria-selected', on ? 'true' : 'false');
+                    t.tabIndex = on ? 0 : -1;
+                });
+                root.querySelectorAll('.rs-panel').forEach(function (panel) {
+                    var on = panel.id === name;
+                    panel.classList.toggle('is-active', on);
+                    panel.hidden = !on;
+                });
+            }
+            groups.forEach(function (tabs) {
+                tabs.forEach(function (t, i) {
+                    t.addEventListener('click', function () { select(t.getAttribute('aria-controls')); });
+                    t.addEventListener('keydown', function (e) {
+                        var n;
+                        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') n = (i + 1) % tabs.length;
+                        else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') n = (i - 1 + tabs.length) % tabs.length;
+                        else return;
+                        e.preventDefault();
+                        tabs[n].focus();
+                        select(tabs[n].getAttribute('aria-controls'));
+                    });
+                });
+            });
+            var start = 'rs-panel-methods';
+            if (groups[0]) {
+                groups[0].forEach(function (t) {
+                    if (t.getAttribute('aria-selected') === 'true') start = t.getAttribute('aria-controls');
+                });
+            }
+            select(start);
+        })();
+    </script>
+</body>
+
+</html>
