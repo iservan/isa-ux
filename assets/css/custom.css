@@ -424,6 +424,11 @@ h1.case-heading {
     cursor: pointer;
     order: 1;
     outline: none !important;
+    transition: background-color 0.15s ease;
+}
+
+.theme-toggle:hover {
+    background: #eceae6;
 }
 
 .theme-toggle .icon-sun,
@@ -533,6 +538,10 @@ html[data-theme="dark"] .theme-toggle {
     background: #212121;
     border-color: rgba(255, 255, 255, 0.21);
     color: #f4f3f8;
+}
+
+html[data-theme="dark"] .theme-toggle:hover {
+    background: #333;
 }
 
 html[data-theme="dark"] .project-intro li {
