@@ -176,9 +176,7 @@
             .rs-decision .rs-do { margin-top: 0.5rem; }
         }
 
-        body.cs-editorial p { font-size: 17px; }
-        body.cs-editorial p.cs-lede { font-size: 1.2rem; }
-        body.cs-editorial p.cs-caption-bar { font-size: 0.75rem; }
+        body.cs-editorial p:where(:not(.cs-kicker)):where(:not(.cs-section-label)):where(:not(.cs-lede)):where(:not(.cs-caption-bar)) { font-size: 17px; }
     </style>
 </head>
 
@@ -233,8 +231,8 @@
 
         <main>
             <header id="hook">
-                <p class="cs-kicker">Collective Minds Radiology · Service design for the MRI path</p>
-                <h1 class="cs-hook">Radiologists <em>share MRI images online</em> with experts worldwide, to diagnose<em> rare cases</em> together.</h1>
+                <p class="cs-kicker">Collective Minds Radiology · A healthcare service design</p>
+                <h1 class="cs-hook">Bringing radiologists together worldwide <em>to solve rare cases</em> through<em> shared MRI's</em>.</h1>
                 <p class="cs-lede">I joined as the first in-house designer and spent more than six months on research: 1:1 interviews, usability tests with focus groups, and observation of radiologists at their hospital workstations. The result was a service design, integrated into the day to day rutines of radiologists and clinical trial coordinators. A small hardware device, with a gateway sits beside the hospital PACS, prepares each MRI, and uploads it to the cloud, managed by a custom web and mobile app.</p>
                 <div class="cs-hero-visual">
                     <a class="js-lightbox cs-hero-tl" href="assets/images/portfolio/cmrad/review-mode.png" data-lightbox-gallery="cm">

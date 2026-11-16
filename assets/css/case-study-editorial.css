@@ -267,8 +267,8 @@ html[data-theme="dark"] body.cs-editorial.js-main-container {
     padding: 3.5rem 0;
 }
 
-.cs-section-label {
-    font-size: 0.72rem;
+body.cs-editorial .cs-section-label {
+    font-size: 0.78rem;
     font-weight: 700;
     letter-spacing: 0.16em;
     text-transform: uppercase;
@@ -445,7 +445,7 @@ html[data-theme="dark"] body.cs-editorial .cs-insight {
     color: #f6f1e8 !important;
 }
 
-.cs-insight p {
+.cs-insight p:where(:not(.cs-section-label)) {
     max-width: 38rem;
     color: #d8cfc4;
     margin-top: 1.25rem;
@@ -1621,7 +1621,7 @@ html[data-portfolio-layout="slide"] .cs-home #portfolio > .container {
     color: inherit;
 }
 
-.cs-work p {
+.cs-work p:where(:not(.cs-kicker)) {
     margin: 0;
     font-size: 0.95rem;
     line-height: 1.45;
@@ -1860,7 +1860,7 @@ html[data-theme="dark"] body.cs-editorial .cs-inline-link::after {
 }
 
 body.cs-editorial.cs-cmrad {
-    --cs-accent: #e4453a;
+    --cs-accent: #F24C3F;
     --cs-accent-soft: #f8d5d2;
 }
 
