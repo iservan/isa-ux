@@ -38,10 +38,14 @@ html[data-theme="dark"] body.cs-editorial.js-main-container {
     color: var(--cs-ink);
 }
 
-.cs-editorial .navbar-brand,
+
 .cs-editorial .lead,
 .cs-editorial .navbar-nav .nav-link {
     font-family: var(--cs-sans);
+    font-size: .95rem;
+}
+.cs-editorial .navbar-brand {
+    font-size: 1.21rem;
 }
 
 body.cs-editorial .navbar-nav .nav-link[aria-current="page"],
