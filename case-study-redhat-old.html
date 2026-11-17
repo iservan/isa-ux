@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        (function () {
+            try {
+                if (localStorage.getItem('theme') === 'dark') {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                }
+            } catch (e) {}
+        })();
+    </script>
+    <script defer src="https://t.contentsquare.net/uxa/19c3e0b4b2092.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V95WD8DEG6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-5C60B5T94B');
+    </script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="@isaiso" />
+    <meta name="description" content="Red Hat Skills Assessment, product design case study by Isabel Servan">
+    <title>Isabel Servan :: Red Hat Skills Assessment</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22>
+        <text y=%22.9em%22 font-size=%2290%22>
+          👩🏻‍💻
+        </text>
+      </svg>" />
+    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome-font-awesome.min.css">
+    <link rel="stylesheet" href="assets/plugins/nivo-lightbox/nivo-lightbox.css" />
+    <link rel="stylesheet" href="assets/plugins/nivo-lightbox/themes/default/default.css" />
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link href="assets/css/custom.css" rel="stylesheet">
+    <link href="assets/css/case-study-editorial.css" rel="stylesheet">
+</head>
+
+<body class="js-main-container cs-editorial cs-redhat">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top py-3" id="mainNav">
+        <div class="container">
+            <a href="index.html" class="logo d-flex">
+                <div class="c-avatar mr-3">
+                    <img id="avatar" class="c-avatar__img" src="assets/images/header/avatar-26.png" alt=""
+                        attr="data-no-retina">
+                </div>
+                <div class="pt-2">
+                    <span class="navbar-brand js-scroll-trigger">Isabel Servan</span>
+                    <p class="lead">Senior Product Designer</p>
+                </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="case-study-allstacks.html">Allstacks Case</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="case-study-redhat.html">Red Hat Case</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="case-study-realyse.html">REalyse Case</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="experience.html">Resume</a></li>
+                </ul>
+                <button type="button" class="theme-toggle" id="themeToggle" aria-pressed="false" aria-label="Switch to dark mode">
+                    <svg class="icon-sun" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M10 2V1C10 0.71667 10.096 0.479337 10.288 0.288003C10.48 0.0966701 10.7173 0.000670115 11 3.44828e-06C11.2827 -0.000663218 11.5203 0.0953368 11.713 0.288003C11.9057 0.48067 12.0013 0.718003 12 1V2C12 2.28334 11.904 2.521 11.712 2.713C11.52 2.905 11.2827 3.00067 11 3C10.7173 2.99934 10.48 2.90334 10.288 2.712C10.096 2.52067 10 2.28334 10 2ZM10 21V20C10 19.7167 10.096 19.4793 10.288 19.288C10.48 19.0967 10.7173 19.0007 11 19C11.2827 18.9993 11.5203 19.0953 11.713 19.288C11.9057 19.4807 12.0013 19.718 12 20V21C12 21.2833 11.904 21.521 11.712 21.713C11.52 21.905 11.2827 22.0007 11 22C10.7173 21.9993 10.48 21.9033 10.288 21.712C10.096 21.5207 10 21.2833 10 21ZM21 12H20C19.7167 12 19.4793 11.904 19.288 11.712C19.0967 11.52 19.0007 11.2827 19 11C18.9993 10.7173 19.0953 10.48 19.288 10.288C19.4807 10.096 19.718 10 20 10H21C21.2833 10 21.521 10.096 21.713 10.288C21.905 10.48 22.0007 10.7173 22 11C21.9993 11.2827 21.9033 11.5203 21.712 11.713C21.5207 11.9057 21.2833 12.0013 21 12ZM2 12H1C0.71667 12 0.479337 11.904 0.288003 11.712C0.0966701 11.52 0.000670115 11.2827 3.44828e-06 11C-0.000663218 10.7173 0.0953368 10.48 0.288003 10.288C0.48067 10.096 0.718003 10 1 10H2C2.28334 10 2.521 10.096 2.713 10.288C2.905 10.48 3.00067 10.7173 3 11C2.99934 11.2827 2.90334 11.5203 2.712 11.713C2.52067 11.9057 2.28334 12.0013 2 12ZM18.75 4.675L18.4 5.025C18.2167 5.20834 17.9877 5.3 17.713 5.3C17.4383 5.3 17.2007 5.2 17 5C16.8167 4.81667 16.7207 4.58767 16.712 4.313C16.7033 4.03834 16.791 3.80067 16.975 3.6L17.35 3.225C17.5333 3.025 17.7667 2.925 18.05 2.925C18.3333 2.925 18.575 3.025 18.775 3.225C18.975 3.425 19.071 3.66667 19.063 3.95C19.055 4.23334 18.9507 4.475 18.75 4.675ZM5.025 18.4L4.65 18.775C4.46667 18.975 4.23334 19.075 3.95 19.075C3.66667 19.075 3.425 18.975 3.225 18.775C3.025 18.575 2.929 18.3333 2.937 18.05C2.945 17.7667 3.04934 17.525 3.25 17.325L3.6 16.975C3.78334 16.7917 4.01267 16.7 4.288 16.7C4.56334 16.7 4.80067 16.8 5 17C5.18334 17.1833 5.27934 17.4127 5.288 17.688C5.29667 17.9633 5.209 18.2007 5.025 18.4ZM17.325 18.75L16.975 18.4C16.7917 18.2167 16.7 17.9877 16.7 17.713C16.7 17.4383 16.8 17.2007 17 17C17.1833 16.8167 17.4127 16.721 17.688 16.713C17.9633 16.705 18.2007 16.7923 18.4 16.975L18.775 17.35C18.975 17.5333 19.075 17.7667 19.075 18.05C19.075 18.3333 18.975 18.575 18.775 18.775C18.575 18.975 18.3333 19.071 18.05 19.063C17.7667 19.055 17.525 18.9507 17.325 18.75ZM3.6 5.025L3.225 4.65C3.025 4.46667 2.925 4.23334 2.925 3.95C2.925 3.66667 3.025 3.425 3.225 3.225C3.425 3.025 3.66667 2.929 3.95 2.937C4.23334 2.945 4.475 3.04934 4.675 3.25L5.025 3.6C5.20834 3.78334 5.3 4.01267 5.3 4.288C5.3 4.56334 5.2 4.80067 5 5C4.81667 5.18334 4.58767 5.27934 4.313 5.288C4.03834 5.29667 3.80067 5.209 3.6 5.025ZM6.75 15.25C5.58334 14.0833 5 12.6667 5 11C5 9.33334 5.58334 7.91667 6.75 6.75C7.91667 5.58334 9.33334 5 11 5C12.6667 5 14.0833 5.58334 15.25 6.75C16.4167 7.91667 17 9.33334 17 11C17 12.6667 16.4167 14.0833 15.25 15.25C14.0833 16.4167 12.6667 17 11 17C9.33334 17 7.91667 16.4167 6.75 15.25Z" fill="currentColor"/></svg>
+                    <svg class="icon-moon" width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5.68799 0.846153C6.21426 0.594519 6.76569 0.395512 7.34229 0.249131C7.91888 0.102751 8.49809 0.0197838 9.0799 0.000225938C9.28124 -0.00367777 9.47049 0.0443883 9.64764 0.144424C9.82479 0.244459 9.9565 0.384694 10.0428 0.565129C10.1075 0.700455 10.1385 0.842641 10.1359 0.991689C10.1333 1.14074 10.0934 1.28913 10.0162 1.43686C9.35911 2.76712 9.03244 4.1703 9.03623 5.6464C9.04002 7.12251 9.36184 8.52967 10.0017 9.86789C10.6416 11.2061 11.5367 12.3347 12.687 13.2538C13.8373 14.1728 15.1402 14.8013 16.5956 15.1391C16.744 15.179 16.877 15.2447 16.9947 15.3363C17.1124 15.4278 17.2036 15.5412 17.2683 15.6765C17.3545 15.857 17.3846 16.0458 17.3585 16.2431C17.3323 16.4403 17.2548 16.6159 17.126 16.7699C16.7304 17.2176 16.2947 17.62 15.8187 17.9769C15.3428 18.3337 14.8417 18.638 14.3154 18.8896C13.0674 19.4864 11.7813 19.8102 10.457 19.8611C9.13277 19.912 7.87069 19.7259 6.67079 19.3027C5.47088 18.8796 4.3714 18.2322 3.37233 17.3606C2.37327 16.489 1.57581 15.4293 0.979971 14.1816C0.384129 12.9339 0.0603163 11.6478 0.00853339 10.3232C-0.0432495 8.99864 0.142862 7.73656 0.566872 6.53697C0.990881 5.33738 1.63826 4.2379 2.509 3.23852C3.37975 2.23914 4.43941 1.44168 5.68799 0.846153Z" fill="currentColor"/></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="cs-shell">
+        <aside class="cs-rail" aria-label="Case study sections">
+            <ol>
+                <li><a href="#hook" class="is-active">01 Outcome</a></li>
+                <li><a href="#context">02 Context</a></li>
+                <li><a href="#problem">03 Problem</a></li>
+                <li><a href="#research">04 Research</a></li>
+                <li><a href="#insight">05 Insight</a></li>
+                <li><a href="#process">06 Process</a></li>
+                <li><a href="#validation">07 Validation</a></li>
+                <li><a href="#reflection">08 Reflection</a></li>
+            </ol>
+            <button type="button" class="filters-more rail-more" aria-label="Show more sections">
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+            </button>
+        </aside>
+
+        <main>
+            <!-- 1. Outcome-first hook -->
+            <header id="hook">
+                <p class="cs-kicker">Skills Assessment · Enterprise learning platform</p>
+                <h1 class="cs-hook">Learning subscription sales increased by <em>15%</em> in the first month, and the product now holds <em>10,000+ monthly visits</em></h1>
+                <p class="cs-lede">Enterprise client teams could finally see what they were missing and how to get more value from their cloud solutions, while Red Hat’s sales team could walk into customer meetings with real data and proof instead of just a pitch.</p>
+                <div class="cs-hero-visual">
+                    <a class="js-lightbox cs-hero-tl" href="assets/images/portfolio/sa-laptop-clear.jpg" data-lightbox-gallery="sa">
+                        <img src="assets/images/portfolio/sa-laptop-clear.jpg" alt="Skills Assessment on a laptop">
+                    </a>
+                    <a class="js-lightbox cs-hero-bl" href="assets/images/portfolio/SA-mobile.jpg" data-lightbox-gallery="sa">
+                        <img src="assets/images/portfolio/SA-mobile.jpg" alt="Skills Assessment on mobile">
+                    </a>
+                    <a class="js-lightbox cs-hero-main" href="assets/images/portfolio/redhat/SA-ui-long.jpg" data-lightbox-gallery="sa">
+                        <img src="assets/images/portfolio/redhat/SA-ui-long.jpg" alt="Skills Assessment product screens">
+                    </a>
+                </div>
+            </header>
+
+            <!-- 2. Context bar -->
+            <section id="context">
+                <dl class="cs-context">
+                    <div>
+                        <dt>Role</dt>
+                        <dd>Lead Product Designer, UX research, UX/UI design. Facilitated alignment across four Red Hat teams.</dd>
+                    </div>
+                    <div>
+                        <dt>Team</dt>
+                        <dd>Sales, Marketing, RHLS & Curriculum teams. <br> <em>12 engineers. 35 stakeholders.</em></dd>
+                    </div>
+                    <div>
+                        <dt>Tools</dt>
+                        <dd>Qualitative UX research, workshops, surveys, interviews. Figma, design system, React.</dd>
+                    </div>
+                    <div>
+                        <dt>Timeline</dt>
+                        <dd>18 months.</dd>
+                    </div>
+                    <div>
+                        <dt>Platform</dt>
+                        <dd>Desktop / web, responsive. Live in Red Hat’s Training menu: <a class="cs-inline-link" href="https://skills.ole.redhat.com/en" target="_blank" rel="noopener">skills.ole.redhat.com</a></dd>
+                    </div>
+                </dl>
+            </section>
+
+            <!-- 3. The problem, backed by data -->
+            <section class="cs-section" id="problem">
+                <p class="cs-kicker">03 · The problem</p>
+                <h2>41% of features in the high-tier cloud subscription were never set up.</h2>
+                <div class="cs-prose">
+                    <p>Red Hat enterprise clients were buying cloud solutions they could not fully use. Teams had no shared view of technical skill, and unused product was treated as normal.</p>
+                </div>
+                <div class="cs-stat-row">
+                    <div class="cs-stat">
+                        <b>41%</b>
+                        <span>of features in the high-tier cloud subscription were never set up, the product was paid for and still invisible in daily work.</span>
+                    </div>
+                    <div class="cs-stat">
+                        <b>32%</b>
+                        <span>boost in cloud server utilization was possible with the right training.</span>
+                    </div>
+                </div>
+                <div class="cs-prose">
+                    <p>These numbers came from observing at how enterprise clients had set up their high-tier subscriptions and checking it against survey results. The 32% is the gain in usage that training could still unlock. Together, those two figures defined the problem. My job after that was to make it clear to enterprise tech managers (B2B users) that training could help them get more value from their cloud solutions and make it more engaging for learners (B2C users).</p>
+                    <p>Curriculum team had already documented business requirements in a long spreadsheet. Those requirements described what the business wanted to ship, not what users needed to.</p>
+                    
+            </section>
+
+            <!-- 4. Research & discovery -->
+            <section class="cs-section" id="research">
+                <p class="cs-kicker">04 · Research &amp; discovery</p>
+                <h2>I talked to the people involved in the process, then treated business requirements as hypotheses.</h2>
+                <div class="cs-who">
+                    <div><strong>2</strong> surveys with B2B and B2C learners</div>
+                    <div><strong>4</strong> Design Thinking workshops with stakeholders</div>
+                    <div><strong>Weekly</strong> engineering follow-ups</div>
+                    <div><strong>35</strong> stakeholders across Sales, Marketing, Curriculum, Engineering</div>
+                </div>
+                <div class="cs-prose">
+                    <p>My first job was to validate the business requirements spreadsheet against user needs. I led the UX research, collaborating cross-functionally with Sales, Marketing, and Curriculum teams. The real challenge wasn't just balancing what different teams wanted. The product served several user journeys, and we had to build around what each of them actually needed.</p>                    
+                    <p>The decision I drove was to apply mixed qualitative research methods like stakeholders workshops, user surveys, and users interviews with end users and internal staff. I synthesized themes into a shared document so teams without a UX background could see the same evidence. That work surfaced a few key findings:</p>
+                    <ul class="cs-facts">
+                        <li><strong>Enterprise tech managers</strong> needed a centralized view, so they could spot skill gaps across a large team, track progress over time and see the value of training investments.</li>
+                        <li><strong>Technical learners</strong> needed the ability to filter assessments by role, product, or interest, so they could quickly find the most relevant training.</li>
+                        <li><strong>Red Hat technical</strong> team needed better developer tools, like a YAML editor and React Flow integration to speed up how they built assessments. They also needed the ability to reuse questions across custom assessments, instead of duplicating them everywhere, which would cut down on maintenance work.</li>
+                    </ul>
+                
+
+                </div>
+
+                <div class="cs-stack">
+                    <figure class="cs-figure">
+                        <a class="js-lightbox" href="assets/images/portfolio/redhat/SA-requirements.png" data-lightbox-gallery="research">
+                            <img src="assets/images/portfolio/redhat/SA-requirements.png" alt="Business requirements documentation">
+                        </a>
+                        <figcaption>Starting point: business requirements before they were tested against users.</figcaption>
+                    </figure>
+                    <div class="cs-pair">
+                        <figure>
+                            <a class="js-lightbox" href="assets/images/portfolio/redhat/SA-survey.png" data-lightbox-gallery="research">
+                                <img src="assets/images/portfolio/redhat/SA-survey.png" alt="Survey synthesis">
+                            </a>
+                            <figcaption>Survey synthesis from B2B and B2C learners.</figcaption>
+                        </figure>
+                        <figure>
+                            <a class="js-lightbox" href="assets/images/portfolio/redhat/SA-interviews.png" data-lightbox-gallery="research">
+                                <img src="assets/images/portfolio/redhat/SA-interviews.png" alt="Interview notes">
+                            </a>
+                            <figcaption>Interview notes with learners and internal teams.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+                <div class="cs-learn">
+                    <article>
+                        <h3>01 · Surveys &amp; account data</h3>
+                        <p><strong>What we wanted to know:</strong> how much of the subscription went unused, and how people prefer to learn.</p>
+                        <p><strong>How we checked:</strong> I reviewed how enterprise clients had set up their accounts, then ran two surveys with B2B and B2C learners.</p>
+                        <p><strong>What we found:</strong> 41% of top-tier features were never switched on. People learn by watching videos and reading docs, and barely touch in-app help. That way, the product connects people with training they already trust.</p>
+                    </article>
+                    <article>
+                        <h3>02 · Focus groups</h3>
+                        <p><strong>What I wanted to know:</strong> which screen would people struggle with most?</p>
+                        <p><strong>How I checked:</strong> two focus groups on the prototype. I asked people to find an assessment for their role and interest, then read a skill-gap report.</p>
+                        <p><strong>What I found:</strong> the report was easy. The filter was not, people could not match their interests to an assessment. So we rebuilt it with simpler, standard controls and tested it again before engineering locked it in.</p>
+                    </article>
+                    <article style="grid-column: 1 / -1;">
+                        <h3>03 · Interviews &amp; Workshops</h3>
+                        <p><strong>What I wanted to know:</strong> Who was this product really for, were we designing for one audience, or for several types of users with different goals and needs.</p>
+                        <p><strong>How I checked:</strong> I interviewed enterprise tech managers (B2B), learners (B2C) and internal staff, then ran four workshops with Sales, Marketing, Curriculum, and Engineering.</p>
+                        <p><strong>What I found:</strong> the main finding was that we had to treat internal users as their own user journey. Giving those teams the proper internal tools would unlock significant operational cost savings. Managers wanted their team’s skills in one view, Sales needed that report to bring to customer meetings, and Curriculum needed to write and reuse questions, none of which a generic catalog could do. That is what finally changed the spreadsheet: internal users became first-class, not an afterthought.</p>
+                    </article>
+                </div>
+                <div class="cs-charts">
+                    <h3>How people actually learned Red Hat skills</h3>
+                    <p class="cs-note" style="margin-top:0;margin-bottom:1.25rem;">Survey of B2B and B2C learners results.</p>
+                    <div class="chart-container">
+                        <div class="chart-item">
+                            <div class="chart-bar-wrapper">
+                                <div class="chart-bar" style="width: 65%;">
+                                    <div class="chart-label">Watch a video</div>
+                                </div>
+                                <div class="chart-number">83 / 65%</div>
+                            </div>
+                        </div>
+                        <div class="chart-item">
+                            <div class="chart-bar-wrapper">
+                                <div class="chart-bar" style="width: 59%;">
+                                    <div class="chart-label">Read Red Hat documentation or guides</div>
+                                </div>
+                                <div class="chart-number">76 / 59%</div>
+                            </div>
+                        </div>
+                        <div class="chart-item">
+                            <div class="chart-bar-wrapper">
+                                <div class="chart-bar" style="width: 44%;">
+                                    <div class="chart-label">Talk to colleagues</div>
+                                </div>
+                                <div class="chart-number">56 / 44%</div>
+                            </div>
+                        </div>
+                        <div class="chart-item">
+                            <div class="chart-bar-wrapper">
+                                <div class="chart-bar" style="width: 32%;">
+                                    <div class="chart-label">Read other websites</div>
+                                </div>
+                                <div class="chart-number">41 / 32%</div>
+                            </div>
+                        </div>
+                        <div class="chart-item">
+                            <div class="chart-bar-wrapper">
+                                <div class="chart-bar" style="width: 19%;">
+                                    <div class="chart-label">In-app support</div>
+                                </div>
+                                <div class="chart-number">24 / 19%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p>The three user personas: enterprise technical managers, developers, and internal Red Hat users, started as assumptions. We used them to map out the journeys, then tested whether people's actual behavior backed them up.</p>
+
+                <div class="cs-personas">
+
+                    <article>
+                        <h3>Hypothesis · Managers</h3>
+                        <p>Need full visibility of team skills to spend budget on learning instead of unused services.</p>
+                    </article>
+                    <article>
+                        <h3>Hypothesis · Developers</h3>
+                        <p>Need assessments that match the work they actually do, not a generic certification path.</p>
+                    </article>
+                    <article>
+                        <h3>Hypothesis · Internal users</h3>
+                        <p>Need a report that helps a technical manager choose a learning subscription over more Red Hat services.</p>
+                    </article>
+                </div>
+                <p class="cs-note">These were not finished truths. They were bets we took into flows, then into usability tests.</p>
+                <figure class="cs-figure" style="margin-top:1.5rem;">
+                    <a class="js-lightbox" href="assets/images/portfolio/user-persona.png" data-lightbox-gallery="research">
+                        <img src="assets/images/portfolio/user-persona.png" alt="User persona artifacts">
+                    </a>
+                    <figcaption>Persona artifacts used as shared language, not as a one-and-done deliverable.</figcaption>
+                </figure>
+            </section>
+            <!-- 5. Key insight, full bleed -->
+            <section class="cs-insight" id="insight">
+                <div class="cs-insight-inner">
+                    <p class="cs-kicker">05 · The key insight</p>
+                    <h2>Balancing Sales, Marketing, and Curriculum would still have failed if we never asked the users.</h2>
+                    <p>The pivot was to treat the spreadsheet as a hypothesis, then replace it with what research actually found: custom assessments for customers, centralized group reporting for corporate users, and technical tools so developers could maintain volume. Conversion, engagement, and content still mattered. They just could not be the spec.</p>
+                </div>
+            </section>
+
+            <!-- 6. Process -->
+            <section class="cs-section" id="process" style="border-top:0;padding-top:4rem;">
+                <p class="cs-kicker">06 · Process</p>
+                <h2>UXR → Prototyping: user flows & wireframes → High-fidelity screens applying the Red Hat Design System → User testing</h2>
+                <div class="cs-prose">
+                    <p>My design process is iterative and user-centered. I start by conducting user research to understand the needs and pain points of the users. This helps me to define the problem and develop the user personas. I then ideate and brainstorm possible solutions, creating wireframes and prototypes to test with users and stakeholders. I iterate on the design based on user feedback until we’re satisfied that the solution is user-friendly and meets the needs of the target users.</p>
+                </div>
+
+                <p class="cs-caption-bar"><span>Prototyping · user flows</span><span>Three role-based journeys, one system</span></p>
+                <div class="cs-prose">
+                    <p>UXR findings surfaced the core problems and the three personas driving it. From there, I mapped role-based user journeys for enterprise technical managers, developers, and internal Red Hat users.</p>
+                </div>
+                <div class="cs-highlight">
+                    <p>We initially framed the product as primarily B2C learner experience, underestimating the internal users. As we worked through stakeholder workshops, we realized that Sales, Curriculum, and developers were also key users. This shifted our approach to a multi-role product, considering different goals, workflows, and pain points across each role.</p>
+                </div>
+
+                <div class="cs-pair">
+                    <figure>
+                        <a class="js-lightbox" href="assets/images/portfolio/redhat/SA-flow3.png" data-lightbox-gallery="process">
+                            <img src="assets/images/portfolio/redhat/SA-flow3.png" alt="User journey for learners">
+                        </a>
+                        <figcaption>Enterprise technical manager journey, see team gaps, then act on training.</figcaption>
+                    </figure>
+                    <figure>
+                        <a class="js-lightbox" href="assets/images/portfolio/redhat/SA-flow2.png" data-lightbox-gallery="process">
+                            <img src="assets/images/portfolio/redhat/SA-flow2.png" alt="User journey for managers">
+                        </a>
+                        <figcaption>Internal Red Hat user journey.</figcaption>
+                    </figure>
+                </div>
+                <figure class="cs-figure" style="margin-top:1.25rem;">
+                    <a class="js-lightbox" href="assets/images/portfolio/redhat/SA-flow1.png" data-lightbox-gallery="process">
+                        <img src="assets/images/portfolio/redhat/SA-flow1.png" alt="Complete user journey including internal Sales flow">
+                    </a>
+                    <figcaption>Learners, end-user journey, find an assessment that matches role and interests.</figcaption>
+                </figure>
+
+                <p class="cs-caption-bar" style="margin-top:2.5rem;"><span>Prototyping · Wireframes · Structure before visual design</span></p>
+                <div class="cs-prose">
+                    <p>During the wireframing phase, I focused on defining the information architecture, page structure, and key interactions across the role-based user journeys we had defined.</p>
+                    <p>I worked closely with the technical team, using wireframes and prototypes to clarify requirements, understand constraints, and gather feedback. This helped us align on the experience and move into development with a clearer, shared understanding of the final experience.</p>
+                </div>
+                <div class="cs-stack">
+                    <figure class="cs-figure">
+                        <a class="js-lightbox" href="assets/images/portfolio/redhat/SA-wireframes.png" data-lightbox-gallery="process">
+                            <img src="assets/images/portfolio/redhat/SA-wireframes.png" alt="Low-fidelity wireframes">
+                        </a>
+                        <figcaption>Wireframes: navigation, filtering, and report structure.</figcaption>
+                    </figure>
+                    <figure class="cs-figure">
+                        <a class="js-lightbox" href="assets/images/portfolio/redhat/SA-ux.png" data-lightbox-gallery="process">
+                            <img src="assets/images/portfolio/redhat/SA-ux.png" alt="UX wireframes">
+                        </a>
+                        <figcaption>UX frames used with engineering to lock component behavior.</figcaption>
+                    </figure>
+                </div>
+
+                <p class="cs-caption-bar" style="margin-top:2.5rem;"><span>High-fi · Red Hat Design System</p>
+                <div class="cs-prose">
+                    <p>At this critical stage, I meticulously incorporated Red Hat's design principles, visual elements and brand aesthetics into the user interface, aiming to maintain a cohesive and recognizable brand identity.</p>
+                    <p>I created simple, intuitive UI components that followed Red Hat’s standards and helped build trust with users</p>
+                </div>
+                <figure class="cs-figure cs-figure--crop-40">
+                    <a class="js-lightbox" href="assets/images/portfolio/redhat/SA-branding.png" data-lightbox-gallery="process">
+                        <img src="assets/images/portfolio/redhat/SA-branding.png" alt="Red Hat branding applied to Skills Assessment">
+                    </a>
+                    <figcaption>A short look at the Red Hat system applied to the product. The screens below are the real deliverable.</figcaption>
+                </figure>
+                <div class="cs-stack">
+                    <figure class="cs-figure">
+                        <a class="js-lightbox" href="assets/images/portfolio/redhat/SA-ui-landing.png" data-lightbox-gallery="ui">
+                            <img src="assets/images/portfolio/redhat/SA-ui-landing.png" alt="Landing page with assessment filtering">
+                        </a>
+                        <figcaption>Landing, dynamic filtering by role, interest, and product.</figcaption>
+                    </figure>
+                    <div class="cs-highlight">
+                        <p><strong>Finding in action · 02 Learners.</strong> Support dynamic filtering so users can select skills for different roles. Assessments become relevant instead of a static catalog.</p>
+                    </div>
+                    <figure class="cs-figure">
+                        <a class="js-lightbox" href="assets/images/portfolio/redhat/SA-ui-individual.png" data-lightbox-gallery="ui">
+                            <img src="assets/images/portfolio/redhat/SA-ui-individual.png" alt="Individual assessment experience">
+                        </a>
+                        <figcaption>Individual assessment, the learner path after the filter had done its job.</figcaption>
+                    </figure>
+                    <figure class="cs-figure">
+                        <a class="js-lightbox" href="assets/images/portfolio/redhat/SA-ui-reports-2.png" data-lightbox-gallery="ui">
+                            <img src="assets/images/portfolio/redhat/SA-ui-reports-2.png" alt="Technical manager skill-gap reports">
+                        </a>
+                        <figcaption>Primary user · technical manager reports.</figcaption>
+                    </figure>
+                    <div class="cs-highlight">
+                        <p><strong>Finding in action · 01 Sales.</strong> A report that names client skill gaps and also works as a sales presentation.</p>
+                    </div>
+                    <figure class="cs-figure">
+                        <a class="js-lightbox" href="assets/images/portfolio/redhat/SA-ui-admin-01.png" data-lightbox-gallery="ui">
+                            <img src="assets/images/portfolio/redhat/SA-ui-admin-01.png" alt="Internal assessment authoring">
+                        </a>
+                        <figcaption>Internal authoring for Sales, developers, Marketing, and Curriculum.</figcaption>
+                    </figure>
+                    <div class="cs-highlight">
+                        <p><strong>Finding in action · 03 Curriculum.</strong> The same question can appear in different assessments, so authoring and maintenance do not duplicate work.</p>
+                    </div>
+                    <figure class="cs-figure">
+                        <a class="js-lightbox" href="assets/images/portfolio/redhat/SA-ui-admin-03.png" data-lightbox-gallery="ui">
+                            <img src="assets/images/portfolio/redhat/SA-ui-admin-03.png" alt="Developer tools with YAML and flow editor">
+                        </a>
+                        <figcaption>Developer tools, YAML editor and React Flow.</figcaption>
+                    </figure>
+                    <div class="cs-highlight">
+                        <p><strong>Finding in action · engineering.</strong> YAML editor and React Flow so assessments could ship without a ticket pile.</p>
+                    </div>
+                </div>
+
+                <p class="cs-caption-bar" style="margin-top:2.5rem;"><span>User testing</span><span>Before engineering locked the filter</span></p>
+                <div class="cs-prose">
+                    <p>I ran usability sessions with two focus groups against the prototype: structured tasks plus open questions. The main challenge was not the report. It was the filter. People could not map their interests to an assessment without friction. We simplified the interaction and the layout before engineering locked it.</p>
+                    <p>What worked especially well was the new skill-gap report experience. Close collaboration with engineering helped us to identify the technical constraints and validate the UX in the working context of the final product.</p>
+                </div>
+            </section>
+
+            <!-- 7. Validation & outcome -->
+            <section class="cs-section" id="validation">
+                <p class="cs-kicker">07 · Validation &amp; outcome</p>
+                <h2>Two test groups found the filter too hard. We fixed that before launch, then the business number moved.</h2>
+                <div class="cs-prose">
+                    <p>The sessions in Process changed the filter before engineering locked it. What held after that was the business result: learning subscription sales and monthly visits on the live product.</p>
+                </div>
+                <div class="cs-outcome">
+                    <div>
+                        <b>15%</b>
+                        <span>increase in learning subscription sales in month one</span>
+                    </div>
+                    <div>
+                        <b>10k+</b>
+                        <span>monthly visits after launch</span>
+                    </div>
+                    <div>
+                        <b>2</b>
+                        <span>usability groups; filter UX revised before ship</span>
+                    </div>
+                </div>
+                <div class="cs-proof-grid">
+                    <figure class="cs-proof cs-figure">
+                        <a class="js-lightbox" href="assets/images/portfolio/redhat/similarweb-visits.png" data-lightbox-gallery="proof">
+                            <img src="assets/images/portfolio/redhat/similarweb-visits.png" alt="Similarweb traffic: 11,409 total visits worldwide in August 2026, up 35.75% from the previous month">
+                        </a>
+                        <figcaption>Similarweb, August 2026: 11,409 worldwide visits, up 35.75% month over month. Public proof that the product still sits above 10,000 monthly visits.</figcaption>
+                    </figure>
+                    <figure class="cs-proof cs-figure">
+                        <a href="https://skills.ole.redhat.com/en" target="_blank" rel="noopener">
+                            <img src="assets/images/portfolio/redhat/redhat-training-menu.png" alt="Red Hat website Training menu with Skills assessments listed under Training and certification">
+                        </a>
+                        <figcaption>Shipped into Red Hat’s main <strong>Training</strong> menu, under Training &amp; certification. Click the image to open Skills Assessment live.</figcaption>
+                    </figure>
+                </div>
+                <a class="cs-cta" href="https://skills.ole.redhat.com/en" target="_blank" rel="noopener">Visit Skills Assessment live →</a>
+            </section>
+
+            <!-- 8. Reflection -->
+            <section class="cs-section" id="reflection">
+                <p class="cs-kicker">08 · Reflection</p>
+                <h2>We almost forgot the people who keep the product alive</h2>
+                <div class="cs-prose">
+                    <p>We almost underbuilt the internal flow, the path Sales, Curriculum, and developers actually needed to keep the product alive. I fixed it by putting that journey on the same map as the learner, then teaching stakeholders how to read the research so they would fund it. Next time I would test the sales-deck report with Account teams before investing in catalog polish. The 15% sales lift and 10,000 monthly visits are what that correction bought. The cost was time: months spent convincing rooms that a spreadsheet of requirements was not the same thing as a user need.</p>
+                </div>
+                <div class="cs-footer-nav">
+                    <a href="index.html">← All work</a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"
+        integrity="sha256-ihAoc6M/JPfrIiIeayPE9xjin4UWjsx2mjW/rtmxLM4=" crossorigin="anonymous"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/plugins/jquery.easing.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
+    <script src="assets/plugins/nivo-lightbox/nivo-lightbox.js"></script>
+    <script src="assets/js/scrollreveal.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/custom.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script>
+        (function () {
+            var links = document.querySelectorAll('.cs-rail a');
+            var ids = ['hook', 'context', 'problem', 'research', 'insight', 'process', 'validation', 'reflection'];
+            var sections = ids.map(function (id) { return document.getElementById(id); }).filter(Boolean);
+            function setActive() {
+                var current = sections[0];
+                var fromTop = window.scrollY + 140;
+                sections.forEach(function (sec) {
+                    if (sec.offsetTop <= fromTop) current = sec;
+                });
+                links.forEach(function (link) {
+                    link.classList.toggle('is-active', link.getAttribute('href') === '#' + current.id);
+                });
+            }
+            window.addEventListener('scroll', setActive, { passive: true });
+            setActive();
+        })();
+    </script>
+</body>
+
+</html>

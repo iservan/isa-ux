@@ -30,8 +30,20 @@
         btn.setAttribute('title', isDark ? 'Switch to light mode' : 'Switch to dark mode');
     }
 
+    function markCurrentNav() {
+        var path = window.location.pathname.split('/').pop() || 'index.html';
+        var links = document.querySelectorAll('#mainNav .nav-link');
+        links.forEach(function (link) {
+            var href = link.getAttribute('href');
+            if (!href || href.charAt(0) === '#') return;
+            var file = href.split('/').pop().split('?')[0].split('#')[0];
+            if (file === path) link.setAttribute('aria-current', 'page');
+        });
+    }
+
     function init() {
         applyTheme(getTheme());
+        markCurrentNav();
         var btn = document.getElementById('themeToggle');
         if (btn) {
             btn.addEventListener('click', function () {

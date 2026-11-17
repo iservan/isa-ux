@@ -1,17 +1,17 @@
 /* Editorial case-study template, distinct from the two-column portfolio layout */
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
 
 body.cs-editorial {
     --cs-ink: #1c1612;
     --cs-muted: #5c534c;
-    --cs-paper: #f3eee6;
-    --cs-paper-2: #eae2d6;
+    --cs-paper: #e1dbd0;
+    --cs-paper-2: #efe9df;
     --cs-line: rgba(28, 22, 18, 0.12);
-    --cs-accent: #c41e3a;
-    --cs-accent-soft: #f6d5d8;
+    --cs-accent: #2d62c6;
+    --cs-accent-soft: #d6e4fb;
     --cs-dark: #161210;
-    --cs-serif: "Libre Baskerville", "Georgia", serif;
-    --cs-sans: "Source Sans 3", "Muli", sans-serif;
+    --cs-serif: "Lora", "Georgia", serif;
+    --cs-sans: "Muli", sans-serif;
     background: var(--cs-paper);
     color: var(--cs-ink);
     font-family: var(--cs-sans);
@@ -23,17 +23,18 @@ body.cs-editorial #mainNav.bg-white {
     background-color: var(--cs-paper) !important;
 }
 
+html[data-theme="dark"]:has(body.cs-editorial),
 html[data-theme="dark"] body.cs-editorial,
 html[data-theme="dark"] body.cs-editorial.js-main-container {
     --cs-ink: #f3eee6;
     --cs-muted: #c4b8ab;
-    --cs-paper: #120f0d;
+    --cs-paper: #37312d;
     --cs-paper-2: #1c1815;
     --cs-line: rgba(243, 238, 230, 0.14);
-    --cs-accent: #ff5a6a;
-    --cs-accent-soft: #3a1a1e;
+    --cs-accent: #8eb4ff;
+    --cs-accent-soft: #1a2744;
     --cs-dark: #080706;
-    background: var(--cs-paper);
+    background-color: var(--cs-paper);
     color: var(--cs-ink);
 }
 
@@ -41,6 +42,12 @@ html[data-theme="dark"] body.cs-editorial.js-main-container {
 .cs-editorial .lead,
 .cs-editorial .navbar-nav .nav-link {
     font-family: var(--cs-sans);
+}
+
+body.cs-editorial .navbar-nav .nav-link[aria-current="page"],
+body.cs-editorial .navbar-nav .nav-link[aria-current="page"]:hover,
+body.cs-editorial .navbar-nav .nav-link[aria-current="page"]:focus {
+    color: var(--cs-accent);
 }
 
 .cs-shell {
@@ -88,28 +95,33 @@ html[data-theme="dark"] body.cs-editorial.js-main-container {
 }
 
 .cs-kicker {
+    font-family: "Outfit", sans-serif;
     font-size: 0.78rem;
-    font-weight: 700;
+    font-weight: 600;
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--cs-accent);
-    margin-bottom: 1.25rem;
+    margin-bottom: 0.75rem;
 }
 
 .cs-hook {
     font-family: var(--cs-serif);
-    font-size: clamp(1.9rem, 3.5vw, 2.82rem);
-    font-weight: 400;
+    font-size: clamp(1.75rem, 3.1vw, 2.55rem);
+    font-weight: 500;
     line-height: 1.28;
     letter-spacing: -0.01em;
-    max-width: 28ch;
+    max-width: 30ch;
     margin: 0 0 1.25rem;
 }
 
 .cs-hook em {
     font-style: italic;
-    font-weight: 400;
+    font-weight: 500;
     color: var(--cs-accent);
+}
+
+.cs-nowrap {
+    white-space: nowrap;
 }
 
 .cs-lede {
@@ -249,8 +261,9 @@ html[data-theme="dark"] body.cs-editorial.js-main-container {
 }
 
 .cs-context dt {
+    font-family: "Outfit", sans-serif;
     font-size: 0.7rem;
-    font-weight: 700;
+    font-weight: 600;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--cs-accent);
@@ -267,19 +280,10 @@ html[data-theme="dark"] body.cs-editorial.js-main-container {
     padding: 3.5rem 0;
 }
 
-body.cs-editorial .cs-section-label {
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--cs-accent);
-    margin-bottom: 0.75rem;
-}
-
 .cs-section h2 {
     font-family: var(--cs-serif);
-    font-size: clamp(1.35rem, 3vw, 1.7rem);
-    font-weight: 400;
+    font-size: clamp(1.5rem, 2.7vw, 1.82rem);
+    font-weight: 500;
     line-height: 1.25;
     margin-bottom: 1.25rem;
     color: inherit;
@@ -294,8 +298,13 @@ html[data-theme="dark"] body.cs-editorial .navbar.bg-white {
 html[data-theme="dark"] body.cs-editorial h1,
 html[data-theme="dark"] body.cs-editorial h2,
 html[data-theme="dark"] body.cs-editorial h3,
-html[data-theme="dark"] body.cs-editorial h4 {
+html[data-theme="dark"] body.cs-editorial h4,
+html[data-theme="dark"] body.cs-editorial .navbar-brand {
     color: var(--cs-ink);
+}
+
+html[data-theme="dark"] body.cs-editorial .lead {
+    color: var(--cs-muted);
 }
 
 .cs-prose {
@@ -318,14 +327,14 @@ html[data-theme="dark"] body.cs-editorial h4 {
 .cs-stat {
     background: var(--cs-paper-2);
     padding: 1.75rem 1.5rem;
-    border-radius: 2px;
+    border-radius: 28px;
 }
 
 .cs-stat b {
     display: block;
     font-family: var(--cs-serif);
-    font-size: 3.2rem;
-    font-weight: 400;
+    font-size: 2.82rem;
+    font-weight: 500;
     line-height: 1;
     color: var(--cs-accent);
     margin-bottom: 0.6rem;
@@ -358,7 +367,7 @@ html[data-theme="dark"] body.cs-editorial h4 {
     background: #fff;
     border: 1px solid var(--cs-line);
     padding: 1.25rem 1.35rem;
-    border-radius: 2px;
+    border-radius: 26px;
 }
 
 body.cs-realyse .cs-learn article:nth-child(3) {
@@ -423,7 +432,7 @@ html[data-theme="dark"] body.cs-editorial .cs-learn article {
 }
 
 html[data-theme="dark"] body.cs-editorial .cs-insight {
-    background: #000;
+    background: var(--cs-dark);
 }
 
 .cs-insight-inner {
@@ -431,21 +440,15 @@ html[data-theme="dark"] body.cs-editorial .cs-insight {
     margin: 0 auto;
 }
 
-.cs-insight .cs-section-label {
-    color: var(--cs-accent);
-}
-
 .cs-insight h2 {
-    font-family: var(--cs-serif);
     font-size: clamp(1.9rem, 3.4vw, 2.1rem);
-    font-style: italic;
     font-weight: 400;
     line-height: 1.28;
     max-width: 26ch;
     color: #f6f1e8 !important;
 }
 
-.cs-insight p:where(:not(.cs-section-label)) {
+.cs-insight p:where(:not(.cs-kicker)) {
     max-width: 38rem;
     color: #d8cfc4;
     margin-top: 1.25rem;
@@ -514,20 +517,22 @@ html[data-theme="dark"] body.cs-editorial .cs-insight {
 }
 
 .cs-outcome div {
-    border: 1px solid var(--cs-line);
+    border: 1px solid #fff;
     padding: 1.4rem 1.2rem;
-    background: #fff;
+    background: var(--cs-paper-2);
+    border-radius: 28px;
 }
 
 html[data-theme="dark"] body.cs-editorial .cs-outcome div {
     background: var(--cs-paper-2);
+    border: 1px solid var(--cs-muted);
 }
 
 .cs-outcome b {
     display: block;
     font-family: var(--cs-serif);
     font-size: 2.2rem;
-    font-weight: 400;
+    font-weight: 600;
     color: var(--cs-accent);
 }
 
@@ -548,6 +553,11 @@ html[data-theme="dark"] body.cs-editorial .cs-outcome div {
     filter: brightness(1.08);
 }
 
+html[data-theme="dark"] body.cs-editorial .cs-cta,
+html[data-theme="dark"] body.cs-editorial .cs-cta:hover {
+    color: var(--cs-paper-2) !important;
+}
+
 .cs-proof-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -566,7 +576,7 @@ html[data-theme="dark"] body.cs-editorial .cs-outcome div {
     border-radius: 8px;
     border: 1px solid var(--cs-line);
     display: block;
-    background: #fff;
+    background: var(--cs-paper-2);
 }
 
 .cs-inline-link {
@@ -855,12 +865,7 @@ html[data-theme="dark"] body.cs-editorial .chart-bar-wrapper {
     }
 }
 
-/* Resume / experience page */
-body.cs-editorial.cs-resume {
-    --cs-accent: #2d62c6;
-    --cs-accent-soft: #d6e4fb;
-}
-
+/* Case-study accents. Pages with no brand keep the default blue. */
 body.cs-editorial.cs-allstacks {
     --cs-accent: #7C3AED;
     --cs-accent-soft: #ede9fe;
@@ -874,6 +879,16 @@ body.cs-editorial.cs-realyse {
 body.cs-editorial.cs-vendo {
     --cs-accent: #2CB0E7;
     --cs-accent-soft: #d7f3fc;
+}
+
+body.cs-editorial.cs-redhat {
+    --cs-accent: #c41e3a;
+    --cs-accent-soft: #f6d5d8;
+}
+
+body.cs-editorial.cs-cmrad {
+    --cs-accent: #F24C3F;
+    --cs-accent-soft: #f8d5d2;
 }
 
 body.cs-editorial.cs-vendo .cs-learn {
@@ -915,17 +930,8 @@ body.cs-editorial.cs-redhat .cs-hero-visual img {
     object-position: center;
 }
 
-html[data-theme="dark"] body.cs-editorial.cs-vendo .cs-cta {
-    color: #082433 !important;
-}
-
 body.cs-editorial.cs-vendo .cs-cta:hover {
     color: #082433 !important;
-}
-
-html[data-theme="dark"] body.cs-editorial.cs-resume {
-    --cs-accent: #8eb4ff;
-    --cs-accent-soft: #1a2744;
 }
 
 html[data-theme="dark"] body.cs-editorial.cs-allstacks {
@@ -933,14 +939,19 @@ html[data-theme="dark"] body.cs-editorial.cs-allstacks {
     --cs-accent-soft: #2a1748;
 }
 
-html[data-theme="dark"] body.cs-editorial.cs-realyse {
-    --cs-accent: #8eb4ff;
-    --cs-accent-soft: #1a2744;
-}
-
 html[data-theme="dark"] body.cs-editorial.cs-vendo {
     --cs-accent: #2CB0E7;
     --cs-accent-soft: #123244;
+}
+
+html[data-theme="dark"] body.cs-editorial.cs-redhat {
+    --cs-accent: #ff5a6a;
+    --cs-accent-soft: #3a1a1e;
+}
+
+html[data-theme="dark"] body.cs-editorial.cs-cmrad {
+    --cs-accent: #ff6b63;
+    --cs-accent-soft: #3a1816;
 }
 
 html[data-theme="dark"] body.cs-editorial .cs-job-dates {
@@ -1016,7 +1027,7 @@ html[data-theme="dark"] body.cs-editorial .cs-job-dates {
     margin: 1.15rem 0;
     font-size: 1rem;
     line-height: 1.55;
-    border-radius: 12px;
+    border-radius: 28px;
 }
 
 .cs-highlight p {
@@ -1134,12 +1145,16 @@ html[data-theme="dark"] body.cs-editorial .cs-job-dates {
 }
 
 .cs-resume .cs-hook {
-    font-family: var(--cs-serif);
+    font-family: var(--cs-sans);
     font-weight: 700;
-    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    font-size: clamp(2.4rem, 5vw, 2.82rem);
     letter-spacing: -0.02em;
     line-height: 1.2;
     max-width: none;
+}
+.cs-resume .cs-section h2 {
+    font-family: var(--cs-sans);
+    font-weight: 700;
 }
 
 .cs-resume h3,
@@ -1147,7 +1162,7 @@ html[data-theme="dark"] body.cs-editorial .cs-job-dates {
 .cs-resume .cs-job-meta h3 {
     font-family: var(--cs-sans);
     font-weight: 700;
-    font-size: 1.35rem;
+    font-size: 1.15rem;
     line-height: 1.55;
     text-transform: uppercase;
     letter-spacing: 0.04em;
@@ -1166,6 +1181,14 @@ html[data-theme="dark"] body.cs-editorial .cs-job-dates {
     background: var(--cs-accent);
     color: #fff !important;
     filter: none;
+}
+
+html[data-theme="dark"] body.cs-editorial.cs-resume .cs-cta {
+    color: var(--cs-accent) !important;
+}
+
+html[data-theme="dark"] body.cs-editorial.cs-resume .cs-cta:hover {
+    color: var(--cs-paper-2) !important;
 }
 
 @media (max-width: 991px) {
@@ -1483,16 +1506,6 @@ html[data-theme="dark"] #experience .cs-job-summary .cs-job-dates {
 }
 
 /* Editorial home */
-body.cs-editorial.cs-home {
-    --cs-accent: #2d62c6;
-    --cs-accent-soft: #d6e4fb;
-}
-
-html[data-theme="dark"] body.cs-editorial.cs-home {
-    --cs-accent: #8eb4ff;
-    --cs-accent-soft: #1a2744;
-}
-
 .cs-home-wrap {
     max-width: 1100px;
     margin: 0 auto;
@@ -1525,6 +1538,7 @@ html[data-portfolio-layout="slide"] .cs-home #portfolio > .container {
     line-height: 1.5;
     color: var(--cs-ink);
     margin: 0.75rem 0 0;
+    font-weight: 700;
 }
 
 .cs-home .a-header p,
@@ -1626,10 +1640,7 @@ html[data-portfolio-layout="slide"] .cs-home #portfolio > .container {
     font-size: 0.95rem;
     line-height: 1.45;
     color: var(--cs-muted);
-}
-
-.cs-work .cs-kicker {
-    margin-bottom: 0.45rem;
+    font-family: "Outfit", sans-serif;
 }
 
 .cs-work-wide {
@@ -1717,6 +1728,7 @@ html[data-portfolio-layout="slide"] .cs-home #portfolio > .container {
 .cs-home #filters li a.link {
     font-family: var(--cs-sans);
     color: var(--cs-ink);
+    font-weight: 800;
 }
 
 .cs-home #filters li a.link:hover,
@@ -1824,7 +1836,8 @@ html[data-theme="dark"] body.cs-editorial .cs-inline-link::after {
 .cs-home .cs-case-ovejas { --cs-accent: #D58001; }
 .cs-home .cs-case-vendo { --cs-accent: #2CB0E7; }
 
-.cs-home .cs-case-vendo .cs-cta {
+.cs-home .cs-case-vendo .cs-cta,
+html[data-theme="dark"] body.cs-editorial.cs-home .cs-case-vendo .cs-cta {
     background: #082433;
     color: #fff !important;
 }
@@ -1833,7 +1846,8 @@ html[data-theme="dark"] body.cs-editorial .cs-inline-link::after {
     margin-left: 0.45rem;
 }
 
-.cs-home .cs-case-vendo .cs-cta:hover {
+.cs-home .cs-case-vendo .cs-cta:hover,
+html[data-theme="dark"] body.cs-editorial.cs-home .cs-case-vendo .cs-cta:hover {
     background: #041018;
     color: #fff !important;
 }
@@ -1857,16 +1871,6 @@ html[data-theme="dark"] body.cs-editorial .cs-inline-link::after {
     font-weight: 400;
     font-size: 14px;
     margin: 0;
-}
-
-body.cs-editorial.cs-cmrad {
-    --cs-accent: #F24C3F;
-    --cs-accent-soft: #f8d5d2;
-}
-
-html[data-theme="dark"] body.cs-editorial.cs-cmrad {
-    --cs-accent: #ff6b63;
-    --cs-accent-soft: #3a1816;
 }
 
 body.cs-editorial.cs-cmrad .cs-shell,
