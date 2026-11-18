@@ -1152,7 +1152,7 @@ html[data-theme="dark"] body.cs-editorial .cs-job-dates {
 .cs-resume .c-social-button:hover,
 .cs-home .c-social-button:hover {
     background: var(--cs-accent);
-    color: #fff;
+    color: var(--cs-paper-2);
 }
 
 .cs-resume .cs-hook {
