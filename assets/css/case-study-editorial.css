@@ -4,10 +4,10 @@
 body.cs-editorial {
     --cs-ink: #1c1612;
     --cs-muted: #5c534c;
-    --cs-paper: #e1dbd0;
+    --cs-paper: #e6e0d7;
     --cs-paper-2: #efe9df;
     --cs-line: rgba(28, 22, 18, 0.12);
-    --cs-accent: #2d62c6;
+    --cs-accent: #1246a2;
     --cs-accent-soft: #d6e4fb;
     --cs-dark: #161210;
     --cs-serif: "Lora", "Georgia", serif;
@@ -46,11 +46,17 @@ html[data-theme="dark"] body.cs-editorial.js-main-container {
 }
 .cs-editorial .navbar-brand {
     font-size: 1.21rem;
+    font-weight: 800;
 }
 
 body.cs-editorial .navbar-nav .nav-link[aria-current="page"],
 body.cs-editorial .navbar-nav .nav-link[aria-current="page"]:hover,
 body.cs-editorial .navbar-nav .nav-link[aria-current="page"]:focus {
+    color: var(--cs-accent);
+}
+
+html[data-theme="dark"] body.cs-editorial .navbar-nav .nav-link[aria-current="page"]:hover,
+html[data-theme="dark"] body.cs-editorial .navbar-nav .nav-link[aria-current="page"]:focus {
     color: var(--cs-accent);
 }
 
@@ -143,7 +149,7 @@ body.cs-editorial .navbar-nav .nav-link[aria-current="page"]:focus {
 .cs-hero-single img {
     width: 100%;
     height: auto;
-    border-radius: 6px;
+    border-radius: 32px;
     display: block;
 }
 
@@ -881,7 +887,7 @@ body.cs-editorial.cs-realyse {
 }
 
 body.cs-editorial.cs-vendo {
-    --cs-accent: #2CB0E7;
+    --cs-accent: #2da1d1;
     --cs-accent-soft: #d7f3fc;
 }
 
@@ -944,7 +950,7 @@ html[data-theme="dark"] body.cs-editorial.cs-allstacks {
 }
 
 html[data-theme="dark"] body.cs-editorial.cs-vendo {
-    --cs-accent: #2CB0E7;
+    --cs-accent: #2da1d1;
     --cs-accent-soft: #123244;
 }
 
@@ -1119,8 +1125,9 @@ html[data-theme="dark"] body.cs-editorial .cs-job-dates {
     flex: 0 0 42px;
     font-size: 1.4rem;
     line-height: 0;
+    background-color: var(--cs-paper-2);
     color: var(--cs-accent);
-    border: 1px solid var(--cs-accent);
+    border: 1.5px solid var(--cs-line);
     border-radius: 8px;
 }
 
@@ -1150,7 +1157,7 @@ html[data-theme="dark"] body.cs-editorial .cs-job-dates {
 
 .cs-resume .cs-hook {
     font-family: var(--cs-sans);
-    font-weight: 700;
+    font-weight: 800;
     font-size: clamp(2.4rem, 5vw, 2.82rem);
     letter-spacing: -0.02em;
     line-height: 1.2;
@@ -1322,7 +1329,7 @@ html.js #experience .cs-expand-all:focus-visible .cs-job-toggle {
 
 #experience .cs-job-summary h3 .cs-inline-link {
     text-decoration: none;
-    font-weight: 700;
+    font-weight: 800;
 }
 
 #experience .cs-job-summary h3 .cs-inline-link:hover {
@@ -1838,7 +1845,7 @@ html[data-theme="dark"] body.cs-editorial .cs-inline-link::after {
 .cs-home .cs-case-realyse { --cs-accent: #3571E5; }
 .cs-home .cs-case-mobile { --cs-accent: #8BBA9E; }
 .cs-home .cs-case-ovejas { --cs-accent: #D58001; }
-.cs-home .cs-case-vendo { --cs-accent: #2CB0E7; }
+.cs-home .cs-case-vendo { --cs-accent: #2da1d1; }
 
 .cs-home .cs-case-vendo .cs-cta,
 html[data-theme="dark"] body.cs-editorial.cs-home .cs-case-vendo .cs-cta {
