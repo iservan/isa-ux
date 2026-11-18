@@ -916,13 +916,13 @@ body.cs-editorial.cs-redhat main {
     min-width: 0;
 }
 
-body.cs-editorial.cs-vendo img,
+body.cs-editorial.cs-vendo img:not(.c-avatar__img),
 body.cs-editorial.cs-vendo video,
-body.cs-editorial.cs-allstacks img,
+body.cs-editorial.cs-allstacks img:not(.c-avatar__img),
 body.cs-editorial.cs-allstacks video,
-body.cs-editorial.cs-realyse img,
+body.cs-editorial.cs-realyse img:not(.c-avatar__img),
 body.cs-editorial.cs-realyse video,
-body.cs-editorial.cs-redhat img,
+body.cs-editorial.cs-redhat img:not(.c-avatar__img),
 body.cs-editorial.cs-redhat video {
     max-width: 100%;
     height: auto;
@@ -1889,7 +1889,7 @@ body.cs-editorial.cs-cmrad main {
     min-width: 0;
 }
 
-body.cs-editorial.cs-cmrad img,
+body.cs-editorial.cs-cmrad img:not(.c-avatar__img),
 body.cs-editorial.cs-cmrad video {
     max-width: 100%;
     height: auto;

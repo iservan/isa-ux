@@ -47,9 +47,22 @@ custom css are here
   background: #b672ff url("../images/header/giphy4.gif");
 } */
 
-.c-avatar img {
+.c-avatar {
+  flex: 0 0 4rem;
+  width: 4rem;
+  height: 4rem;
+  overflow: hidden;
   border-radius: 50%;
-  max-width: 140px;
+  line-height: 0;
+}
+
+.c-avatar img {
+  display: block;
+  width: 4rem;
+  height: 4rem;
+  max-width: none;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 /* Mobile Fix */
